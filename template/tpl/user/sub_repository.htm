@@ -1,0 +1,82 @@
+{template user/header}
+<script type="text/javascript" src="static/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    language: "zh_CN",
+    height : 400,
+ });
+</script>
+
+
+<ul class="breadcrumb">
+	<li><a href="user.php">{lang user_center}</a> <span class="divider">/</span></li>
+    <li>{lang note} <span class="divider">/</span></li>
+    <li><a href="user.php?ac=sub_note">{lang repository}</a></li>
+</ul>
+
+
+<h4>
+{lang repository_right_word}
+<small> <cite title="Source Title">{lang repository_right_small}</cite></small>
+</h4>
+
+<h3 class="margin-top"><small><a href="knowledge.php?mod=repository"><i class="icon-book"></i> 前往知识库</a></small></h3>
+
+<h2 class="margin-top"><small>创建</small></h2>
+<hr />
+<div class="margin-top">
+
+<form class="form-horizontal" name="_repository" action="knowledge.php?mod=covert" method="post">
+
+	 <div class="control-group">
+		<label class="control-label" for="name"><strong>词语</strong></label>
+		<div class="controls">
+			<input name="title" class="span12" type="text" id="name" placeholder="要创建的词语">
+		</div>
+		<span class="help-block"><strong>参考标题</strong><span class="text-info"> {$question['title']}</span></span>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="name"><strong>关键字</strong></label>
+		<div class="controls">
+			<input name="keyword" class="span6" type="text" id="name" placeholder="{$topic['topic_words']}">
+		</div>
+		<span class="help-block"><strong>参考关键字</strong></span>
+	</div>
+
+	 <div class="control-group">
+		<label class="control-label" for="name"><strong>解释 / 详细</strong></label>
+		<div class="controls">
+			<textarea id="text" name="content"></textarea>
+		</div>
+	</div>
+	
+	
+	
+	<br />	
+
+	<button name="publish" class="btn" type="submit">发布</button>
+
+</form>
+
+</div>
+
+<h2 class="margin-top"><small>知识库</small></h2>
+<hr />
+
+<h3 class="margin-top"> - <small>我的贡献</small></h3>
+
+<dl class="dl-horizontal">
+	<dt>关键字</dt><dd><strong>词条</strong></dd>
+	{loop $dict_list $d}
+	<dt>{$d['keyword']}</dt>
+	<dd><a href="knowledge.php?mod=repository&view={$d['id']}">{$d['title']}</a></dd>
+	{/loop}
+</dl>
+
+
+
+
+
+{template user/footer}

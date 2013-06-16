@@ -1,0 +1,82 @@
+<ul class="nav nav-pills nav-stacked">
+	{if $_G['uid']}
+	<li class="nav-header">与我相关</li>
+    <li><a href="knowledge.php?mod=message"><i class="icon-user"></i> 提到我的 ( {$message} )</a></li>
+    <li><a href="knowledge.php?mod=user&ac=question"><i class="icon-question-sign"></i> 我的问题</a></li>
+    <li><a href="knowledge.php?mod=user&ac=answer"><i class="icon-ok-circle"></i> 我的回答</a></li>
+    {/if}
+		<li class="nav-header">{lang study}</li>
+
+		<li {if $ac === 'sub_newsfeed'}class="active"{/if}>
+			<a href="user.php?ac=sub_newsfeed">
+				<i class="icon-coffee"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang newsfeed}
+			</a>
+		</li>
+
+		<li {if $ac === 'sub_plan'}class="active"{/if}>
+			<a href="user.php?ac=sub_plan">
+				<i class="icon-calendar"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang plan}
+			</a>
+		</li>
+
+		<li class="nav-header">{lang note}</li>
+
+		<li {if $ac === 'sub_note'}class="active"{/if}>
+			<a href="user.php?ac=sub_note">
+				<i class="icon-file-alt"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang lesson_note}
+			</a>
+		</li>
+
+		<li {if $ac === 'sub_repository'}class="active"{/if}>
+			<a href="user.php?ac=sub_repository">
+				<i class="icon-book"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang repository}
+			</a>
+		</li>
+
+		<li class="nav-header">工具</li>
+
+		{if false}
+		<li>
+			<a href="user.php?ac=sub_vsm">
+				<i class="icon-coffee"></i>
+				<i class="pull-right icon-chevron-right"></i>VSM工具
+			</a>
+		</li>
+		{/if}
+
+		<li {if $ac === 'sub_schedule'}class="active"{/if}>
+			<a href="user.php?ac=sub_schedule">
+				<i class="icon-time"></i>
+				<i class="pull-right icon-chevron-right"></i>日程表
+			</a>
+		</li>
+
+		{if false}
+		<li>
+			<a href="user.php?ac=sub_pad">
+				<i class="icon-coffee"></i>
+				<i class="pull-right icon-chevron-right"></i>便笺
+			</a>
+		</li>
+		{/if}
+
+		<li class="nav-header">账户</li>
+		
+		<li {if $ac === 'sub_vip'}class="active"{/if}>
+			<a href="user.php?ac=sub_vip">
+				<i class="icon-credit-card"></i>
+				<i class="pull-right icon-chevron-right"></i>VIP信息
+			</a>
+		</li>
+
+		<li {if $ac === 'sub_other'}class="active"{/if}>
+			<a href="user.php?ac=sub_other">
+				<i class="icon-circle-blank"></i>
+				<i class="pull-right icon-chevron-right"></i>其它
+			</a>
+		</li>
+</ul>

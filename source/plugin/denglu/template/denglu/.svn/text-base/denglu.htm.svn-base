@@ -1,0 +1,135 @@
+<!--{template common/header}-->
+
+<link type="text/css" href="source/plugin/denglu/template/style.css" rel="stylesheet" />
+
+<div class="dl_main">
+	<div class="dl_top layout">
+		<div class="dl_logo">
+			<img src="source/plugin/denglu/template/images/denglu_second_{$userinfo['mediaID']}.png">
+        </div>
+
+        <div class="dl_notes">
+        	<p class="h3">{lang denglu:use}<span>{$_G['mediaName']}</span>{lang denglu:account_login}<span>{lang denglu:our_website}</span>{lang denglu:success}</p>
+			<p>{lang denglu:discuz_tip0}{$_G['mediaName']}{lang denglu:discuz_tip1}</p>
+        </div>
+    </div>
+			{if $userinfo['mediaID']==7}<p style="margin-top:15px;font-weight:bold;">
+				{lang denglu:renren_auth_tip}<a style="color:#ff6000" target="_blank" href="http://app.renren.com/apps/authorize.do?api_key={$renren_key}&next=&ext_perm=publish_feed&display=noad">{lang denglu:click_here}</a>
+				{lang denglu:auth_over}
+			</p>{/if}
+<!--{if $_G['gp_token'] || $reg_error=='quick'}-->
+	<div class="dl_text" id='quick_login'>
+		<form method='post' action='denglu.php' id='quick_form'">
+			<div class="dl_form layout">
+				<p>{lang denglu:username}</p>
+				<p><input type="text" value="{$userinfo['screenName']}" name='username'/></p>
+				<p class="dl_wrong" id='dl_wrong'>{$u_error}</p>
+        	</div>
+      	  	 <div class="dl_btn layout">
+      	  	 	<input type='hidden' name='quick' value='1'>
+      	  	 	<input type='hidden' name='option' value='0' id='option'>
+      	  	 	<input type='hidden' name='userbak' value='{$_G['userbak']}'>
+      	  	 	<input type="hidden" name="formhash" value="{FORMHASH}" />
+				 <p><a href='javascript:;' onclick='$("quick_form").submit()'>{lang denglu:quick_login}</a></p>
+             	<p><a href="javascript:;" onclick='$("option").value="2";$("quick_form").submit()' >{lang denglu:account_bindding}</a></p>
+			 </div>
+		</form>
+        <div class="dl_warnning">
+			<p class="dl_wrong">{lang denglu:denglu_tip0}{$_G['mediaName']}{lang denglu:denglu_tip1}</p>
+        </div>
+	</div>
+<!--{/if}-->
+<!--{if $_G['gp_option']==1}-->  
+	<div class="dl_text" id='bind_have'  >
+    	<div class="dl_tab layout">
+			<p><a href="javascript:;" onclick='$("option").value="2";$("bind_form").submit()'>{lang denglu:have_no_account}</a></p>
+			<p class="active"><a href="javascript:;">{lang denglu:have_account}</a></p>
+        </div>
+        <form method='post' action='denglu.php' id='bind_form'>
+        	<input type="hidden" name="formhash" value="{FORMHASH}" />
+        	<input type='hidden' name='userbak' value='{$_G['userbak']}'>
+        	<input type='hidden' name='option' value='1' id='option'>
+	        <div class="dl_inform">
+	            <div class="dl_form layout">
+					<p>{lang denglu:username}</p>
+	                <p><input type="text" value="" name='username'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_wrong"></p>
+	            </div>
+	            <div class="dl_form layout">
+					<p>{lang denglu:password}</p>
+	                <p><input type="password" value="" name='password'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_point"></p>
+	            </div>
+	            <div class="dl_form layout">
+					<p>{lang denglu:seccode}</p>
+	                <p><select size="1" class="dl_select" name='questionid' id='questionid' onchange="if($('questionid').value > 0) {$('answer').style.display='';} else {$('answer').style.display='none';}">
+	                	<option value="0">{lang denglu:security_question}</option>
+						<option value="1">{lang denglu:security_question_1}</option>
+						<option value="2">{lang denglu:security_question_2}</option>
+						<option value="3">{lang denglu:security_question_3}</option>
+						<option value="4">{lang denglu:security_question_4}</option>
+						<option value="5">{lang denglu:security_question_5}</option>
+						<option value="6">{lang denglu:security_question_6}</option>
+						<option value="7">{lang denglu:security_question_7}</option>
+	              	</select></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_point"></p>
+	            </div>
+	            <div class="dl_form layout" id="answer" style='display:none'>
+	            	<p>{lang denglu:security_answer}</p>
+	                <p><input type="text" value="" name='answer'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_wrong"></p>
+	            </div>
+	        </div>
+	        <div class="dl_btn layout">
+				<p><button tabindex="1" value="true" name="bind" type="submit" class="pn pnc"><span>{lang denglu:bind_it}</span></button></p>
+				
+	        </div>
+        </form>
+	</div>
+<!--{/if}-->
+<!--{if $_G['gp_option']==2 || $reg_error=='reg'}-->
+	<div class="dl_text" id='bind_haveno'>
+    	<div class="dl_tab layout">
+        	<p class="active"><a href="javascript:;">{lang denglu:have_no_account}</a></p>
+			<p><a href="javascript:;" onclick='$("option").value="1";$("reg_form").submit();'>{lang denglu:have_account}</a></p>
+        </div>
+        <form method='post' action="denglu.php" id='reg_form'>
+        	<input type="hidden" name="formhash" value="{FORMHASH}" />
+        	<input type='hidden' name='userbak' value='{$_G['userbak']}'>
+        	<input type='hidden' name='option' value='2' id='option'>
+	        <div class="dl_inform">
+	            <div class="dl_form layout">
+	                <p>{lang denglu:username}</p>
+					<p><input type="text" value="{$userinfo['screenName']}" name='username'/></p>
+	                <p class="dl_wrong">*</p>
+					<p class="dl_wrong">{$u_error}</p>
+	            </div>
+	            <div class="dl_form layout">
+	                <p>{lang denglu:password}</p>
+	                <p><input type="password" value="" name='password'/></p>
+	                <p class="dl_wrong">*</p>
+					<p class="dl_point">{lang denglu:password_tip}</p>
+	            </div>
+	            <div class="dl_form layout">
+	                <p>{lang denglu:email}</p>
+	                <p><input type="text" value="{$_G['gp_email']}" name='email'/></p>
+					<p class="dl_wrong">*{$e_error}</p>
+					<p class="dl_point"><!--{if !$e_error}-->{lang denglu:email_advise}<!--{/if}--></p>
+	            </div>
+	        </div>
+	        <div class="dl_btn layout">
+	        	<p><button tabindex="1" value="true" name="reg" type="submit" class="pn pnc"><span>{lang denglu:confirm}</span></button></p>
+	            
+	        </div>
+        </form>
+	</div>
+<!--{/if}-->
+</div>
+
+
+<!--{template common/footer}-->
+

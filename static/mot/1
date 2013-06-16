@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=gbk">
+    <title>jquery.esn.autobrowse.js</title>
+    <link rel="stylesheet" type="text/css" href="1_files/reset-min.css">
+    <style type="text/css">
+        html {
+            background-color: #000;
+        }
+        body {
+            font-family: arial;
+            background-color: #000;
+        }
+        h1 {
+            font-size: 20px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        h2 {
+            font-size: 16px;
+            font-weight: bold;
+            padding: 10px;
+        }
+        p {
+            font-size: 12px;
+            line-height: 18px;
+            padding: 10px;
+        }
+        div.bkg {
+            position: absolute;
+            left: 0; top: 0;
+            height: 400px;
+            width: 100%;
+            background-color: #000;
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cccccc', endColorstr='#000000');
+            background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#000));
+            background: -moz-linear-gradient(top,  #ccc,  #000);
+        }
+        div.page {
+            position: relative;
+            background: white;
+            width: 760px;
+            margin: auto;
+            padding: 10px;
+        }
+        img.me {
+            float: left;
+            margin-right: 10px;
+        }
+        div.items {
+            padding: 10px;
+        }
+        div.items img {
+            margin: 10px 5px;
+            height: 150px;
+        }
+        div.loader {
+            font-style: italic;
+            text-align: center;
+            margin: 20px;
+            height: 24px;
+            background: url(loader.gif) no-repeat center center;
+        }
+        pre {
+            background-color: #FBFBFB;
+            font-size: 11px;
+            border-left: 3px solid #CCCCCC;
+            padding: 10px;
+            margin: 0 20px 30px;
+            overflow: auto;
+        }
+        p.note {
+            color: #777;
+            font-size: 11px;
+            padding: 0 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="bkg"></div>
+<div class="page">
+    <div style="clear: both;"></div>
+    <h1>Autobrowse jQuery plugin</h1>
+    <p>This plugin adds automatic ajax loading of page content when the 
+user scrolls the page, with built-in browser cache. More info in <a href="http://pushingtheweb.com/2010/09/endless-scroller-jquery-plugin/">this blog post</a>. Simply use autobrowse(options) on a container that you want to fill with content.</p>
+    <p>Changelog, download and docs: <a href="http://github.com/msjolund/jquery-esn-autobrowse">jquery.esn.autobrowse.js</a>.</p>
+    <p>LICENCE: Do whatever you want with the code. I don't take any responsibility for how you use it.
+
+    </p><p><b>Example usage:</b></p>
+    <pre>$(".page .items").autobrowse(
+    {
+        url: function (offset)
+        {
+            return "http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&amp;tagmode=any&amp;format=json&amp;jsoncallback=?";
+        },
+        template: function (response)
+        {
+            var markup='';
+            for (var i=0; i&lt;response.items.length; i++)
+            {
+                markup+='&lt;a href="'+response.items[i].link+'"&gt;&lt;img src="'+response.items[i].media.m+'" /&gt;&lt;/a&gt;'
+            };
+            return markup;
+        },
+        itemsReturned: function (response) { return response.items.length; },
+        offset: 0,
+        max: 100,
+        loader: '&lt;div class="loader"&gt;&lt;/div&gt;',
+        useCache: true,
+        expiration: 1
+    }
+);
+    </pre>
+
+
+
+    <p><b>Demo:</b> Scroll down for more cats. <a href="http://msjolund.github.io/autobrowse/twitterdemo.html">Demo using Twitter API</a> (New!)</p>
+    <p class="note">Note that the demo url does not use offset in the url, so it loads the same data every time.</p>
+    <p><a href="#clearcache" id="clear_cache">Clear cache</a></p>
+
+    <div class="items">
+    <a href="http://www.flickr.com/photos/10364044@N00/8756823700/"><img src="1_files/8756823700_7a6e90c403_m.jpg"></a><a href="http://www.flickr.com/photos/moosehead/8755556675/"><img src="1_files/8755556675_d5b24123ba_m.jpg"></a><a href="http://www.flickr.com/photos/matthewlacroix/8756654198/"><img src="1_files/8756654198_f039145299_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8756631544/"><img src="1_files/8756631544_373022e727_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8756640436/"><img src="1_files/8756640436_fbc78a7047_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8755495609/"><img src="1_files/8755495609_6a457beacd_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8756613532/"><img src="1_files/8756613532_0fb33d477c_m.jpg"></a><a href="http://www.flickr.com/photos/jasonquaid/8756595960/"><img src="1_files/8756595960_52b30fe6b0_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8756615816/"><img src="1_files/8756615816_82103918e5_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8755493813/"><img src="1_files/8755493813_c449b213e0_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8755492747/"><img src="1_files/8755492747_6179c826ce_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755473977/"><img src="1_files/8755473977_b3d34c3bed_m.jpg"></a><a href="http://www.flickr.com/photos/sheythevic/8755446611/"><img src="1_files/8755446611_0a389335fd_m.jpg"></a><a href="http://www.flickr.com/photos/88558878@N04/8756566148/"><img src="1_files/8756566148_12914d482b_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756530024/"><img src="1_files/8756530024_14e9685fd5_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756534856/"><img src="1_files/8756534856_ebeee679bc_m.jpg"></a><a href="http://www.flickr.com/photos/61518633@N08/8756529768/"><img src="1_files/8756529768_fcba3eec67_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755421985/"><img src="1_files/8755421985_81a56cf503_m.jpg"></a><a href="http://www.flickr.com/photos/dragonize/8755405209/"><img src="1_files/8755405209_67723934c7_m.jpg"></a><a href="http://www.flickr.com/photos/57449426@N05/8755386807/"><img src="1_files/8755386807_d0b67de1aa_m.jpg"></a><a href="http://www.flickr.com/photos/10364044@N00/8756823700/"><img src="1_files/8756823700_7a6e90c403_m.jpg"></a><a href="http://www.flickr.com/photos/moosehead/8755556675/"><img src="1_files/8755556675_d5b24123ba_m.jpg"></a><a href="http://www.flickr.com/photos/matthewlacroix/8756654198/"><img src="1_files/8756654198_f039145299_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8756631544/"><img src="1_files/8756631544_373022e727_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8756640436/"><img src="1_files/8756640436_fbc78a7047_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8755495609/"><img src="1_files/8755495609_6a457beacd_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8756613532/"><img src="1_files/8756613532_0fb33d477c_m.jpg"></a><a href="http://www.flickr.com/photos/jasonquaid/8756595960/"><img src="1_files/8756595960_52b30fe6b0_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8756615816/"><img src="1_files/8756615816_82103918e5_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8755493813/"><img src="1_files/8755493813_c449b213e0_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8755492747/"><img src="1_files/8755492747_6179c826ce_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755473977/"><img src="1_files/8755473977_b3d34c3bed_m.jpg"></a><a href="http://www.flickr.com/photos/sheythevic/8755446611/"><img src="1_files/8755446611_0a389335fd_m.jpg"></a><a href="http://www.flickr.com/photos/88558878@N04/8756566148/"><img src="1_files/8756566148_12914d482b_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756530024/"><img src="1_files/8756530024_14e9685fd5_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756534856/"><img src="1_files/8756534856_ebeee679bc_m.jpg"></a><a href="http://www.flickr.com/photos/61518633@N08/8756529768/"><img src="1_files/8756529768_fcba3eec67_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755421985/"><img src="1_files/8755421985_81a56cf503_m.jpg"></a><a href="http://www.flickr.com/photos/dragonize/8755405209/"><img src="1_files/8755405209_67723934c7_m.jpg"></a><a href="http://www.flickr.com/photos/57449426@N05/8755386807/"><img src="1_files/8755386807_d0b67de1aa_m.jpg"></a><a href="http://www.flickr.com/photos/offby1/8756912246/"><img src="1_files/8756912246_c11e61c481_m.jpg"></a><a href="http://www.flickr.com/photos/bigrhon14/8755475063/"><img src="1_files/8755475063_9024588c1d_m.jpg"></a><a href="http://www.flickr.com/photos/theempress/8755872759/"><img src="1_files/8755872759_09a4a5b464_m.jpg"></a><a href="http://www.flickr.com/photos/10364044@N00/8756823700/"><img src="1_files/8756823700_7a6e90c403_m.jpg"></a><a href="http://www.flickr.com/photos/moosehead/8755556675/"><img src="1_files/8755556675_d5b24123ba_m.jpg"></a><a href="http://www.flickr.com/photos/23194903@N07/8756675538/"><img src="1_files/8756675538_46e6c9ab52_m.jpg"></a><a href="http://www.flickr.com/photos/matthewlacroix/8756654198/"><img src="1_files/8756654198_f039145299_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8756631544/"><img src="1_files/8756631544_373022e727_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8756640436/"><img src="1_files/8756640436_fbc78a7047_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8755495609/"><img src="1_files/8755495609_6a457beacd_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8756613532/"><img src="1_files/8756613532_0fb33d477c_m.jpg"></a><a href="http://www.flickr.com/photos/jasonquaid/8756595960/"><img src="1_files/8756595960_52b30fe6b0_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8756615816/"><img src="1_files/8756615816_82103918e5_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8755493813/"><img src="1_files/8755493813_c449b213e0_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8755492747/"><img src="1_files/8755492747_6179c826ce_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755473977/"><img src="1_files/8755473977_b3d34c3bed_m.jpg"></a><a href="http://www.flickr.com/photos/sheythevic/8755446611/"><img src="1_files/8755446611_0a389335fd_m.jpg"></a><a href="http://www.flickr.com/photos/88558878@N04/8756566148/"><img src="1_files/8756566148_12914d482b_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756530024/"><img src="1_files/8756530024_14e9685fd5_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756534856/"><img src="1_files/8756534856_ebeee679bc_m.jpg"></a><a href="http://www.flickr.com/photos/peyri/8755756819/"><img src="1_files/8755756819_332311140f_m.jpg"></a><a href="http://www.flickr.com/photos/offby1/8756912246/"><img src="1_files/8756912246_c11e61c481_m.jpg"></a><a href="http://www.flickr.com/photos/bigrhon14/8755475063/"><img src="1_files/8755475063_9024588c1d_m.jpg"></a><a href="http://www.flickr.com/photos/theempress/8755872759/"><img src="1_files/8755872759_09a4a5b464_m.jpg"></a><a href="http://www.flickr.com/photos/10364044@N00/8756823700/"><img src="1_files/8756823700_7a6e90c403_m.jpg"></a><a href="http://www.flickr.com/photos/moosehead/8755556675/"><img src="1_files/8755556675_d5b24123ba_m.jpg"></a><a href="http://www.flickr.com/photos/23194903@N07/8756675538/"><img src="1_files/8756675538_46e6c9ab52_m.jpg"></a><a href="http://www.flickr.com/photos/matthewlacroix/8756654198/"><img src="1_files/8756654198_f039145299_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8756631544/"><img src="1_files/8756631544_373022e727_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8756640436/"><img src="1_files/8756640436_fbc78a7047_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8755495609/"><img src="1_files/8755495609_6a457beacd_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8756613532/"><img src="1_files/8756613532_0fb33d477c_m.jpg"></a><a href="http://www.flickr.com/photos/jasonquaid/8756595960/"><img src="1_files/8756595960_52b30fe6b0_m.jpg"></a><a href="http://www.flickr.com/photos/7566471@N02/8756615816/"><img src="1_files/8756615816_82103918e5_m.jpg"></a><a href="http://www.flickr.com/photos/bradfordtennyson/8755493813/"><img src="1_files/8755493813_c449b213e0_m.jpg"></a><a href="http://www.flickr.com/photos/thelmavidales/8755492747/"><img src="1_files/8755492747_6179c826ce_m.jpg"></a><a href="http://www.flickr.com/photos/40949647@N06/8755473977/"><img src="1_files/8755473977_b3d34c3bed_m.jpg"></a><a href="http://www.flickr.com/photos/sheythevic/8755446611/"><img src="1_files/8755446611_0a389335fd_m.jpg"></a><a href="http://www.flickr.com/photos/88558878@N04/8756566148/"><img src="1_files/8756566148_12914d482b_m.jpg"></a><a href="http://www.flickr.com/photos/tanya_little/8756530024/"><img src="1_files/8756530024_14e9685fd5_m.jpg"></a></div>
+
+    <script type="text/javascript" src="1_files/jquery-1.js"></script>
+    <script type="text/javascript" src="1_files/jquery.js"></script>
+    <script type="text/javascript" src="1_files/jquery_002.js"></script>
+    <script type="text/javascript" src="1_files/jstorage.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#clear_cache").click( function (e) {
+                e.preventDefault();
+                $('.page .items').autobrowse('flush');
+            })
+
+            $(".page .items").autobrowse(
+                {
+                    url: function (offset)
+                    {
+                        return "http://api.flickr.com/services/feeds/photos_public.gne?tags=cat&tagmode=any&format=json&jsoncallback=?";
+                    },
+                    template: function (response)
+                    {
+                        var markup='';
+                        for (var i=0; i<response.items.length; i++)
+                        {
+                            markup+='<a href="'+response.items[i].link+'"><img src="'+response.items[i].media.m+'" /></a>'
+                        };
+                        return markup;
+                    },
+                    itemsReturned: function (response) { return response.items.length; },
+                    offset: 0,
+                    max: 100,
+                    loader: '<div class="loader"></div>',
+                    useCache: true,
+                    expiration: 1
+                }
+            );
+        });
+    </script>
+</div>
+
+
+</body></html>

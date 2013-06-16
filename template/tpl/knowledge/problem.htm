@@ -1,0 +1,85 @@
+<!--{template knowledge/header}-->
+
+<div class="page-header">
+    <h1>我要提问 <small>创建一个问题和话题</small></h1>
+</div>
+
+{if !$_G['uid']}
+    {template knowledge/guest}
+{else}
+
+<form class="form-inline" action="" method="post">
+
+    <div class="control">   
+        <label class="checkbox">
+        <input name="callme" type="checkbox" /> <strong>提醒我 如果有人回答了我的问题</strong></label>
+    </div>
+
+    <div class="control">
+    <label class="control-label"><strong>提问总的有个标题吧</strong> <small>这里填写问题的简述</small></label>
+        <div class="control">
+            <input name="title" class="span8" type="text" placeholder="问题的标题" />
+        </div>
+    </div>
+
+
+    <div class="control">
+        <label class="control-label" for="inputPassword"><strong>具体地描述我的问题</strong> <small>详细地描述问题</small></label>
+        <div class="control">
+            <textarea name="content" class="span8" rows=6></textarea>
+        </label>
+        </div>
+    </div>
+
+    <div class="control">
+        <label><strong>话题标签</strong> <small>给你的问题加上分类</small></label>
+            
+        <div class="control-group">
+            <div id="topic_list" class="control">
+            {loop $topic $t}
+                <label class="radio text-info"><input type="radio" name="topicid" id="optionsRadios1" value="{$t['id']}">{$t['topic_words']}</label>
+            {/loop}
+
+            <p class="well"><a href="">更多标签</a></p>
+                <hr />
+                <div class="control">
+                    <strong>添加一个话题标签</strong>
+                    <div class="input-append">
+                        <input id="topic" class="input-large" type="text" placeholder="让你的问题找到合适的分类" />
+                        <button id="add_topic" type="button" class="btn">创建</button>
+
+                    </div>
+                </div>
+                <hr />
+            </div>
+
+        </div>
+    </div>
+        <button name="publish" type="submit" class="btn">发布问题</button>
+</form>
+
+<script>
+jQuery( function () {
+    jQuery('#add_topic').click( function(){
+        var _topic  = jQuery('#topic').val();
+        jQuery.post('knowledge.php' , { action : 'new_topic' , params : { topic : _topic}} , function(response) {
+
+            var str = eval('('+response+')');
+
+            if( typeof str != 'object') {
+
+                jQuery('input[value="'+str+'"]').attr({'checked' : 'checked'});
+
+            }else{
+
+                jQuery('#topic_list').prepend('<label class="radio text-info"><input type="radio" name="topicid" id="optionsRadios'+str['id']+'" value="'+str['id']+'">'+str['topic_words']+'</label>');
+
+            }
+
+        });
+    });
+});
+</script>
+
+{/if}
+<!--{template knowledge/footer}-->

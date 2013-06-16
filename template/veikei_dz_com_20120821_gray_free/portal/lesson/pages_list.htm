@@ -1,0 +1,49 @@
+<!--{template common/header}-->
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+
+
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em>
+		课程
+	</div>
+</div>
+
+<div id="ct" class="ct2_a wp cl">
+	<div class="mn">
+		<div class="bm bw0 mdcp">
+			<p>课程列表
+			</p>
+			<table class="dt mtm">
+				<tr><th>序号</th> <th>分类</th> <th>课程名</th> <th>类型</th> <th>状态</th> <th>操作</th></tr>
+
+				<td>xxx</td> <td></td> <td></td> <td></td> <td></td> 
+				{loop $list $course}
+				<tr><td>{$course['sortid']}</td>
+					<td></td>
+					<td>{$course['fullname']}</td> 
+					<td>{eval echo $course['is_free']?'免费':'收费';}</td> 
+					<td>{eval echo $course['is_hidden']?'隐藏':'公开'}</td> 
+					<td><a class="xi2" href="portal.php?mod=lesson&ac=course_info&id={$course['id']}">编辑</a> 
+						<a class="xi2" href="portal.php?mod=lesson&ac=course_delete">删除</a></td>
+				</tr>
+				{/loop}
+			</table>
+		</div>
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+	<div class="appl">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+</div>
+
+<!--{template common/footer}-->
+

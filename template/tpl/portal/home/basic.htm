@@ -1,0 +1,19 @@
+{subtemplate portal/home/left}
+<h1>基本设置</h1>
+
+<h1 class="pull-left"><small>导航设置</small></h1>
+<table class="table">
+	<tr><th>导航名</th><th>URL</th><th></th></tr>
+
+	{loop $director $dc}
+	<form class="form-inline" action="portal.php?mod=home" name="_form1" method="post">
+	<input type="hidden" name="id" value="{$dc['id']}" />
+	<tr><td>
+		<input name="c_key" class="input-medium" type="text" value="{$dc['c_key']}" /></td>
+		<td><input name="c_value" class="input-medium" type="text" value="{$dc['c_value']}" /></td>
+		<td><button class="btn" type="submit" name="update_director">修改</button></td>
+	</tr>
+	</form>
+	{/loop}
+</table>
+{subtemplate portal/home/buttom}

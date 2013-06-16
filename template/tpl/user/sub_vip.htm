@@ -1,0 +1,30 @@
+{template user/header}
+<ul class="breadcrumb">
+    <li><a href="#">{lang user_center}</a> <span class="divider">/</span></li>
+    <li><a href="#">{lang account}</a> <span class="divider">/</span></li>
+    <li class="active">{lang vip_info}</li>
+</ul>
+
+<div class="container-fluid mot-block-b">
+{if $is_vip}
+<h2><small>{lang vip_greeting} : </small></h2>
+<dl class="dl-horizontal">
+	<dt>{lang vip_start} : </dt> <dd>{eval echo date( 'Y-m-d ', $vip_time['jointime'])}</dd>
+	<dt>{lang vip_end} : </dt> <dd>{eval echo date( 'Y-m-d', $vip_time['exptime'])}</dd>
+	<dt>{lang vip_total} : </dt> <dd>{eval echo ($vip_time['exptime'] - $vip_time['jointime'])/86400}天</dd>
+	<dt>{lang vip_money} : </dt> <dd>{$my_credit} ￥</dd>
+</dl>
+<hr />
+	<p><a href="vip.php?action=active" class="btn btn-success">{lang vip_continue}</a></p>
+{else}
+<div class="alert alert-success">
+	{lang vip_notvip}
+</div>
+
+<hr />
+<a href="vip.php?action=active" class="btn btn-success">{lang vip_active}</a>
+{/if}
+</div>
+
+
+{template user/footer}

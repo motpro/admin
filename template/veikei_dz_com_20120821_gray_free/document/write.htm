@@ -1,0 +1,55 @@
+<!--{template common/header}-->
+
+<div id="ct" class="rankicn">
+	<div id="r_document" class="bm">
+		<div class="bm_h">KICN.cn学籍证书电子注册备案表 - 正在编辑 {if $first} [请谨慎填写的资料 姓名后面无法修改] {/if}</div>
+	<form name="_client_document" action="document.php" method="post">
+
+	<table class="tdat lum">
+
+		<tr><td>姓名</td><td><input type="text" name="name" value={$document['name']} {if $flag} disabled="disabled" {/if} /></td></tr>
+
+		<tr><td>性别</td><td><select name="gender">
+			<option value=1 {if $document['gender']}selected = 'selected'{/if}>男</option> 
+			<option value=0 {if !$document['gender']}selected = 'selected'{/if}>女</option></select>
+		</td></tr>
+		
+		<tr><td>民族</td><td><input type="text" name="nation" value={$document['nation']} /></td></tr>
+
+		<tr><td>出生日期</td><td><input type="text" name="birthday" value={$document['birthday']} /></td></tr>
+		
+		<tr><td>身份证号</td><td><input type="text" name="idcard" value={$document['idcard']} /></td></tr>
+		
+		<tr><td>通讯地址</td><td><input type="text" name="address" value={$document['address']} /></td></tr>
+		
+		<tr><td>手机号</td><td><input type="text" name="mobile" value={$document['mobile']} /></td></tr>
+		
+		<tr><td>联系电话</td><td><input type="text" name="phone" value={$document['phone']} /></td></tr>
+		
+		<tr><td>电子邮箱</td><td><input type="email" name="email" value={$document['email']} /></td></tr>
+		
+		<tr><td>学历层次</td><td>
+								<select name="education">
+									<option value=0 {if $document['education']==0 }selected='selected'{/if}>保密</value>
+									<option value=1 {if $document['education']==1 }selected='selected'{/if}>基础义务教育</value>
+									<option value=2 {if $document['education']==2 }selected='selected'{/if}>高中</value>
+									<option value=3 {if $document['education']==3 }selected='selected'{/if}>大专</value>
+									<option value=4 {if $document['education']==4 }selected='selected'{/if}>本科</value>
+									<option value=5 {if $document['education']==5 }selected='selected'{/if}>博士/研究生</value>
+								</select></td></tr>
+
+	</table>
+	<table class="tdat lum">
+	<tr>
+		<td>自述：<textarea name="etc">{$document['etc']}</textarea>
+		
+		</td>
+	</tr>
+	</table>
+
+	<div>
+		<input type="submit" name="save_document" value="保存学籍信息" />
+	</div>
+	<br /><br />
+</div>
+</div>

@@ -1,0 +1,48 @@
+<!--{template common/header}-->
+<style type="text/css">
+hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 12px 0 18px; height: 0; }
+h3 { font-size: 22px; font-size: 2.2rem; margin-bottom: 9px; }
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+<script>
+widthauto();
+</script>
+<br /><br /><br /><br />
+
+
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em>
+		<a href="portal.php?mod=lesson&ac=admin">课程</a> <em>&rsaquo;</em> 删除 {$course['fullname']}
+	</div>
+</div>
+
+<div class="content row-fluid">
+
+	<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+
+<div id="ct" class="span10">
+	<div> 
+		<h2>你真的确定要删除 《{$course['fullname']}》 吗</h2>
+		<hr />
+
+		<div>
+			<a class="btn btn-success btn-large" href="portal.php?mod=lesson">不是，我手滑点错了</a>
+			<a class="btn btn-large" href="portal.php?mod=lesson&ac=course_delete&id={$course_id}&confirm=1">删除它</a>
+		</div>
+
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+
+</div>
+</div>
+<!--{template common/footer}-->
+

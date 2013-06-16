@@ -1,0 +1,43 @@
+@charset "utf-8";
+/*
+[name]圆角[/name]
+[iconbgcolor]#000000[/iconbgcolor]
+未来科技 设计
+www.veikei.com
+Veiki 20120810
+*/
+
+
+/* 返回顶部 */
+#scrolltop {  -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px; }
+
+
+
+/* 首页图片 圆角显示 */
+	/* 注意：帖子缩略图+文字 样式 用的是 dl dt dd，而不是 ul li  */
+/*	.col_2 img { -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;}
+	.col_2 ul li img { -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+*/
+
+	.col_2_left_1-1-1 ul li img { -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+
+/* 两列模式：两列图文  */
+	.col_1_sub ul li img { -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+	.col_2_1-1_sub ul li img { -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+
+
+
+/* 四列模式：四列图片 */
+	.col_4_sub {} /* 这句必须有，否则圆角效果不显示。待研究 */
+	.col_4_sub ul li img {   -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+	.col_4_sub ul li:hover img { opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); }
+
+
+
+
+/* 分页图片 圆角显示 */
+		.ct_list_pic_4 .list_pic img { border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;  }
+		.ct_list_pic_4 .list_pic:hover img {opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80);  }
+
+
+		.ct2_list_pic_3 .list_pic img {  border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; }

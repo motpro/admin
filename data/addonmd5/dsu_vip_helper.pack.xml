@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[dsu_vip_helper.pack]]></item>
+	<item id="RevisionID"><![CDATA[2065]]></item>
+	<item id="SN"><![CDATA[2013041622V9v7VFnEe4]]></item>
+	<item id="RevisionDateline"><![CDATA[1352196710]]></item>
+	<item id="Data">
+		<item id="/source/class/class_vip.php"><![CDATA[ce0eaca5a5ba2f42195f05baa09ca84e]]></item>
+		<item id="/source/function/cache/cache_dsu_kkvip.php"><![CDATA[dce15df72fa71019ba5288de297c733c]]></item>
+		<item id="/source/include/cron/cron_dsu_kkvip.php"><![CDATA[b9aa1a2daef294424c02bad3028517c4]]></item>
+		<item id="/vip.php"><![CDATA[71e335ea0dbafbc87c243af1eeca2d4a]]></item>
+	</item>
+</root>

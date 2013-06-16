@@ -1,0 +1,53 @@
+<!--{template common/header}-->
+
+<div class="content">
+	<header>
+		<h1>"{$ori}" 搜索结果</h1>
+		<h2><small>相关课程 {eval echo count( $course_result)} - 相关页面 {eval echo count( $page_result)}</small></h2>
+	</header>
+<div>
+
+<div class="content" align="center">
+	<form class="form-inline" action="msearch.php" method="get">
+	<div class="input-append">
+		<input type="text" name="keywords" placeholder="课程关键字" />
+		<button class="btn" type="submit" name="findout">搜索课程</button>
+	</div>
+	</form>
+</div>
+
+{if $pause}
+
+<div class="alert alert-error">
+	搜索关键字过短，请重新搜索
+</div>
+{else}
+
+	<table class="table">
+		<tr>
+			<td><strong>搜索到的课程</strong></td>
+			<td></td>
+		</tr>
+
+		{loop $course_result $_course}
+		<tr>
+			<td>{$_course['fullname']}</td>
+			<td><a href="lesson.php?pages_list={$_course['id']}">相关链接</a></td>
+		</tr>
+		{/loop}
+		<tr>
+			<td><strong>搜索到的课程页面</strong></td>
+			<td></td>
+		</tr>
+
+		{loop $page_result $_page}
+		<tr>
+			<td>{$_page['title']}</td>
+			<td><a href="lesson.php?page_content={$_page['id']}">相关链接</a></td>
+		</tr>
+		{/loop}
+
+	</table>
+{/if}
+</div>
+<!--{template common/footer}-->

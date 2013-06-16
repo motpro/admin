@@ -1,0 +1,1 @@
+<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('enroll');?><?php include template('examination/header'); include template('examination/footer'); ?>

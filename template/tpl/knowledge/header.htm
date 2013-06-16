@@ -1,0 +1,74 @@
+{subtemplate common/header}
+
+<script src="static/mot/jquery.esn.autobrowse.js"></script>
+<script src="static/mot/jstorage.js"></script>
+
+<div class="container-fluid mot-block-a">
+<div class="row-fluid">
+	<div class="span2">
+		<a href="knowledge.php" title="36lean.com问答社区">
+			<img class="img-polaroid" src="static/mot/knowledge.jpeg" />
+		</a>
+		
+	</div>
+
+	<div class="span10">
+		<blockquote>
+			<h1>问答社区
+    		<h5><small>知识就是力量 knowledge is power</small></h5>
+            </h1>
+    	</blockquote>
+
+    	<form class="pull-right" action="knowledge.php" method="post">
+    		<div class="input-append">
+    			<input id="tags2" name="keyword" type="text" class="span8">
+                <button name="findout" type="submit" class="btn">查找问题</button>
+                <br />
+    		</div>
+            <script>
+            var availableTags = ["","ActionScript", "AppleScript", "Asp", "BASIC", "C", "C++", "Clojure", "COBOL", "ColdFusion", "Erlang", "Fortran", "Groovy", "Haskell", "Java", "JavaScript", "Lisp", "Perl", "PHP", "Python", "Ruby", "Scala", "Scheme"];
+ 
+            jQuery("#tags2").autocomplete({
+                source: availableTags
+            });
+            </script>
+    	</form>
+
+    	<ul class="nav nav-pills">
+    		<li class="{if $mod === 'home'}active{/if}">
+    			<a href="knowledge.php">首页</a>
+    		</li>
+    		
+    		<li class="{if $mod === 'question'}active{/if}">
+    			<a href="knowledge.php?mod=question">我要提问</a>
+    		</li>
+
+    		<li class="{if $mod === 'answer'}active{/if}">
+    			<a href="knowledge.php?mod=answer">我要回答</a>
+    		</li>
+
+    		<li class="{if $mod === 'hottopic'}active{/if}">
+    			<a href="knowledge.php?mod=hottopic">热门话题</a>
+    		</li>
+
+    		<li class="{if $mod === 'repository'}active{/if}">
+    			<a href="knowledge.php?mod=repository">资料库</a>
+    		</li>
+    	</ul>
+
+	</div>
+</div>
+</div>
+<hr />
+<div class="container-fluid margin-top">
+<div class="row-fluid">
+  <div class="span3">
+    <table class="table table-bordered">
+        <tr><td>
+  	         {template knowledge/left_side}
+        </td></tr>
+    </table>
+
+  </div>
+
+  <div class="span9">

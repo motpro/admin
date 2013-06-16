@@ -1,0 +1,85 @@
+<!--{template common/header}-->
+</div>
+
+<div class="jumbotron masthead">
+
+<div class="container container-fluid"  style="z-index:1000;">
+<div class="row-fluid" >
+
+	<div class="span6">
+		<img src="{$_G['siteurl']}static/mot/ads.jpg" class="img-circle" />
+		<div class="page-header">
+		<ul>
+			<li><i class="icon-question-sign"></i> 如何为企业创造更多价值</li>
+			<li><i class="icon-question-sign"></i> 如何提升整体客户价值</li>
+			<li><i class="icon-question-sign"></i> 如何为企业做到减少浪费</li>
+			<li><i class="icon-question-sign"></i> 如何做到不断增加产品、流程和服务的质量</li>
+		</ul>
+		</div>
+		<h4><i class="icon-flag"></i> 让我们的讲师为你分析解答这些问题</h4>
+		{if $_G['uid']}
+		<p><a class="btn btn-success" href="user.php?ac=sub_plan"><i class="icon-share-alt"></i> 继续学习</a></p>
+		{else}
+		<p><a class="btn btn-success" href="member.php?mod={$_G[setting][regname]}"><i class="icon-key"></i> 立即注册 试用课程</a></p>
+		{/if}
+	</div>
+
+	<div class="span6 text-left" style="padding-top:50px;">
+	<div class="page-header">
+		<h2>Lean学院</h2>
+		<h4><i class="icon-fire"></i> 本网站是做什么的</h4>
+	</div>
+
+	<small>Lean学院是一个全新的<a href="lesson.php">在线精益学习平台</a>，我们采用了全新的<a href="lesson.php?page_content=140">在线教育模式</a>，使用视频+问答社区这样一个全新的在线学习模式，脱离传统的文档类为主学习资源，使用直观、深入浅出的视频为主要教学资源，让原本晦涩难懂的精益技术以一个全新的方式展现在您的面前。<br />配合<a href="knowledge.php">在线问答社区</a>，您可以方便的与我们的专业技术人员或其他用户进行交流、学习，解决视频学习中的疑问、困惑。使得精益学习的速度大大提高、难度却大大降低。</small>
+
+
+	<div class="page-header">
+		<h4><i class="icon-thumbs-up"></i> 我们的产品</h4>
+	</div>
+	<small>
+		<ul class="masthead-links">
+			{loop $allcourse $key=>$course}
+			<li><a href="lesson.php?pages_list={$course['id']}" title="{$course['fullname']}">{$course['fullname']}</a></li>
+			{if $key%5 == 0 && $key > 0}<li><br /></li>{/if}
+			{/loop}
+		</ul>
+	</small>
+	<div class="page-header">
+		<h4><i class="icon-mobile-phone"></i> 跨平台学习</h4>
+	</div>
+	<small>我们的下一步工作是打造移动学习的平台，移动在线学院课程同样为高清课程，同时课程还将可以在电脑，手机，平板电脑等移动设备上观看。同时可以用投影仪放大在培训室进行观看。</small>
+
+
+	</div>
+
+</div>
+</div>
+
+<h4>主要学院课程类型</h4>
+	<ul class="masthead-links">
+		<li>精益课程</li>
+		<li>六西格玛</li>
+	</ul>
+</div>
+
+
+<div id="after_banner" class="container margin-top">
+
+
+<div class="container-fluid">
+<div class="row-fluid">
+	
+	<div class="span4">
+	</div>	
+
+	<div class="span4">
+	</div>	
+
+	<div class="span4">
+	</div>
+
+</div>
+
+</div>
+</div>
+<!--{template common/footer}-->

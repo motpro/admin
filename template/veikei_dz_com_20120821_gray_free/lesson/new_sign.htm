@@ -1,0 +1,9 @@
+<!--{template lesson/new_header}-->
+
+<!--{if $_GET['sign'] == 'signin'}-->
+	<!--{template lesson/login}
+<!--{else}-->
+	<!--{eval header('Location: member.php?mod=kaizenonlinereg')}-->
+<!--{/if}-->
+
+<!--{template lesson/new_footer}-->

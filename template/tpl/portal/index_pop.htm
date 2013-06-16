@@ -1,0 +1,40 @@
+<div class="container margin-top">
+<div class="row-fluid">
+
+    <div class="span6 mot-block-b">
+      
+      <a href="lesson.php?pages_list={$c_top['id']}">
+        <!--<img src="./uploads/lesson/{$c_top[0]['logo']}" alt="{$c_top[0]['fullname']}" />-->
+        <img src="./uploads/lesson/{$c_top[0]['logo']}">
+      </a>
+
+      <h3>
+        <a href="lesson.php?pages_list={$c_top[0]['id']}">$c_top[0]['fullname']</a>
+      </h3>
+      <blockquote class="lead">$c_top[0]['summary']</blockquote>
+  </div>
+
+
+
+  <div class="span6">
+    <div class="row-fluid">
+    {eval $_row_2 = 1}
+    {loop $_G['cache']['hot_course'] $c}
+        <div class="span6 mot-block-b">
+            <a href="lesson.php?pages_list={$c['config']}">
+                <img src="{$_G['siteurl']}uploads/lesson/{$c['logo']}" width="100%" alt="{$c['fullname']}" />
+                 <h5 class="text-center"><a href="lesson.php?pages_list={$c['config']}">$c['fullname']</a></h5>
+            </a>
+        </div>
+    {if $_row_2%2  == 0}
+    </div>
+    
+    <div class="row-fluid margin-top">
+    {/if}
+    {eval ++$_row_2}
+    {/loop}
+    </div>
+  </div>
+
+</div>
+</div>

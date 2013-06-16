@@ -1,0 +1,114 @@
+<!--{template common/header}-->
+
+<link type="text/css" href="source/plugin/denglu/template/style.css" rel="stylesheet" />
+<h3 class="flb" id="" style="cursor: move;">
+<em id="" fwin="">{lang denglu:do_bind_account}</em>
+<span><a title="关闭" onclick="hideWindow('bind', 0, 1);" class="flbc" href="javascript:;">关闭</a></span>
+</h3>
+<div class="dl_main" style="border:none;margin:0px;padding-top:0px;">
+<script language="javascript">
+function havedisplay(hide, show){
+	 document.getElementById(hide).style.display = 'none';
+	 document.getElementById(show).style.display = 'block';
+	 var username = show + "_user";
+	 init(username);
+}
+function init(username){
+	var ctrl = document.getElementById(username);
+	ctrl.focus();
+}
+init("bind_have_user");
+</script>
+	<div class="dl_text" id='bind_have'>
+    	<div class="dl_tab layout">
+			<p><a href="javascript:;" onclick='javascript:havedisplay("bind_have","bind_haveno");'>{lang denglu:have_no_account}</a></p>
+			<p class="active"><a href="javascript:;" onclick='javascript:havedisplay("bind_haveno","bind_have");'>{lang denglu:have_account}</a></p>
+        </div>
+        <form method='post' action='denglu.php'>
+        	<input type="hidden" name="formhash" value="{FORMHASH}" />
+        	<input type="hidden" name="option" value="1" />
+			<input type="hidden" name="olbind" value="bind" />
+	        <div class="dl_inform">
+	            <div class="dl_form layout">
+					<p>{lang denglu:username}</p>
+	                <p><input id="bind_have_user" type="text" value="" name='username'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_wrong"></p>
+	            </div>
+	            <div class="dl_form layout">
+					<p>{lang denglu:password}</p>
+	                <p><input type="password" value="" name='password'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_point"></p>
+	            </div>
+	            <div class="dl_form layout">
+					<p>{lang denglu:seccode}</p>
+	                <p><select size="1" class="dl_select" name='questionid' id='questionid' onchange="if($('questionid').value > 0) {$('answer').style.display='';} else {$('answer').style.display='none';}">
+	                	<option value="0">{lang denglu:security_question}</option>
+						<option value="1">{lang denglu:security_question_1}</option>
+						<option value="2">{lang denglu:security_question_2}</option>
+						<option value="3">{lang denglu:security_question_3}</option>
+						<option value="4">{lang denglu:security_question_4}</option>
+						<option value="5">{lang denglu:security_question_5}</option>
+						<option value="6">{lang denglu:security_question_6}</option>
+						<option value="7">{lang denglu:security_question_7}</option>
+	              	</select></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_point"></p>
+	            </div>
+	            <div class="dl_form layout" id="answer" style='display:none'>
+	            	<p>{lang denglu:security_answer}</p>
+	                <p><input type="text" value="" name='answer'/></p>
+	                <p class="dl_wrong"></p>
+	                <p class="dl_wrong"></p>
+	            </div>
+	        </div>
+	        <div class="dl_btn layout">
+				<p><button tabindex="1" value="true" name="bind" type="submit" class="pn pnc"><span>{lang denglu:bind_it}</span></button></p>
+				
+	        </div>
+        </form>
+	</div>
+
+
+	<div class="dl_text" id='bind_haveno'  {if !$_G['gp_reg']} style='display:none' {/if}>
+    	<div class="dl_tab layout">
+        	<p class="active"><a href="javascript:;" onclick='javascript:havedisplay("bind_have","bind_haveno");'>{lang denglu:have_no_account}</a></p>
+			<p><a href="javascript:;" onclick='javascript:havedisplay("bind_haveno","bind_have");'>{lang denglu:have_account}</a></p>
+        </div>
+        <form method='post' action="denglu.php">
+        	<input type="hidden" name="formhash" value="{FORMHASH}" />
+			<input type="hidden" name="olbind" value="reg" />
+			<input type="hidden" name="option" value="2" />
+	        <div class="dl_inform">
+	            <div class="dl_form layout">
+	                <p>{lang denglu:username}</p>
+					<p><input id="bind_haveno_user" type="text" value="" name='username'/></p>
+	                <p class="dl_wrong">*</p>
+					<p class="dl_wrong">{$u_error}</p>
+	            </div>
+	            <div class="dl_form layout">
+	                <p>{lang denglu:password}</p>
+	                <p><input type="password" value="" name='password'/></p>
+	                <p class="dl_wrong">*</p>
+					<p class="dl_point">{lang denglu:password_tip}</p>
+	            </div>
+	            <div class="dl_form layout">
+	                <p>{lang denglu:email}</p>
+	                <p><input type="text" value="" name='email'/></p>
+					<p class="dl_wrong">*</p>
+					<p class="dl_point"><!--{if !$e_error}-->{lang denglu:email_advise}<!--{/if}--></p>
+	            </div>
+	        </div>
+	        <div class="dl_btn layout">
+	        	<p><button tabindex="1" value="true" name="reg" type="submit" class="pn pnc"><span>{lang denglu:confirm}</span></button></p>
+	            
+	        </div>
+        </form>
+	</div>
+
+</div>
+
+
+<!--{template common/footer}-->
+

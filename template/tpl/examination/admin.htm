@@ -1,0 +1,34 @@
+{template examination/header}
+
+
+<table class="table table-bordered table-condensed">
+<tr>
+	<th>状态</th> <th>发布</th> <th>试题名字</th> <th>介绍</th> <th>所属课程</th> <th>操作</th> 
+</tr>
+{loop $list $q}
+<tr>
+
+	<td>{if $q['status']}<i class="icon-ok"></i>{else}<i class="icon-remove"></i>{/if}</td>
+	<td>
+		{if $q['status']}
+			<a href="examination.php?mod=admin&ac=pop&bucket_id={$q['id']}" title="已经发布的试题"><i class="icon-remove-circle"></i> 隐藏试题</a>
+		{else}
+			<strong><a href="examination.php?mod=admin&ac=push&bucket_id={$q['id']}" title="本试题未发布"><i class="icon-ok-circle"></i> 发布试题</a></strong>
+		{/if}
+	</td>
+	<td><i class="icon-file-alt"></i> <a href="examination.php?mod=do&id={$q['id']}">{$q['title']}</a></td>
+	<td><i class="icon-info-sign"></i> {$q['info']}</td>
+	<td>
+		<i class="icon-facetime-video"></i> <a href="lesson.php?pages_list={$q['bind_course']}"><strong>{$q['fullname']}</strong></a>
+	</td>
+	<td>
+		<a href="examination.php?mod=admin&ac=home&op=edit&eid={$q['id']}"><i class="icon-edit"></i></a> 
+		<a href="examination.php?mod=admin&ac=home&op=group&eid={$q['id']}"><i class="icon-group"></i></a> 
+		<a href="examination.php?mod=admin&ac=home&op=remove&eid={$q['id']}"><i class="icon-remove"></i></a>  
+	</td>
+
+</tr>
+{/loop}
+</table>
+
+{template examination/footer}

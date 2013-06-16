@@ -1,0 +1,21 @@
+<h3>课程向导</h3>
+
+<form action="msearch.php" method="get">
+<ul class="nav nav-tabs nav-stacked">
+	<li><input type="text" name="keywords" placeholder="课程关键字" /></li>
+	<li><button class="btn btn-block" type="submit" name="findout" class="btn-block" value=1>搜索课程</button></li>
+</ul>
+</form>
+
+<h3>热门搜索</h3>
+<ul class="nav nav-tabs nav-stacked">
+	<li>
+		<div>
+		{if  $_G['cache']['hot_keyword']}
+			{loop  $_G['cache']['hot_keyword'] $key}
+			<a href="msearch.php?keywords={$key['keywords']}&findout=1">$key['keywords']</a>
+			{/loop}
+		{/if}
+		</div>
+	</li>
+</ul>

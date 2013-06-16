@@ -1,0 +1,49 @@
+
+<fieldset>
+	<legend>登录到改善在线学院</legend>
+	<div class="mot-login" align="center">
+	<script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
+	<form class="form-inline" method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" onsubmit="{if $_G['setting']['pwdsafety']}pwmd5('ls_password');{/if}return lsSubmit();">
+
+
+
+    <div class="control-group">
+    	<label class="control-label" for="inputEmail">账号</label>
+    	<div class="controls">
+    	<input type="text" name="username" id="ls_username" value="" placeholder="账号" />
+    	</div>
+    	</div>
+    	<div class="control-group">
+    	<label class="control-label" for="inputPassword">密码</label>
+    	<div class="controls">
+    	<input type="password" name="password" id="ls_password" placeholder="密码" />
+    	</div>
+    	</div>
+    	<div class="control-group">
+    	<div class="controls">
+    	<button id="login" class="btn btn-primary btn-large btn-block" type="submit" tabindex="904" >{lang login}</button>
+        <script>
+        jQuery(function() {
+            jQuery('#login').click(function(){
+                window.location.href=window.location.href;
+            });
+        });
+        </script>
+    	</div>
+    	</div>
+		<a href="member.php?mod={$_G[setting][regname]}" target="blank">$_G['setting']['reglinkname']</a>
+		<input type="hidden" name="quickforward" value="yes" />
+		<input type="hidden" name="handlekey" value="ls" />
+
+
+
+		<!--{hook/global_login_extra}-->
+
+	</form>
+
+	<!--{if $_G['setting']['pwdsafety']}-->
+		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
+	<!--{/if}-->
+</div>
+</fieldset>
+

@@ -1,0 +1,31 @@
+<!--{template common/header}-->
+
+<div id="ct" class="rankicn">
+	<div id="r_document" class="bm">
+		<div class="bm_h">
+			KICN.cn学籍证书电子注册备案表 [ <a href="document.php?write=1">编辑</a> ]
+		</div>
+	
+	<table class="tdat lum">
+		<tr><td>姓名</td><td>{$document['name']}</td><td>性别</td><td>{eval echo $document['gender']?'男':'女'}</td></tr>
+		<tr><td>民族</td><td>{$document['nation']}</td><td>出生日期</td><td>{$document['birthday']}</td></tr>
+		<tr><td>入学时间</td><td>{eval echo date('Y年m月d日', $document['start_date'])}</td><td>证书颁发时间</td><td>{eval echo $document['finish_date']?date('Y年m月d日' , $document['finish_date']):'Wait..'}</td></tr>
+		<tr><td>身份证号</td><td>{$document['idcard']}</td><td>备注</td><td>{$document['etc']}</td></tr>
+		<tr><td>通讯地址</td><td>{$document['address']}</td></tr>
+		<tr><td>手机号</td><td>{$document['mobile']}</td><td>联系电话</td><td>{$document['phone']}</td></tr>
+		<tr><td>改善级别</td><td>{eval echo $document['level']?$document['level']:'Wait..'}</td><td>电子邮箱</td><td>{$document['email']}</td></tr>
+		<tr><td>学历层次</td><td>{$document['education']}</td><td>证书编号</td><td>{eval echo $document['auth_number']?$document['auth_number']:'Wait..'}</td></tr>
+		<tr><td>学习形式</td><td>在线教育</td><td>在线验证码</td><td>{eval echo $document['entry_code']?$document['entry_code']:'Wait..'}</td></tr>
+	</table>
+	
+	<table class="tdat lum">
+	<tr>
+		<td>注意事项：
+			
+		</td>
+	</tr>
+	</table>
+	</div>
+</div>
+
+<!--{template common/footer}-->

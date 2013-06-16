@@ -1,0 +1,63 @@
+<!--{template knowledge/header}-->
+<script type="text/javascript" src="static/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    language: "zh_CN",
+    height : 400,
+ });
+</script>
+
+<div class="page-header">
+    <h2>创建新词条
+    	<small>{$_G['username']}</small>
+    </h2>
+</div>
+<h4>添加 [ {eval echo cutstr( $question['title'] , 50 , '' );} ] 到资料库 </h4>
+<form class="form-horizontal" name="_repository" action="" method="post">
+
+	 <div class="control-group">
+		<label class="control-label" for="name"><strong>词语</strong></label>
+		<div class="controls">
+			<input name="title" class="span12" type="text" id="name" placeholder="要创建的词语">
+		</div>
+		<span class="help-block"><strong>参考标题</strong><span class="text-info"> {$question['title']}</span></span>
+	</div>
+
+	<div class="control-group">
+		<label class="control-label" for="name"><strong>关键字</strong></label>
+		<div class="controls">
+			<input name="keyword" class="span6" type="text" id="name" placeholder="{$topic['topic_words']}">
+		</div>
+		<span class="help-block"><strong>参考关键字</strong><span class="text-info"> $topic['topic_words']</span></span>
+	</div>
+
+	 <div class="control-group">
+		<label class="control-label" for="name"><strong>解释 / 详细</strong></label>
+	</div>
+	
+	<textarea id="text" name="content"></textarea>
+	<span class="help-block"><strong>参考信息</strong></span>
+	<br />
+	{loop $answer $a}
+	<dl class="dl-horizontal">
+    	<dt><small><button id="{$a['id']}" class="btn btn-small" type="button" rel="helper">添加</button></small></dt>
+    	<dd><small><div id="text_{$a['id']}">{$a['content']}</div></small></dd>
+    </dl>
+    {/loop}
+    <script>
+    jQuery( function() {
+    	jQuery('button[rel="helper"]').click( function () {
+    		
+    		var text = jQuery('#text_'+jQuery(this).attr('id')).html();
+    		tinyMCE.get('text').insertContent('<p>'+text+'</p>');
+    		
+    	});
+    });
+    </script>
+	
+
+	<button name="publish" class="btn" type="submit">发布</button>
+
+</form>
+<!--{template knowledge/footer}-->

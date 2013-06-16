@@ -1,0 +1,30 @@
+{subtemplate portal/home/left}
+<h1>首页展示</h1>
+
+<h1><small>热门课程</small></h1>
+<form class="form-inline" action="" method="post">
+<table class="table">
+	<tr>
+		<td>添加热门课程</td>
+		<td>
+		<select name="cid">
+			{loop $hotcourse $hc}
+			<option value="{$hc['id']}">{$hc['fullname']}</option>
+			{/loop}
+		</select>
+		</td>
+		<td>
+			<button class="btn" name="add_hotcourse" type="submit">Add</button>
+		</td>
+	</tr>
+</table>
+</form>
+
+<h1><small>首页热门课程管理</small></h1>
+<table class="table">
+	{loop $selected $sel}
+	<tr><td>{$sel['config']}</td><td>{$sel['fullname']}</td> <td><img src="./uploads/lesson/{$sel['logo']}" width="120px"/></td> 
+		<td><a href="portal.php?mod=home&ac=direct&remove={$sel['id']}">Remove</a></td></tr>
+	{/loop}
+</table>
+{subtemplate portal/home/buttom}

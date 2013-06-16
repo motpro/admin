@@ -1,0 +1,184 @@
+<!--{template common/header}-->
+<script type="text/javascript" src="{$_G['siteurl']}static/tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+	tinyMCE.init({
+		mode : "textareas",
+		theme : "simple"
+	});
+</script>
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+<script>
+widthauto(document);
+</script>
+<br /><br /><br /><br />
+
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em><a href="portal.php?mod=lesson">课程</a><em>&rsaquo;</em> <a href="portal.php?mod=lesson&ac=course_info&id={$page['lessonid']}">{$course['fullname']}</a><em>&rsaquo;</em> {$page['title']}
+	</div>
+</div>
+
+<div class="content row-fluid">
+
+<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+</div>
+
+<div id="ct" class="span10">
+	<div>
+		<div>
+			<h3 class="xi1">编辑页面信息 - 《{$page['title']}》</h3>
+			<br />
+
+			<form class="form-inline" name="_save_course_information" action="" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="id" value="{$page['id']}" />
+			<input type="hidden" name="film_id" value="{$page['film_id']}" />
+			<input type="hidden" name="image_file" value="{$page['image_file']}" />
+
+			<span class="xi2">视频内容 
+				<a style="padding-left:400px;"><input class="pn pnc" style="padding-left:20px;padding-right:20px;padding-bottom:8px;" type="submit" name="save_page" value="保存" /></a>
+			</span>
+			
+			<table class="table table-condensed table-bordered" width="100%">
+				<tr><td>页面名称</td> <td><input type="text" name="title" value="{$page['title']}" /></td> 
+					<td>章节名称</td> <td>{$course['fullname']}</td>
+				</tr>
+
+				<tr><td>视频文件</td> <td><input type="text" name="v_file" value="{$page['v_file']}" /></td> 
+					<td>视频路径</td> <td><input type="text" name="v_path" value="{$page['v_path']}" /></td>
+				</tr>
+
+				<tr><td>字幕1语言</td> <td><select name="label_a">
+													<option {if $page['label_a'] == 0}selected="selected"{/if} value=0>简体中文</option>
+													<option {if $page['label_a'] == 1}selected="selected"{/if} value=1>繁体中文</option>
+													<option {if $page['label_a'] == 2}selected="selected"{/if} value=2>英文</option>
+											   </select>
+										</td> 
+					<td>字幕1文件</td> <td><input type="text" name="label_a_file" value="{$page['label_a_file']}" /></td>
+				</tr>
+
+				<tr><td>字幕2语言</td> <td><select name="label_b">
+													<option {if $page['label_b'] == 1}selected="selected"{/if} value=1>繁体中文</option>
+													<option {if $page['label_b'] == 0}selected="selected"{/if} value=0>简体中文</option>
+													<option {if $page['label_b'] == 2}selected="selected"{/if} value=2>英文</option>
+											   </select>
+										</td> 
+					<td>字幕2语言</td> <td><input type="text" name="label_b_file" value="{$page['label_b_file']}" /></td>
+				</tr>
+
+				<tr><td>视频语音</td> <td><select name="v_voice">
+											<option value="1" {if $page['v_voice']==1}selected="selected"{/if}>英语</option>
+											<option value="0" {if $page['v_voice']==0}selected="selected"{/if}>普通话</option>
+											<option value="2" {if $page['v_voice']==2}selected="selected"{/if}>其它语言</option>
+										</select>
+					</td> 
+					<td>视频时间</td> <td><input type="text" name="v_time" value="{$page['v_time']}" /></td>
+				</tr>
+
+				<tr><td>中文描述</td> 
+					<td><textarea name="cn_intro" id="elm4" rows="5" cols="15" style="width: 80%">{$page['cn_intro']}</textarea></td> 
+					<td>英文描述</td> 
+					<td><textarea name="en_intro" id="elm5" rows="5" cols="15" style="width: 80%">{$page['en_intro']}</textarea></td>
+				</tr>
+
+				<tr>
+					<td>上传封面</td> <td><input type="file" name="images" /></td>
+					<td>预览</td> <td><a><img src="uploads/{$page['image_file']}" width="260px" /></a></td>
+				</tr>
+			</table>
+			<br />
+			<span class="xi2">正文内容</span>
+
+			<table class="dt mtm">
+				<tr><td>课程内容</td>
+
+					<td><textarea name="contents" id="elm6" rows="18" cols="40" style="width: 80%">{$page['contents']}</textarea></td>
+
+				</tr>
+				<tr><td>左右页面</td> 
+					<td>上一页<select name="prevpageid"><option value="0">无</option>{loop $allpages $ap}<option {if $page['prevpageid'] == $ap['id']}selected="selected"{/if} value="{$ap['id']}">{$ap['title']}</option>{/loop}</select> 
+						下一页<select name="nextpageid"><option value="0">无</option>{loop $allpages $ap}<option {if $page['nextpageid'] == $ap['id']}selected="selected"{/if} value="{$ap['id']}">{$ap['title']}</option>{/loop}</select> 
+					</td>
+				</tr>
+			</table>
+
+			<div>
+				<p>Preview</p>
+
+			{if strlen( $page['v_file'])}
+			<div style="margin: 25px;" align="center" ><p id="container"></p></div>
+			<script type="text/javascript" src="static/js/jquery-1.9.1.min.js"></script>
+			<script type="text/javascript" src="static/js/jwplayer.js"></script>
+			<script type="text/javascript">
+			jQuery(function(){
+
+			jQuery.noConflict();
+
+			var Type = Array();
+				Type[0] = '简体中文';
+				Type[1] = '繁体中文';
+				Type[2] = '英文';
+			
+			var Dir = Array();
+				Dir[0] = 'CH/';
+				Dir[1] = 'TW/';
+				Dir[2] = 'EN/';
+
+				file = '{$p['videourl']}{$page['v_path']}{$page['v_file']}';
+				image = '{$p['moodlepath']}/uploads/$page['image_file']';
+				labels_files = "{$page['label_a_file']},{$page['label_b_file']}";
+				labels_names = Type[{$page['label_a']}]+','+Type[{$page['label_b']}]; 
+				jwplayer("container").setup({
+	   					file: file,
+	   					image: image,
+	   					flashplayer:	"{$p['fpurl']}",
+	   					dock:			"{$p['dock']}",
+	   					stretch:		"{$p['stretch']}",
+	   					height: 		"400",
+	   					width:          "700",
+	   					controlbar:     "{$p['controlbar']}",
+	  
+	   					plugins: {
+		 						"captions-2": {
+	       						files : labels_files,
+	       						labels: labels_names
+	     										}
+	  							}
+	 					});
+    			});		
+			</script>
+			{/if}
+			</div>
+
+		</form>
+
+		</div>
+
+		{if DEBUG}
+		<div>
+		<p>静态资源DEBUG：</p>
+
+		<table class="dt mtm" width="100%">
+			<tr><td>字幕1</td> <td><a href="{$page['label_a_file']}" target="blank">{$page['label_a_file']}</a></td></tr>
+
+			<tr><td>字幕2</td> <td><a href="{$page['label_b_file']}" target="blank">{$page['label_b_file']}</a></td></tr>
+
+			<tr><td>封面大图</td> <td><a href="{$_G['siteurl']}uploads/{$page['image_file']}" target="blank">{$_G['siteurl']}uploads/{$page['image_file']}</a></td></tr>
+
+			<tr><td>封面小图</td> <td><a href="{$_G['siteurl']}uploads/small/{$page['image_file']}" target="blank">{$_G['siteurl']}uploads/small/{$page['image_file']}</a></td></tr>
+		</table>
+		</div>
+		{/if}
+
+
+	</div>
+</div>
+
+<!--{template common/footer}-->
+

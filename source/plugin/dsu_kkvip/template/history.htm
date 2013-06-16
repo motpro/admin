@@ -1,0 +1,27 @@
+{template dsu_kkvip:header}
+
+<div class="span9">
+    <h2>购买记录 <small>论坛账户支付记录</small></h2>
+        <table class="table table-condensed table-hover">
+            <tr>
+                <td>类别</td>
+                <td>日期</td>
+                <td>状态</td>
+                <td>操作</td>
+            </tr>
+            {loop $history $hs}
+            <tr><td>{$hs['month']}个月会员业务</td>
+                <td>{eval echo date('Y年m月d日 h:i',$hs['date'])}</td>
+                <td>{eval echo $hs['status']?'支付成功':'支付失败'}</td>
+                <td>
+                {if $hs['status']==0}<a href="vip.php?action=active">重新支付</a>
+                {else}<a href="">打印发票</a>
+                {/if}
+                </td>
+            </tr>
+            {/loop}
+        </table>
+</div>
+
+<div class="span3">{template dsu_kkvip:sidebar}</div>
+{template common/footer}

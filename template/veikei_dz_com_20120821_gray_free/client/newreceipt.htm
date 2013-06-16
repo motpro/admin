@@ -1,0 +1,93 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<link rel="stylesheet" href="template/default/common/common.css" type="text/css" media="all" />
+<?php shownav('client','menu_client_receipt');?>
+
+<form name="read_data_by_tradeno" action="admin.php?action=client&operation=receipt" method="post">
+<?php 
+showtableheader('发票信息', 'nobottom', '');?>
+<tr><td> > 从订单生成发票数据</td> <td>订单号</td> 
+	<td><input style="width:300px;" type="text" name="trade_no" value="{$trade['trade_no']}" /> <input type="submit" name="get_by_tradeno" value="读取" /></td>
+</tr>
+<tr><td> > 管理员创建发票数据</td> <td></td></tr>
+
+<?php showtablefooter();?>
+</form>
+
+
+<div>
+	{if $f}<div class="error">正在编辑订单号为 {$trade['trade_no']} 的订单 [ <a href="admin.php?action=client&operation=receipt&rm={$trade['id']}">删除此发票</a> ] </div>{/if}
+<form name="__receipt_information" action="admin.php?action=client&operation=receipt" method="post">
+	<input type="hidden" name="trade_no" value="{$trade['trade_no']}" />
+
+	{if $f}<input type="hidden" name="id" value="{$trade['id']}" />{/if}
+
+	<div style="float:left">
+	<?php showtableheader('个人发票', 'nobottom', '');?>
+	<tr><td>个人用户</td> <td> <input {if $trade['usertype'] == 0}checked="checked"{/if} {if $f}disabled="disabled"{/if} type="radio" name="usertype" value="0" /></td></tr>
+
+	<tr><td>发票名称</td> <td> <input value="{if $f}{$trade['rec_name']}{/if}" type="text" name="rec_name"/></td></tr>
+
+	<tr><td>发票内容</td> <td> <input value="{if $trade['usertype'] == 0 && !$f}{$trade['productid']}个月网站会员业务{/if}{if $f}{$trade['rec_content']}{/if}" type="text" name="rec_content"/></td></tr>
+
+	<tr><td>发票金额(元)</td> <td> <input value="{if $trade['usertype'] == 0}{$trade['total']}{/if}{if $f && !$trade['usertype']}{$trade['rec_fee']}{/if}" type="text" name="rec_fee"/></td></tr>
+
+	<tr><td>联系人姓名</td> <td> <input {if $trade['usertype'] == 0}value="{$trade['realname']}"{/if} type="text" name="realname"/></td></tr>
+
+	<tr><td>联系电话</td> <td> <input {if $trade['usertype'] == 0}value="{$trade['phone']}"{/if} type="text" name="phone"/></td></tr>
+
+	<tr><td>通讯地址</td> <td> <input {if $trade['usertype'] == 0}value="{$trade['address']}"{/if} type="text" name="address"/></td></tr>
+
+	<?php showtablefooter();?>
+	</div>
+
+	<div style="float:left">
+	<?php showtableheader('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', 'nobottom', '');?>
+	<?php showtablefooter();?>
+	</div>
+
+	<div style="float:left">
+	<?php showtableheader('企业发票', 'nobottom', '');?>
+
+	<tr><td>企业用户</td> <td> <input {if $trade['usertype'] == 1}checked="checked"{/if} {if $f}disabled="disabled"{/if} type="radio" name="usertype" value="1" /></td></tr>
+
+	<tr><td>发票类型</td> <td> <select name="rec_type"> <option value=0>普通发票</option> <option value=1>增值税专用发票</option></select></td></tr>
+
+	<tr><td>公司抬头</td> <td> <input value="{if $trade['usertype'] == 1}{$trade['company']}{/if}{if $f}{$trade['corp_name']}{/if}" type="text" name="corp_name" /></td></tr> 
+
+	<tr><td>联系人姓名</td> <td> <input value="{if $trade['usertype'] == 1}{$trade['realname']}{/if}" type="text" name="realname2" /></td></tr>
+
+	<tr><td>通讯地址</td> <td> <input value="{if $trade['usertype'] == 1}{$trade['address']}{/if}" type="text" name="address2" /></td></tr>
+
+	<tr><td>发票金额(元)</td> <td> <input value="{if $trade['usertype'] == 1}{$trade['total']}{/if}{if $f&&$trade['usertype']}{$trade['rec_fee']}{/if}" type="text" name="rec_fee2" /></td></tr>
+
+	<tr><td>公司开户行</td> <td> <input value="{if $f}{$trade['bank_name']}{/if}" type="text" name="bank_name" /></td></tr>
+
+	<tr><td>公司银行账号</td> <td> <input value="{if $f}{$trade['bank_account']}{/if}" type="text" name="bank_account" /></td></tr>
+
+	<tr><td>纳税人识别号</td> <td> <input value="{if $f}{$trade['iden_id']}{/if}" type="text" name="iden_id" /></td></tr>
+	<?php showtablefooter();?>
+	</div>
+
+	<div style="float:left">
+	<?php showtableheader('&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;', 'nobottom', '');?>
+	<?php showtablefooter();?>
+	</div>
+
+	<div style="float:left">
+	<?php showtableheader('备注信息', '');?>
+	<tr><td> <textarea name="etc" cols="50" rows="10" >{$trade['etc']}</textarea></td></tr>
+	<?php showtablefooter();?>
+	</div>
+
+	<?php showtableheader('', 'nobottom');?>
+	<tr> 
+		{if $f}
+		<td><input name="save" type="submit" value="保存编辑" /></td>
+		{else}<td><input name="confirm" type="submit" value="确认" />
+			<input name="print" type="button" value="打印发票信息" />
+			<input name="send_to" type="button" value="发送给财务" />
+		</td> {/if}
+	</tr>
+	<?php showtablefooter();?>
+</form>
+</div>

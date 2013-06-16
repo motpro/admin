@@ -1,0 +1,26 @@
+<div class="container margin-top">
+<div class="row-fluid">
+  {eval $_row_1 = 1}
+  {loop $_G['cache']['freep'] $page}
+    <div class="span3 mot-block-b">
+        <a href="lesson.php?page_content={$page['id']}">
+          <img src="{$_G['siteurl']}uploads/small/{$page['image_file']}" alt="{$page['fullname']}" />
+        </a>
+
+      <div align="center">
+        <h5><a href="lesson.php?page_content={$page['id']}">$page['title']</a>
+          <small>play</small>
+        </h5>
+      </div>
+    </div>
+    {if $_row_1 % 4 == 0 }
+</div>
+</div>
+
+<div class="container margin-top">
+<div class="row-fluid">
+    {/if}
+    {eval ++$_row_1}
+  {/loop}
+</div>
+</div>

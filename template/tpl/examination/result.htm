@@ -1,0 +1,21 @@
+{template examination/header}
+
+<div class="page-header">
+<h3>{$result['title']} 考试结果 ：</h3>
+</div>
+<h5>详细信息</h5>
+<table class="table table-hover">
+<tr>
+	<td>考试日期</td>
+	<td>{eval echo date('Y/m/d h:i' , $result['generate_date'])}</td> 
+</tr>
+
+<tr>
+	<td>最终成绩</td>
+	<td>{$result['user_goal']}</td>
+</tr>
+
+</table>
+
+
+{template examination/footer}

@@ -1,0 +1,11 @@
+{template examination/header}
+
+<h1><small>要删除 <{$bucket_info['title']}> 并且清空里面的题目吗</small></h1>
+
+
+<div>
+<div class="span3"><a href="examination.php?mod=admin&ac=home&op=remove&eid={$bucket_info['id']}&submit=1" class="btn btn-block btn-success">是</a></div>
+<div class="span3"><a href="examination.php?mod=admin&ac=home&op=remove&eid={$bucket_info['id']}&submit=0" class="btn btn-block">否</a></div>
+
+</div>
+{template examination/footer}

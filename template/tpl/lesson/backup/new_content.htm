@@ -1,0 +1,166 @@
+{template lesson/new_header}
+<script type="text/javascript" src="{$_G['siteurl']}static/tiny_mce/tiny_mce.js"></script>
+<h2>{$content['title']}</h2>
+<hr />		
+	<div class="mot-navigation-link">
+		<ul class="breadcrumb">
+		    <li><a href="lesson.php">改善学院</a> <span class="divider">/</span></li>
+    		<li><a href="lesson.php?pages_list={$course_info['id']}">{$course_info['fullname']}</a> <span class="divider">/</span></li>
+   			<li class="active"><a href="lesson.php?page_content={$content['id']}">{$content['title']}</a></li>
+   			{if false}
+     		{if $prev}<li class="pull-right"><a href="lesson.php?page_content={$prev['id']}">上一页 : {$prev['title']}</a></li>{/if}
+   			{if $next&&$prev }<li class="pull-right"><span class="divider">/</span></li>{/if}
+   			{if $next}<li class="pull-right"><a href="lesson.php?page_content={$next['id']}">下一页 : {$next['title']}</a></li>{/if}
+   			{/if}
+   			<!--{if $mark['mark_id'] != $content['id']}-->
+			<!--{if $_G['uid']}-->
+			<li class="pull-right" align="center">
+				<a  href="lesson.php?mark={$content['id']}">设为书签</a>
+			</li>
+			<!--{/if}-->
+			<!--{/if}-->
+    	</ul>
+	</div>
+	
+<div class="row container">
+  	<div>
+	<div class="span12 palette">
+		{if $vip['uid']}
+  			<div id='loading' align='center'>
+  				<img src='static/image/loading.gif' />
+  			</div>
+
+  			<!--<div class="water_mark">{$_G['username']}</div>-->
+    		<div align="center" ><p id="container"></p></div>
+    		
+    		<script type="text/javascript" src="{$_G[setting][jspath]}jwplayer.js"></script>
+    		<!--<script type="text/javascript" src="static/jwplayer/jquery-1.9.1.min.js"></script>
+    		<script type="text/javascript" src="static/jwplayer/jwplayer.html5.js"></script>-->
+			<script type="text/javascript">
+			$(function(){
+			var Type = Array();
+				Type[0] = '简体中文';
+				Type[1] = '繁体中文';
+				Type[2] = '英文';
+			var Dir = Array();
+				Dir[0] = 'CH/';
+				Dir[1] = 'TW/';
+				Dir[2] = 'EN/';
+				var isMobile = {  
+    				Android: function() {  
+        				return navigator.userAgent.match(/Android/i) ? true : false;  
+   					},  
+    				BlackBerry: function() {  
+        				return navigator.userAgent.match(/BlackBerry/i) ? true : false;  
+    				},  
+    				iOS: function() {  
+        				return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;  
+    				},  
+    				Windows: function() {  
+        				return navigator.userAgent.match(/IEMobile/i) ? true : false;  
+    				},  
+    				any: function() {  
+       					return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());  
+    				}  
+				};  
+    			if( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS())
+    				var ismobile = true;
+
+					jQuery.ajax({
+					type: 'POST',
+					url : 'lesson.php?dataajax=1',
+					data: 'pageid={$content['id']}',
+					success: function(rt){
+						$('#loading').remove();
+
+						if( 404 == rt){
+
+						}
+
+						else{
+							rt = eval('('+rt+')');
+							if( ismobile)
+								file = '{$p['mobileurl']}'+rt.v_path+rt.v_file;
+							else
+								file = '{$p['videourl']}'+rt.v_path+rt.v_file;
+
+							image = '{$p['moodlepath']}/uploads/'+ rt.image_file;
+							labels_files = '{$p['subtitle']}'+'/'+rt.v_path+'/'+Dir[rt.label_a]+rt.label_a_file+','+'{$p['videourl']}'+rt.v_path+'/'+Dir[rt.label_b]+rt.label_b_file;
+							labels_names = Type[rt.label_a]+','+Type[rt.label_b]; 
+							jwplayer("container").setup({
+
+	   							file: file,
+	   							image: image,
+	   							flashplayer:	"{$p['fpurl']}",
+	   							dock:			"{$p['dock']}",
+	   							stretch:		"{$p['stretch']}",
+	   							height: 		"{$p['height']}",
+	   							width:          "{$p['width']}",
+	   							controlbar:     "{$p['controlbar']}",
+	   							autostart: 		false,
+	   							thumbsinplaylist: true,
+	  
+	   							plugins: {
+		 							"captions-2": {
+	       							files : labels_files,
+	       							labels: labels_names
+	     											}
+	  								 	}
+	 							});
+	 						}
+					}
+				});
+    		});
+			</script>
+		</div>
+	</div>
+</div>
+
+
+		
+	<div class="hero-unit">
+    		<!--{$content['contents']}-->
+	</div>
+
+	<!--{elseif $_G['uid']}-->
+		<p><a href="vip.php">此课程收费，要使用这些课程，您可以先成为本站收费会员</a></p>
+	<!--{else}{template lesson/login}{/if}-->
+
+
+
+
+<form class="span12 hero-unit bs-docs-example form-inline" method="post" action="" name="opinion">
+        <!--{if $success}反馈成功 谢谢您的支持！{/if}-->
+              <input type="hidden" name="referer" value="$_G[referer]">
+    		  <input type="hidden" name="formhash" value="{FORMHASH}" />
+		<table class="table table-striped">
+			{if $_G['uid']}
+			<input name="name" value="{$profile['realname']}" type="hidden" />
+			<input name="phone" value="{$profile['mobile']}" type="hidden" />
+			<input name="email" value="{$_G['member']['email']}" type="hidden" />
+			<tr><td><textarea class="span11" name="message" rows="2" cols="20" placeholder="告诉我们您使用的感受跟建议，我们会根据您的反馈，作出部分修改，让您更好的享受学习过程."></textarea></td></tr>
+			<tr><td><input class="btn btn-info" value="保存" type="submit" name="applysubmit" /></td></tr>
+			{else}
+			<tr>
+				<td><input class="span3" name="name" type="text" placeholder="您的名字"  /></td> 
+				<td><input class="span3" name="email" type="text" placeholder="您的邮箱" /></td>
+				<td><input class="span3" name="phone" type="text" placeholder="手机号" /></td> 
+				<td><textarea name="message" rows="4" cols="12" placeholder="告诉我们您使用的感受跟建议，我们会根据您的反馈，作出部分修改，让您更好的享受学习过程.">
+					</textarea></td>
+			</tr>
+			<tr>
+				<td>
+					<input class="btn btn-info" value="保存" type="submit" name="applysubmit" />
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+
+			{/if}
+
+		</table>
+
+</form>
+
+{template lesson/new_footer}

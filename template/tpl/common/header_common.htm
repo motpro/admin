@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:wb=“http://open.weibo.com/wb”>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset={CHARSET}" />
+	<!--{if $_G['config']['output']['iecompatible']}--><meta http-equiv="X-UA-Compatible" content="IE=EmulateIE{$_G['config']['output']['iecompatible']}" /><!--{/if}-->
+	<title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> 国内首家精益学习平台</title>
+	$_G['setting']['seohead']
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="keywords" content="流程管理 生产与制造 品质" />
+	<meta name="description" content="精益六西格玛 改善法" />
+	<meta name="production" content="六西格玛 精益创业 精益生产" />
+	<meta name="author" content="36lean studio" />
+	<meta name="copyright" content="36lean 精益云学院" />
+	<meta name="MSSmartTagsPreventParsing" content="True" />
+	<meta http-equiv="MSThemeCompatible" content="Yes" />
+	<base href="{$_G['siteurl']}" />
+	<link href="{$_G['siteurl']}static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   	<link href="{$_G['siteurl']}static/mot/professional.css" rel="stylesheet" />
+   	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{$_G['siteurl']}static/mot/hint.min.css" rel="stylesheet" />
+    <link type="text/css" href="{$_G['siteurl']}static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript">jQuery(function(){jQuery.noConflict()})</script>
+
+	<!--{csstemplate}-->
+	<script type="text/javascript">var STYLEID = '{STYLEID}', STATICURL = '{STATICURL}', IMGDIR = '{IMGDIR}', VERHASH = '{VERHASH}', charset = '{CHARSET}', discuz_uid = '$_G[uid]', cookiepre = '{$_G[config][cookie][cookiepre]}', cookiedomain = '{$_G[config][cookie][cookiedomain]}', cookiepath = '{$_G[config][cookie][cookiepath]}', showusercard = '{$_G[setting][showusercard]}', attackevasive = '{$_G[config][security][attackevasive]}', disallowfloat = '{$_G[setting][disallowfloat]}', creditnotice = '<!--{if $_G['setting']['creditnotice']}-->$_G['setting']['creditnames']<!--{/if}-->', defaultstyle = '$_G[style][defaultextstyle]', REPORTURL = '$_G[currenturl_encode]', SITEURL = '$_G[siteurl]', JSPATH = '$_G[setting][jspath]';</script>
+	<script type="text/javascript" src="{$_G[setting][jspath]}common.js?{VERHASH}"></script>
+	<!--{if empty($_GET['diy'])}--><!--{eval $_GET['diy'] = '';}--><!--{/if}-->
+	<!--{if !isset($topic)}--><!--{eval $topic = array();}--><!--{/if}-->

@@ -1,0 +1,92 @@
+<!--{subtemplate common/header}-->
+</div>
+
+<div id="hero" align="center">
+            <div id="myCarousel" class="carousel slide">
+                <div class="carousel-inner">
+                  {eval $flag = 0}
+                  {loop $_G['cache']['bigphoto'] $bp}
+                  <div class="item {if $flag == 0}active{/if}">
+                    <img src="uploads/home/{$bp['c_key']}" wikdth="100%" height="320px" alt="" />
+                    <div class="carousel-caption">
+                      <h4>{$bp['config']}</h4>
+                      <p>
+                        {$bp['c_value']}
+                      </p>
+                    </div>
+                  </div>
+                  {eval $flag = 1}
+                  {/loop}
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+</div>
+<div class="mot-block-b" style="margin-top:-40px;"></div>
+<div class="mot-block-b" align="center">
+  <div class="container">
+  <h3>
+    国内首家精益学习平台
+  </h3>
+  <div>
+    <wb:follow-button uid="1865344603" type="gray_2" width="136" height="24" ></wb:follow-button>
+  </div>
+</div>
+</div>
+
+<div class="container-fluid">
+       <small class="pull-right">
+        <!--{loop $_G['setting']['topnavs'][0] $nav}-->
+        <!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}-->$nav[code]<!--{/if}-->&nbsp;&nbsp;&nbsp;
+        <!--{/loop}-->
+        <!--{hook/global_cpnav_extra1}-->
+     </small>
+</div>
+<!--$module-->
+<div class="container"><h2 class="params">热门视频 <small class="pull-right"><a href="#">更多</a></small></h2></div>
+<!--{subtemplate portal/index_video}-->
+<!--$module-->
+
+<!--$module-->
+<div class="container"><h2 class="params">推荐课程 <small class="pull-right"><a href="#">更多</a></small></h2></div>
+  <!--{subtemplate portal/index_pop}-->
+<!--$module-->
+
+
+<div class="mot-block">
+  <!--[diy=diy_98]--> <div id="diy_98"></div><!--[/diy]--> 
+</div>
+
+<div class="container"><h2 class="params">我们的课程<small class="pull-right">即将推出</small></h2></div>
+<!--{subtemplate portal/index_small_rows}-->
+
+
+<div class="container"><h2 class="params">关于我们<small></small></h2></div>
+<!--{subtemplate portal/index_about_us}-->
+
+
+<div class="mot-block-a margin-top">
+  <div class="content"> 
+    <div class="container padding-top">
+      <h2 class="params">
+        网站服务 <small><a href="vip.php">成为我们的VIP会员，学习全部课程</a></small>
+      </h2>
+      <!--{subtemplate portal/index_service}-->
+      <!--[diy=diy_99]--> <div id="diy_99"></div><!--[/diy]--> 
+    </div>
+   </div>
+</div>
+
+<div class="mot-block  margin-top">
+  <div class="container"> 
+      <div>
+        <!--[diy=diy_bottom]--> 
+          <h2 class="params">我们的客户<blockquote class="text-center">目前已有超过1000家不同行业来自全球的客户，正在学习我们的课程...</blockquote></h2>
+          <img src="static/mot/image/143144execezxy3xouimeu.jpg" />
+        <!--[/diy]--> 
+      </div>
+  </div>
+</div>
+
+
+<!--{subtemplate common/footer}-->

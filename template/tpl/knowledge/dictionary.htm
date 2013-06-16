@@ -1,0 +1,31 @@
+{template knowledge/dic_header}
+<div class="page-header">
+    <h1><i class="icon-print"></i> {$dict['title']} <small>词语解释</small></h1>
+</div>
+
+
+<blockquote>
+    <p>
+    	{eval echo htmlspecialchars_decode( $dict['content'])}
+    </p>
+   
+</blockquote>
+
+<hr />
+
+<dl class="dl-horizontal">
+    <dt><i class="icon-time"></i> 创建日期</dt>
+    <dd>{eval echo date( 'Y/m/d h:i', $dict['createddate'])}</dd>
+
+    <dt><i class="icon-edit"></i> 最后修改</dt>
+    <dd>{eval echo date( 'Y/m/d h:i', $dict['lastfixeddate'])}</dd>
+
+    <dt><i class="icon-user"></i> 贡献者</dt>
+    <dd>{$dict['username']}</dd>
+</dl>
+
+<dl class="dl-horizontal">
+    <dt><i class="icon-coffee"></i> 相关文献</dt>
+    <dd></dd>
+</dl>
+{template knowledge/footer}

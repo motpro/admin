@@ -1,0 +1,17 @@
+		<div class="span2">
+			<table class="table" width="100%">
+				<tr>
+					<td><strong> {lang category_related}</strong></td>
+				</tr>
+
+				<tr>
+					<td align="center">
+						<ul class="nav nav-tabs nav-stacked">
+							<!--{loop $cat[others] $value}-->
+								<li><a href="{echo getportalcategoryurl($value[catid]);}">$value[catname]</a></li>
+							<!--{/loop}-->
+						</ul>
+					</td>
+				</tr>
+			</table>
+		</div>

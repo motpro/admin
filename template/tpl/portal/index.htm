@@ -1,0 +1,90 @@
+  <!--{subtemplate common/header}-->
+  <div class="container-narrow">
+
+      <div class="jumbotron">
+        
+        <h1>全球首家中文精益在线学院</h1>
+        <img src="{$_G['siteurl']}/static/mot/ads.jpg" class="img-circle" width="280px">
+        <p class="lead"><i class="icon-flag"></i>  Lean学院是一个全新的在线精益学习平台，我们采用了全新的在线教育模式，使用视频+问答社区这样一个全新的在线学习模式，脱离传统的文档类为主学习资源，使用直观、深入浅出的视频为主要教学资源，让原本晦涩难懂的精益技术以一个全新的方式展现在您的面前。</p>
+        {if $_G['uid']}
+        <a class="btn btn-success btn-large" href="user.php?ac=sub_plan"><i class="icon-hand-right"></i> 继续学习 </a>
+        {else}
+        <a class="btn btn-success btn-large" href="member.php?mod={$_G[setting][regname]}"><i class="icon-hand-up"></i> 现在就注册 !</a>
+        {/if}
+      </div>
+
+      <hr>
+      <table>
+        <tr>
+          <td class="page-header span5">
+            <h3><i class="icon-tasks"></i> 经营的课程 <small><a href="lesson.php">更多</a></small></h3>
+          </td>
+          <td class="span2"></td>
+          <td class="page-header span5">
+            <h3><i class="icon-thumbs-up"></i> 学院的特色</h3>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+              <ul class="masthead-links">
+              {loop $allcourse $key=>$course}
+              <li><small><a href="lesson.php?pages_list={$course['id']}" title="{$course['fullname']}">{$course['fullname']}</a></small></li>
+              {if $key%2 == 0 && $key > 0}<li><br /></li>{/if}
+              {/loop}
+              </ul>
+          </td>
+          <td></td>
+          <td>
+            <p>知识的掌握和提炼重在反复复习。 视频教学已经可以给您一个对知识的直观的展示，但是要记忆、掌握并融汇贯通，还需要不断的服务和测试。每一个视频课程我们都配以数个针对本课重点知识的测评考试，只有达到80%的准确率才能够完成本课程的学习。
+            </p>
+          </td>
+        </tr>
+        
+
+        <tr>
+          <td class="page-header">
+            <h3><i class="icon-mobile-phone"></i> 跨平台学习</h3>
+          </td>
+          <td></td>
+          <td class="page-header">
+            <h3><i class="icon-heart"></i> 加入我们</h3>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <p>
+            我们的下一步工作是打造移动学习的平台，移动在线学院课程同样为高清课程，
+            同时课程还将可以在电脑，手机，平板电脑等移动设备上观看。同时可以用投影仪放大在培训室进行观看。
+            </p>
+          </td>
+          <td></td>
+          <td>
+            <p>只要进行免费的简单的<a href="member.php?mod={$_G[setting][regname]}">注册</a>，就可以加入到我们的学院，海量的课程和资料以及特有的工具，帮助你更好的工作。</p>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="page-header"><h3><i class="icon-hand-right"></i> 我们的目标</h3></td>
+          <td></td>
+          <td class="page-header"><h3><i class="icon-lightbulb"></i> 专业的讲师</h3></td>
+        </tr>
+
+        <tr>
+          <td>
+          <ul class="unstyle">
+            <li>以互联网的模式改变传统的行业</li>
+            <li>让用户以更快、更简单、更方便、更廉价的形式学习更多的知识</li>
+            <li>精益求精的技术，深入浅出的讲解</li>
+            <li>更切合实际、不拘泥于书本</li>
+          </ul>
+          </td>
+          <td></td>
+          <td>
+            <p>授人以鱼，不如授人以渔。 我们的课程均为拥有权威技术及大量实际生产环境经验的权威讲师并且并不是单纯的讲授技术，而是传播学习方法、实际经验。让您更的学习更接近实际操作。</p>
+          </td>
+        </tr>
+      </table>
+    </div>
+{template common/footer}

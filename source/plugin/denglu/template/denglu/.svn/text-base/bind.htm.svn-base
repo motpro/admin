@@ -1,0 +1,122 @@
+<link type="text/css" href="source/plugin/denglu/template/style.css" rel="stylesheet" />
+<div class="st_main">
+    <div class="st_tab layout">
+    	<p <!--{if $_G['gp_tag']==false}--> class="active" <!--{/if}--> ><a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind">{lang denglu:do_bind}</a></p>
+		<p <!--{if $_G['gp_tag']=='set'}--> class="active" <!--{/if}--> ><a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind&tag=set">{lang denglu:syn_setting}</a></p>
+        <p <!--{if $_G['gp_tag']=='photo'}--> class="active" <!--{/if}--> ><a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind&tag=photo">{lang denglu:myphoto}</a></p>		
+    </div>
+    <!--{if $_G['gp_tag']=='set'}-->
+    <script>
+    	function toggle_check(mediaID){
+        	if($('all_check_'+mediaID).checked == 1){
+				$('thread_syn_'+mediaID).checked = "checked";
+				$('log_syn_'+mediaID).checked = "checked";
+        	}else{
+        		$('thread_syn_'+mediaID).checked = "";
+    			$('log_syn_'+mediaID).checked = "";
+            }
+        	
+       }
+    
+    </script>
+    <form method='POST'>
+    	<input type="hidden" name="formhash" value="{FORMHASH}" />
+	    <div class="st_text">
+	    	<p>{lang denglu:media_syn_setting}</p>
+	    	<ul class="st_list">
+	    	<!-- {loop $bindusers $v} -->
+	        	<li>
+	            	<p class="st_relate"><span class="st_type" style="background:url(source/plugin/denglu/template/images/denglu_second_icon_{$v['mediaID']}.png) no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{$arr['mediaID']['mediaName']}</span>{lang denglu:syn_content}</p>
+	                <p class="st_check">
+	         
+	                	<input id="thread_syn_{$v['mediaID']}" name="thread_syn_{$v['mediaUserID']}" type="checkbox" <!--{if $v['thread_syn']==1}-->checked="checked"<!--{/if}--> value='1'/><label for="bbs_check_renren">{lang denglu:forum_thread}</label>
+	                	<input id="log_syn_{$v['mediaID']}" name="log_syn_{$v['mediaUserID']}" type="checkbox" <!--{if $v['log_syn']==1}-->checked="checked"<!--{/if}--> value='1'/><label for="blog_check_renren">{lang denglu:user_log}</label>
+	                	<input type="hidden" name="mediaUserID[]" value="{$v['mediaUserID']}">
+	                	{if $v['mediaID']==7}
+	                	<span style="margin-left:20px;">{lang denglu:renren_auth_tip}
+	                		<a style="color:#ff6000" target="_blank" href="http://app.renren.com/apps/authorize.do?api_key={$renren_key}&next=&ext_perm=publish_feed&display=noad">{lang denglu:click_here}</a>
+	                		{lang denglu:auth_over}
+	                	</span>
+	                	{/if}
+	                </p>
+	            </li>
+	        <!-- {/loop} -->   
+	        </ul>
+	        <!--{if $bind_users}-->
+	        <div class="st_save"><p class="st_btn"><button type="submit" name="doshare" value="true" class="pn pnc" /><strong>{lang denglu:save}</strong></button></p></div>
+	    	<!--{/if}-->
+		</div>
+    </form>
+    <!--{/if}-->
+    <!--{if $_G['gp_tag']==false}-->
+    <script>
+    function unbind(muid){
+    	showDialog('{lang denglu:unbind_not_return}','confirm',0,'gounbind("'+muid+'")');
+    }
+    function gounbind(muid){
+		document.getElementById('mediaUserID').value=muid;
+		document.getElementById('unbind_form').submit();
+    }
+    </script>
+    <form method='POST' id="unbind_form">
+	    <div class="st_text" >
+	    	<p>{lang denglu:you_can_bind_here}</p>
+	    	<form method="post" >
+	    		<input type="hidden" name="formhash" value="{FORMHASH}" />
+	    		<input type="hidden" name="mediaUserID" value="" id="mediaUserID"/>
+	    		<input type="hidden" name="unbind" value="true"/>
+		    	<ul class="st_list">
+		        	<!--{loop $bind_users $v}-->
+		        	<li>
+		            	<p><span class="st_type" style="background:url(source/plugin/denglu/template/images/denglu_second_icon_{$v['mediaID']}.png) no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span>{$arr[$v['mediaID']]['mediaName']}</span>{lang denglu:account}<span>{$v['screenName']}</span></p>
+		                <!--{if $v['tag']==1}-->
+		                	<p class="st_state"><span class="st_state_icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{lang denglu:binding}</p>
+		                	<p class="st_btn"><a href="javascript:unbind({$v['mediaUserID']});">{lang denglu:unbind}</a></p>
+		                <!--{else}-->
+		                	<p class="st_state"><span class="st_state_icon">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{lang denglu:no_bind}</p>
+		                	<p class="st_btn"><a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind&tag=set&option=1" onclick="showWindow('bind',this.href)">{lang denglu:do_bind_account}</a></p>
+		                <!--{/if}-->
+		            </li>
+		            <!--{/loop}-->
+		        </ul>
+	        </form>
+	        <!--{if $check_media}-->
+	        <div class="st_more">
+	        	<p>{lang denglu:the_others_you_can_bind}</p>
+	            <ul class="layout">
+	            <!--{loop $check_media $ret}-->
+	            	<li>
+	            		<span class="st_type" style="background:url(source/plugin/denglu/template/images/denglu_second_icon_{$ret['mediaID']}.png) no-repeat;">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	            		<a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind&mid={$ret['mediaNameEn']}" >{$ret['mediaName']}</a><span class="st_margin">|</span>
+	            	</li>
+	            <!--{/loop}-->	
+	            </ul>
+	        </div>
+	        <!--{/if}-->
+	    </div>
+    </form>
+	<!--{/if}-->
+
+	<!--{if $_G['gp_tag']=='photo'}-->
+
+		<div class="st_text" >
+			<p>{lang denglu:myphoto_tip}</p>
+			<form method="POST" >
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<ul class="st_piclist layout">
+				<!--{loop $myphoto $ret}-->
+					<li>
+					<div class="st_picradio"><input type="radio" value="{$ret['mediaUserID']}" name="muid"/></div>
+					<div class="st_picsearch"><img src="source/plugin/denglu/avatar/{$ret['mediaUserID']}_small.jpg" width="50" height="50" /><img class="st_picicon" src="source/plugin/denglu/template/images/denglu_second_icon_{$ret['mediaID']}.png" /></div>
+           			 </li>
+					
+				<!--{/loop}-->
+
+				</ul>
+				<div class="st_save"><p class="st_btn"><button type="submit" name="photoset" value="true" class="pn pnc" /><strong>{lang denglu:save}</strong></button></p></div>
+	    	
+			</form>
+		</div>
+	</form>
+	<!--{/if}-->
+</div>

@@ -1,0 +1,48 @@
+<!--{template common/header}-->
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+<br /><br /><br /><br />
+
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em> <a href="portal.php?mod=lesson&ac=lesson">课程</a> <em>&rsaquo;</em> 
+		 编辑分类
+	</div>
+</div>
+
+
+<div id="ct" class="content row-fluid">
+
+<div class="span2">
+	<!--{subtemplate portal/portalcp_nav}-->
+</div>
+
+<div id="ct" class="span10">
+	<div class="">
+		<div class="">
+			<form name="__add_new__category" action="" method="post">
+			<table class="table table-bordered">
+				<tr><th>{if $ok}<span class="xi2">修改成功</span>{/if}</th> <th><a class="xi2" href="portal.php?mod=lesson&ac=add_category">添加分类</a> </th></tr>
+				{loop $category $c}
+				<form name="save" action="" method="post">
+				<input type="hidden" name="id" value="{$c['id']}" />
+				<tr><td><input type="text" name="category" value="$c['category']" /></td> <td> <input type="submit" name="s" value="保存修改" /></td></tr>
+				</form>
+				{/loop}
+			</table>
+			</form>
+
+		</div>
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+</div>
+
+<!--{template common/footer}-->
+

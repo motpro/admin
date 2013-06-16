@@ -1,0 +1,55 @@
+{template dsu_kkvip:header}
+<div class="span9">
+<div>
+	<form method="post" action="vip.php?action=paycenter" onsubmit="$('submit_btn').disabled='disabled';">
+		<input type="hidden" name="formhash" value="{FORMHASH}" />
+		<h3>{if !$vip->is_vip()}{lang dsu_kkvip:vip_pay}{else}{lang dsu_kkvip:vip_pay2}{/if}</h3>
+		<div class="tips">
+			<p>{lang dsu_kkvip:cost} <b>$vip->vars[vip_cost] $vip_credit_name {lang dsu_kkvip:discounted}</b></p>
+			<p>{lang dsu_kkvip:paycenter_buy_htm_1} <b>$my_credit $vip_credit_name</b>{lang dsu_kkvip:paycenter_buy_htm_2} <b>$max_month</b> {lang dsu_kkvip:paycenter_buy_htm_3}</p>
+			<p>{lang dsu_kkvip:cost2}</p>
+			<p style="color:red;">{lang dsu_kkvip:cost3}</p>
+		</div>
+
+		<ul>
+			<li>
+				<span>{if !$vip->is_vip()}{lang dsu_kkvip:paycenter_buy_htm_6}{else}{lang dsu_kkvip:paycenter_htm_1}{/if}</span>$_G[member][username]
+			</li>
+			<li>
+				<span>{if !$vip->is_vip()}{lang dsu_kkvip:buytime}{else}{lang dsu_kkvip:exptime}{/if}</span>
+				<input type="text" name="month" onblur="if(isNaN(this.value)||this.value<0){this.value=1;}" class="px" value="1"/>
+			</li>
+			<li>
+				<span>{lang dsu_kkvip:paycenter_htm_2}</span>
+				<input type="text" name="discount_code" onblur="ajaxget('vip.php?action=paycenter&getmoney=yes&discount_code='+this.value, 'discount_money');" class="px"/>
+			</li>
+			<li>
+				<span>{lang dsu_kkvip:paycenter_htm_5}</span><span id="discount_money" style="text-align: left;">0</span><br>
+			</li>
+		</ul>
+		<div class="pay_btn">
+			<button class="pn" value="true" id="submit_btn" name="submit_btn" type="submit" onclick="if(!confirm('{lang dsu_kkvip:cost_js}')){return false;}"><span>{if !$vip->is_vip()}{lang dsu_kkvip:vip_pay}{else}{lang dsu_kkvip:vip_pay2}{/if}</span></button>
+		</div>
+	</form>
+</div>
+
+<div class="orights vipblock">
+	<h3 class="title">{lang dsu_kkvip:vipcenter_htm_4}</h3>
+	<div class="content">
+		{if !$vip->is_vip()}
+			<p>{lang dsu_kkvip:welcome_novip2}</p>
+		{else}
+			<p>{lang dsu_kkvip:paycenter_htm_3}<img src="source/plugin/dsu_kkvip/images/vip$_G[vip][level].gif" alt="$_G[vip][level_text]" />{lang dsu_kkvip:paycenter_htm_4}{lang dsu_kkvip:welcome_expiretime} $_G[vip][endtime_text]</p>
+		{/if}
+    	<ul>
+    		$vip_intro
+    	</ul>
+	</div>
+</div>
+</div>
+
+<div class="span3">{template dsu_kkvip:sidebar}</div></div>
+
+{template dsu_kkvip:footer}
+
+{template common/footer}

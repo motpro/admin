@@ -1,0 +1,108 @@
+{template lesson/mobile/header}
+	{if $pages}
+	<ul data-role="listview" data-inset="true" data-divider-theme="d">
+    	<li data-role="list-divider">{$course['fullname']} - 本课目录</li>
+    	{eval $n = 1}
+    		{loop $pages $p}
+    		<li><a href="lesson.php?enter_page={$p['id']}">{$n} . {$p['title']}</a></li>
+    		{eval $n++}
+    		{/loop}
+	</ul>
+	{elseif $content}
+		{if $_G['uid']}
+		<h1>{$content['title']}</h1>
+		<p class="ui-body-d" style="padding:2em;">
+			<div align="center" ><p id="container"></p></div>
+<script type="text/javascript" src="{$_G[setting][jspath]}jwplayer.js"></script>
+<script type="text/javascript" src="static/jwplayer/jquery-1.9.1.min.js"></script>
+			<script type="text/javascript">
+			$(function(){
+			var Type = Array();
+				Type[0] = '简体中文';
+				Type[1] = '繁体中文';
+				Type[2] = '英文';
+			var Dir = Array();
+				Dir[0] = 'CH/';
+				Dir[1] = 'TW/';
+				Dir[2] = 'EN/';
+				var isMobile = {  
+    				Android: function() {  
+        				return navigator.userAgent.match(/Android/i) ? true : false;  
+   					},  
+    				BlackBerry: function() {  
+        				return navigator.userAgent.match(/BlackBerry/i) ? true : false;  
+    				},  
+    				iOS: function() {  
+        				return navigator.userAgent.match(/iPhone|iPad|iPod/i) ? true : false;  
+    				},  
+    				Windows: function() {  
+        				return navigator.userAgent.match(/IEMobile/i) ? true : false;  
+    				},  
+    				any: function() {  
+       					return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Windows());  
+    				}  
+				};  
+    			if( isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS())
+    				var ismobile = true;
+
+					jQuery.ajax({
+					type: 'POST',
+					url : 'lesson.php?dataajax=1',
+					data: 'pageid={$filmid}',
+					success: function(rt){
+
+						if( 404 == rt){
+							
+						}
+
+						else{
+							rt = eval('('+rt+')');
+							if( ismobile)
+								file = '{$p['mobileurl']}'+rt.v_path+rt.v_file;
+							else
+								file = '{$p['videourl']}'+rt.v_path+rt.v_file;
+
+							image = '{$p['moodlepath']}/uploads/'+ rt.image_file;
+							labels_files = '{$p['subtitle']}'+'/'+rt.v_path+'/'+Dir[rt.label_a]+rt.label_a_file+','+'{$p['videourl']}'+rt.v_path+'/'+Dir[rt.label_b]+rt.label_b_file;
+							labels_names = Type[rt.label_a]+','+Type[rt.label_b]; 
+							jwplayer("container").setup({
+
+	   							file: file,
+	   							image: image,
+	   							flashplayer:	"{$p['fpurl']}",
+	   							dock:			"{$p['dock']}",
+	   							stretch:		"{$p['stretch']}",
+	   							height: 		"{$p['height']}",
+	   							width:          "{$p['width']}",
+	   							controlbar:     "{$p['controlbar']}",
+	   							autostart: 		false,
+	   							thumbsinplaylist: true,
+	  
+	   							plugins: {
+		 							"captions-2": {
+	       							files : labels_files,
+	       							labels: labels_names
+	     											}
+	  								 	}
+	 							});
+	 						}
+					}
+				});
+    		});
+			</script>
+		</p>
+		<div data-role="content">{$content['contents']}</div>
+		{else}
+		<p class="ui-body-d" style="padding:2em;">您需要先登陆才能学习本课程</p>
+		<a href="lesson.php?login=1" data-role="button" data-theme="b">登录</a>
+		<a href="member.php?mod={$_G[setting][regname]}" data-role="button" data-theme="b">注册成为会员</a>
+		{/if}
+	{else}
+	<ul data-role="listview" data-inset="true">
+		<li data-role="list-divider">课程列表</li>
+		{loop $m_course $c}
+    	<li><a href="lesson.php?enter_course={$c['id']}">$c['fullname']</a></li>
+    	{/loop}
+	</ul>
+	{/if}
+{template lesson/mobile/footer}

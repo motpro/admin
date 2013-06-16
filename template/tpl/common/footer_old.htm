@@ -1,0 +1,54 @@
+</div>
+
+<footer class="container motfooter">
+<div class="gf-sosumi">
+	<div class="row-fluid">
+	<div class="span3">
+		<div>
+			{if !isset($_G['setting']['navlogos'][$mnid])}
+			<a href="{if $_G['setting']['domain']['app']['default']}http://{$_G['setting']['domain']['app']['default']}/{else}./{/if}" title="$_G['setting']['bbname']">{$_G['style']['boardlogo']}</a>
+			{else}$_G['setting']['navlogos'][$mnid]
+			{/if}
+			<!--{hook/global_footer_logo}-->
+		</div>
+	</div>
+
+	<div class="span3">
+		<ul>
+			<li><h3>联系我们</h3></li>
+			<li>电话：021 - 62482365</li>
+			<li>邮箱：mwang@kaizen.com</li>
+		</ul>
+	</div>
+
+	<div class="span3">
+		<ul>
+			<li><h3>在线课程</h3></li>
+			<li>课程列表</li>
+			<li>课程收益</li>
+			<li>产品版本</li>
+		</ul>
+	</div>
+
+	<div class="span3">
+		<ul>
+			<li><h3>关于我们</h3></li>
+			<li>我们的客户</li>
+			<li>改善博客</li>
+		</ul>
+	</div>
+
+	</div>
+</div>
+
+{if !$_G['uid'] && false}
+<!--{template common/float_footer_login}-->
+{/if}
+
+<div class="container gf-sosumi"><p>Copyright © 2013 Www.Kicn.cn 改善在线学院</p></div>
+
+</footer>
+
+
+</body>
+</html>

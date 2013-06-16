@@ -1,0 +1,40 @@
+<div>
+
+</div>
+<table class="table table-bordered">
+
+	<tr><td>{lang dsu_kkvip:vip_center}</td></tr>
+	<tr><td class="row-fluid">
+		{if $vip->is_vip()}
+		<ul>
+			{if false}<li>{lang dsu_kkvip:my_info_czz} $_G[vip][czz]</li>{/if}
+			
+			<li>
+				{lang dsu_kkvip:vip_sidebar_htm_9} <b><font color="red">{$my_credit}</font> ￥</b>
+			</li>
+			
+			{if false}<li>{lang dsu_kkvip:vip_sidebar_htm_3}:&nbsp;<font color="red">$vip->vars[vip_czzday]{if $_G[vip][year_pay]}+$vip->vars[vip_czz_year]{/if}</font>{lang dsu_kkvip:vip_sidebar_htm_4}/{lang dsu_kkvip:vip_sidebar_htm_5}</li>{/if}
+
+			<li>{lang dsu_kkvip:my_info_exptime}  $_G[vip][exptime_text] </li>
+		</ul>
+		{else}
+		<div>
+			<p>{lang dsu_kkvip:vip_sidebar_htm_6}<br />{lang dsu_kkvip:vip_sidebar_htm_7}</p>
+			<a href="vip.php?action=paycenter" class="btn">{lang dsu_kkvip:vip_pay}</a>
+		</div>
+		{/if}
+	</td></tr>
+
+	<tr><td>
+
+	<ul class="nav nav-pills nav-stacked">
+
+		{if intval($_G['adminid'])===1}<li> <a href="vip.php?action=admin">业务类型管理</a> </li>{/if}
+		<li><a href="home.php?mod=spacecp&ac=credit&op=buy"><font color="red">{lang dsu_kkvip:vip_sidebar_htm_10}</font></a></li>
+		{loop $vipmenu $order $menu}
+			<li> <a href="vip.php?action={$menu[action]}{if $menu['plugin']}&plugin=$menu['plugin']{/if}">$menu['name']</a></li>
+		{/loop}
+	</ul>
+
+	</td></tr>
+</table>

@@ -1,0 +1,32 @@
+{template lesson/mobile/header}
+
+	<div class="mot-login login-form" align="center">
+	<script type="text/javascript" src="{$_G[setting][jspath]}logging.js?{VERHASH}"></script>
+
+	<form method="post" autocomplete="off" id="lsform" action="member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" onsubmit="{if $_G['setting']['pwdsafety']}pwmd5('ls_password');{/if}return lsSubmit();">
+
+		<label for="username">账号</label>
+		<input type="text" name="username" id="username" value="" placeholder="账号" />
+		<label class="login-field-icon fui-man-16" for="login-name"></label>
+
+		<label for="password">密码</label>
+        <input type="password" name="password" id="password" placeholder="密码" autocomplete="off"/>
+        <label class="login-field-icon fui-lock-16" for="login-pass"></label>			
+		<input type="submit" value="登录" />
+
+		<a href="member.php?mod={$_G[setting][regname]}" target="blank"class="xi2 xw1">$_G['setting']['reglinkname']</a>
+
+			<input type="hidden" name="quickforward" value="yes" />
+			<input type="hidden" name="handlekey" value="ls" />
+
+		<!--{hook/global_login_extra}-->
+
+	</form>
+
+	<!--{if $_G['setting']['pwdsafety']}-->
+		<script type="text/javascript" src="{$_G['setting']['jspath']}md5.js?{VERHASH}" reload="1"></script>
+	<!--{/if}-->
+</div>
+
+
+{template lesson/mobile/footer}

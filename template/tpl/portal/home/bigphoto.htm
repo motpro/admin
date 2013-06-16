@@ -1,0 +1,28 @@
+{subtemplate portal/home/left}
+<h1>首页大图
+	<small>添加新的项目</small>
+</h1>
+<a class="btn btn-success" href="portal.php?mod=home&ac=bigphoto&reload=1">更新缓存</a>
+<form name="upload_photo_of_home" action="portal.php?mod=home" method="post" enctype="multipart/form-data">
+{if $bp}<input type="hidden" name="id" value="{$bp['id']}">{/if}
+<table class="table">
+	<tr><td>标题</td><td><input name="config" type="text" value="{$bp['config']}" /></td></tr>
+	<tr><td>说明性文字</td><td><textarea name="c_value" cols=220 rows=5>{$bp['c_value']}</textarea></td></tr>
+	<tr><td>源图片</td><td><input name="c_key" type="file" /></td></tr>
+	<tr><td></td><td><input class="btn" type="submit" name="update_homephoto" value="Update" /></td></tr>
+</table>
+</form>
+
+<h1><small>首页项管理</small></h1>
+<table class="table able-bordered">
+	<tr><td>图片</td><td>标题</td><td>说明性文字</td><td>操作</td></tr>
+	{loop $bigphoto $bp}
+	<tr><td><img src="{$_G['siteurl']}uploads/home/{$bp['c_key']}" width="120px"/></td>
+		<td>{$bp['config']}</td>
+		<td>{$bp['c_value']}</td>
+		<td><a class="btn" href="portal.php?mod=home&ac=bigphoto&edit_bigphoto={$bp['id']}">编辑</a> 
+			<a class="btn" href="portal.php?mod=home&ac=bigphoto&delete_bigphoto={$bp['id']}">删除</a></td>
+	</tr>
+	{/loop}
+</table>
+{subtemplate portal/home/buttom}

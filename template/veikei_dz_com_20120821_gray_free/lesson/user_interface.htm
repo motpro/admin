@@ -1,0 +1,19 @@
+{template lesson/new_header}
+<div class="container">
+
+              {loop $c $course}
+                <div class="span12 mot-div">
+                  <div class="tile">
+                      <div align="center" >
+                        <img class="mot-logo" src="uploads/lesson/{$course['logo']}" alt="" />
+                      </div>
+                      <h3 class="tile-title"><div class="mot-course"><span class="fui-video-24">&nbsp;&nbsp;&nbsp;{$course['fullname']}</span></div></h3>
+
+                      <a class="btn btn-primary btn-large btn-block" href="lesson.php?pages_list={$course['id']}">开始学习</a>
+
+                  </div>
+                </div>
+              {/loop}
+
+</div>
+{template lesson/new_footer}

@@ -1,0 +1,46 @@
+<!--{template knowledge/header}-->
+<div class="page-header">
+    <h1>{avatar($_G['uid'] , 'small')}  {$title} <small> {$_G['username']}</small></h1>
+</div>
+
+{if 'question' === $_GET['ac']}
+<table class="table table-bordered table-hover table-condensed" width="100%">
+	{loop $my_question $mq}
+	<tr>
+
+		<td width="15%" title="发布日期"><strong><small><i class="icon-time"></i> {eval echo date('Y/m/d' , $mq['createddate'])}</small></strong></td>
+		<td width="8%" title="浏览量"><strong><small><i class="icon-eye-open"> {$mq['view']}</small></strong></td>
+		<td><a href="knowledge.php?mod=discussion&id={$mq['id']}">
+		{if $mq['status']}
+		<i class="icon-check" title="已经解决"></i>
+		{else}
+		<i class="icon-check-empty" title="未解决"></i>
+		{/if}
+			{eval echo cutstr($mq['content'] , 70 , '......')}</a>
+		</td>
+	</tr>
+	{/loop}
+</table>
+{elseif 'answer' === $_GET['ac']}
+	
+	{loop $my_answer $ma}
+	<div class="media" style="border:1px solid #eee;padding:5px;">
+    <a class="pull-left" href="#">
+        {avatar($ma['uid'] , 'small')}
+    </a>
+    <div class="media-body">
+        <h5><a href="knowledge.php?mod=discussion&id={$ma['qid']}">{$ma['content']}</a>
+        	<p class="text-right">
+        		<small>{eval echo date('Y/m/d' , $r['date'])} 
+        			<a href="knowledge.php?mod=discussion&id={$ma['qid']}&rm={$ma['id']}">删除</a></small>
+        	</p>
+        </h5>
+    </div>
+	</div>
+	{/loop}
+
+{/if}
+
+
+
+<!--{template knowledge/footer}-->

@@ -1,0 +1,29 @@
+<!--{template common/header}-->
+<br /><br /><br /><br />
+<h1>门户管理</h1>
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em>
+		课程
+		
+	</div>
+</div>
+
+<div class="content row-fluid">
+	<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+
+	<div class="span10">
+		<ul class="breadcrumb">
+    		<li><a href="portal.php?mod=home">基本设置</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=bigphoto">首页大图</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=direct">首页展示</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=aboutus">关于我们</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=service">网站服务</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=footer">底部信息</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=thumb">图片缩略</a> <span class="divider">-</span></li>
+    		<li><a href="portal.php?mod=home&ac=cache">站内缓存</a> </li>
+    </ul>

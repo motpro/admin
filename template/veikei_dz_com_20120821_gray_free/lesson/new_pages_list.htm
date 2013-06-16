@@ -1,0 +1,50 @@
+{template lesson/new_header}
+<script type="text/javascript">
+  jQuery.noConflict();
+</script>
+
+<div class="container">
+  <div class="demo-browser">
+    <div class="demo-browser-side">
+      <img src="uploads/lesson/{$lesson['logo']}" />
+        <div class="demo-browser-action">
+                {if $vip['uid']}
+                  {loop $favorite $f}
+                    {if $f['courseid'] == $lesson['id']}{eval $flag=true}<a class="btn btn-danger btn-large btn-block" href="lesson.php?cancel_favorite={$lesson['id']}">取消收藏</a>{/if}
+                  {/loop}
+                    {if !$flag}
+                    <a class="btn btn-danger btn-large btn-block" href="lesson.php?add_favorite={$lesson['id']}">收藏</a>
+                    {/if}
+                  {elseif $_G['uid'] == 0 }
+                    <a href="forum.php"></a>
+                  {else}
+                    <a class="btn btn-danger btn-large btn-block" href="vip.php?action=active" target="_blank">开通会员</a>
+                  {/if}
+
+
+                <h6>
+                  <p>点击右边课程</p> 
+                  <p>进入学习页面</p>
+                  <a href="plugin.php?id=fb_opinion:main" target="_blank">FAQ</a>
+                </h6>
+
+
+              </div> 
+
+    </div>
+          <div class="demo-browser-content">
+            <div class="row mot-summary">
+                  <h3 class="demo-panel-title" align="center">《{$lesson['fullname']}》 课程介绍</h3>
+                   <div>{$lesson['summary']}</div>
+            </div>
+              {loop $pages $p}
+                <a class="window" id="{$p['id']}" href="lesson.php?page_content={$p['id']}">
+                  <img id="{$p['id']}" class="img" src="uploads/small/{$p['image_file']}" rel="box" alt="{$p['title']}"/>
+                </a>
+              {/loop}
+          </div>
+  </div>
+</div>
+
+
+{template lesson/new_footer}

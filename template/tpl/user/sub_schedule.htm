@@ -1,0 +1,62 @@
+{template user/header}
+<ul class="breadcrumb">
+	<li><a href="user.php">{lang user_center}</a> <span class="divider">/</span></li>
+    <li>{lang kit} <span class="divider">/</span></li>
+    <li><a href="user.php?ac=sub_schedule">{lang user_calender}</a></li>
+</ul>
+
+<div class="container">
+<h4>
+	{lang schedule_right}
+	<small> <cite title="Source Title">{lang schedule_right_small}</cite></small>
+</h4>
+<hr />
+
+
+<h2><small>{lang schedule_today}</small>
+<hr />
+</h2>
+{if count($today) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
+{loop $today $t}
+<dl class="dl-horizontal">
+	<dt><span class="label label-success">{lang schedule_doing}</span></dt>
+	<dd><i class="icon-spinner icon-spin"></i> <span class="text-success">{$t['event']}</span> - <small><a href="request.php?event_cancel={$t['id']}">{lang close}</a></small></dd>
+	<dt>{lang schedule_time}</dt>
+	<dd>{eval echo date('Y/m/d' , $t['start'])} - {eval echo date('Y/m/d' , $t['start']+86400)}</dd>
+	
+</dl>
+{/loop}
+
+
+<h2><small>{lang schedule_future}</small>
+<hr />
+</h2>
+
+{if count($future) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
+{loop $future $f}
+<dl class="dl-horizontal">
+	<dt><span class="label label-info">准备中</span></dt>
+	<dd><i class="icon-comment-alt icon-flip-horizontal"></i> <span class="text-info">{$f['event']}</span> - <small><a href="request.php?event_cancel={$f['id']}">{lang close}</a></small></dd>
+	<dt>{lang schedule_time}</dt>
+	<dd>{eval echo date('Y/m/d' , $f['start'])} - {eval echo date('Y/m/d' , $f['start']+86400)}</dd>	
+</dl>
+{/loop}
+
+
+<h2><small>{lang schedule_past}</small>
+<hr />
+</h2>
+{if count($outofdate) == 0}<span class="badge badge-info">{lang empty}</span> {lang schedule_empty}{/if}
+{loop $outofdate $o}
+<dl class="dl-horizontal">
+	<dt><span class="label">{lang schedule_useless}</span></dt>
+	<dd><i class="icon-remove icon-spin"></i> <span style="text-decoration:line-through">{$o['event']}</span> - <small><a href="request.php?event_cancel={$o['id']}">{lang close}</a></small></dd>
+	<dt>{lang schedule_time}</dt>
+	<dd>{eval echo date('Y/m/d' , $o['start'])} - {eval echo date('Y/m/d' , $o['start']+86400)}</dd>
+
+</dl>
+{/loop}
+
+
+</div>
+{template user/footer}

@@ -1,0 +1,29 @@
+{template dsu_kkvip:header}
+
+<div class="hero-unit" align="center">
+
+<h3 class="demo-panel-title">{$_G['username']} 线下支付申请&nbsp;&nbsp;&nbsp;&nbsp;业务{$way[$_GET['way']]}</h3>
+<form name="" action="" method="post">
+  <input type="hidden" name="type" value="{$_GET['type']}" />
+  <input type="hidden" name="cost" value="{eval echo $_GET['type'] * $vip->vars['vip_cost']}">
+      <div class="row">
+        <div class="control-group success">
+         	<p>如何称呼您 ?</p>
+            <input name="realname" type="text" value="{$user['realname']}" class="span3" />
+          </div>
+
+         <div class="control-group success">
+         	<p>您的手机号 ?</p>
+            <input name="mobile" type="text" value="{$user['mobile']}" class="span3" />
+          </div>
+        
+      </div> <!-- /row -->
+
+      <div>
+      	<input name="finish" type="submit" class="btn btn-large btn-block span2" value="下一步" />
+      </div>
+</form>
+</div>
+
+{template dsu_kkvip:footer}
+{template common/footer}

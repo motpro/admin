@@ -1,0 +1,15 @@
+{template lesson/mobile/header}
+
+{if count( $favorite)}
+<ul data-role="listview" data-inset="true" data-divider-theme="d">
+    <li data-role="list-divider">当前书签数 : {eval echo count($favorite)}</li>
+    
+	{loop $favorite $m}
+		<li><a href="lesson.php?enter_course={$m['courseid']}">{$m['fullname']}</a></li>
+	{/loop}
+</ul>
+
+{else}
+	<p class="ui-body-d" style="padding:2em;">书签为空</p>
+{/if}
+{template lesson/mobile/footer}

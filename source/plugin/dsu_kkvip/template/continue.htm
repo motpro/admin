@@ -1,0 +1,63 @@
+{template dsu_kkvip:header}
+<script>
+jQuery(function(){
+
+	jQuery('#submit_btn').attr({'disabled':'disabled'})
+	
+	jQuery('li.air-1').click(function(){
+		jQuery('#submit_btn').removeAttr('disabled');
+		jQuery('li').removeClass('selected');
+		jQuery(this).addClass('selected');
+		jQuery('#month').attr({'value':jQuery(this).attr('data')})
+		type = jQuery(this).attr('data');
+	});
+
+
+</script>
+
+	<div class="orights vipblock">
+		<h3 class="title">续费会员</h3>
+
+
+		<div class="content">
+			<p><strong>选择续费类型</strong></p>
+			{if $vip->is_vip()==0}<p>请先 <a class="btn2 btn-mini" href="vip.php?action=active">开通</a>会员再进行续费</p>{/if}
+    		<ul>
+	<div class="page" id="page-plans" data-page-name="付费方案">
+		
+					<ul class="plan-list">
+						{loop $service $sv}
+						<li class="air-1" data="{$sv['month']}">
+							<span class="price-wrap">{$sv['service']}</span>
+							<span class="desc"><b class="yen">¥</b><em class="price">{$sv['cost']}</em>，{$sv['info']}</span>
+							<span class="selected-icon"></span>
+						</li>
+						{/loop}
+					</ul>
+					</div>
+    		</ul>
+
+			<div>
+				<form name="renew" action="vip.php?action=paycenter" method="post">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="discount_code" onblur="ajaxget('vip.php?action=paycenter&getmoney=yes&discount_code='+this.value, 'discount_money');" class="px"/>
+
+					<input id="month" type="hidden" name="month" onblur="if(isNaN(this.value)||this.value<0){this.value=12;}" class="px" value="1"/>
+
+					{if $vip->is_vip()}
+					<p><button class="btn2 btn-mini" value="true" id="submit_btn" name="submit_btn" type="submit" onclick="if(!confirm('{lang dsu_kkvip:cost_js}')){return false;}"><span>{lang dsu_kkvip:vip_pay2}</span></button>
+
+					<a class="btn2 btn-mini" id="various3">我要线下支付</a>
+					{/if}
+					</p>
+
+				</form>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="sd">{template dsu_kkvip:sidebar}</div></div>
+{template common/footer}

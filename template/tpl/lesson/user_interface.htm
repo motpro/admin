@@ -1,0 +1,69 @@
+<!--{subtemplate lesson/header}-->
+
+<div class="row-container">
+
+  {loop $c $course}
+  <div class="row-fluid">
+    <div class="page-header">
+      <h3>{$course['fullname']} <span3>{$cat[$course['category_id']]}</small></h3>
+    </div>
+        <table>
+          <tr class="row-fluid">
+          <td class="span9 mot-block-b">
+          <div class="">
+            <div class="span6">
+                <a href="lesson.php?pages_list={$course['id']}">
+                <img style="height:120px" class="img-polaroid" src="uploads/course/{$course['logo']}" alt="{$course['fullname']}" />
+              </a>
+            </div>
+
+            <div class="span6">
+              
+              <p>{$course['summary']}</p>
+              <div align="center">
+                <a class="btn" href="lesson.php?pages_list={$course['id']}">开始学习</a>
+              </div>
+            </div>
+          </div>
+          </td>
+
+          <td></td>
+
+
+          <td class="span3 row-fluid content mot-block-d">
+          
+              {loop $p[$course['id']] $_page}
+                <div align="center"><a href="lesson.php?page_content={$_page['id']}" target="blank"><img class="img-polaroid" src="./uploads/page/small/{$_page['image_file']}" width="95%" /></a>
+                  <small><a href="lesson.php?page_content={$_page['id']}" target="blank">$_page['title']</a></small>
+                </div>
+              {/loop}
+
+          </td>
+          </tr>
+        </table>
+    </div>
+  {/loop}
+
+
+    <div class="span12 pagination pagination-large" align="center">
+      {if isset($_GET['category'])}
+              <ul>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page-1}">&laquo;</a></li>
+                <li class="active"><a href="lesson.php?category={$_GET['category']}&page={eval echo $page}">{eval echo $page}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+1}">{eval echo $page+1}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+2}">{eval echo $page+2}</a></li>
+                <li><a href="lesson.php?category={$_GET['category']}&page={eval echo $page+1}">&raquo;</a></li>
+              </ul>
+      {else}
+              <ul>
+                <li><a href="lesson.php?page={eval echo $page-1}">&laquo;</a></li>
+                <li class="active"><a href="lesson.php?page={eval echo $page}">{eval echo $page}</a></li>
+                <li><a href="lesson.php?page={eval echo $page+1}">{eval echo $page+1}</a></li>
+                <li><a href="lesson.php?page={eval echo $page+2}">{eval echo $page+2}</a></li>
+                <li><a href="lesson.php?page={eval echo $page+1}">&raquo;</a></li>
+              </ul>
+      {/if}
+  </div>
+
+</div>
+<!--{subtemplate lesson/footer}-->

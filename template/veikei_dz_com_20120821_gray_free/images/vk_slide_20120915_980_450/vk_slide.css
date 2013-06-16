@@ -1,0 +1,60 @@
+
+
+/* 首页 相关属性 */
+ul { list-style-type:none !important; }
+html { overflow-x:hidden; overflow-y:scroll; }
+/*
+body { background:#f8f8f8 url(bg_body.jpg) repeat; }
+#wp .wp {width:980px; margin:0 auto; padding-top:15px; }
+*/
+
+
+
+#vk_slide{  position:relative;   width:980px; height:450px; margin:0 auto; margin-bottom:15px;  z-index:0;  }
+
+/*
+div.ad { min-width:980px; margin:0 auto; height:348px; }
+*/
+/*div.ad { width:1920px;  height:450px; position:absolute; left:-470px; top:-52px;  clear:both; border-bottom:1px solid #fff;}
+*/
+div.ad { width:980px;  height:450px; position:absolute; left: 0px; top: 0px;  clear:both; border: none;  }
+ul.ad { height:450px; overflow:hidden; }
+ul.ad li { height: 450px; background-position: center 0; background-repeat: no-repeat; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;}
+ul.ad li div.i { width:980px;  margin:0 auto; position:relative; color:#fff; }
+ul.ad li div.i a { width:980px; height:450px; display:block;  }
+
+ul.ad li.ad1 { background-image:url(banner_1.jpg); }
+ul.ad li.ad2 { background-image:url(banner_2.jpg); }
+ul.ad li.ad3 { background-image:url(banner_3.jpg); }
+/*
+.controler { position: relative; width: 90px; margin: 0 auto; top: -30px; }
+*/
+.controler { position: relative; width: 90px; margin: 0 auto; margin-right:20px; top: -30px; }
+.controler a { display: inline-block; width: 18px; height: 18px; margin-right:9px; outline:none; background-image:url(cl1.png)!important; background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/cl1.png') !important;
+}
+.controler a:hover, .controler a.active { background-image:url(cl2.png)!important; background-image:none; filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/cl2.png') !important;
+}
+
+
+/*
+h2.title { line-height:30px; font-size: 26px; margin: 0px 0 15px 0; position: relative; text-shadow: 1px 1px 1px #ccc; font-weight: normal; height:30px; }
+*/
+
+ul.lst img.logo { border: 5px solid #fff; border-radius: 5px; background: #fff; box-shadow: 1px 1px 3px #afafaf; cursor: pointer; }
+ul.lst img.logo:hover, ul.lst li.hover img.logo { border: 5px solid #dcdcdc; }
+ul.lst li { float: left; margin: 0 36px 20px 0; position: relative; height:152px; width:302px; }
+ul.lst li.last { margin: 0 0 20px 0; }
+
+.vk_line { clear: both; background: url(vk_line.png) repeat-x 0 0px; height: 2px; line-height: 2px; font-size: 2px; margin-top: 20px; }
+
+span.vk_more, p.email,  ul.list li { font-size: 14px; color: #666; font-weight: bold; }
+
+div.l { float: left; width: 500px; }
+div.r { overflow: hidden; zoom: 1; }
+
+span.vk_more { position: absolute; right: 30px; font-size: 14px; text-shadow: none; font-weight: normal; bottom: -5px; }
+.pb40 { padding-bottom: 10px; }
+.re-margin { margin:10px 0 5px!important; }
+.no-margin { margin:10px 0 0px!important; }
+.mt-30 { margin-top:30px; }
+ul.list li { width:490px; }

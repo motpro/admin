@@ -1,0 +1,36 @@
+<!--{template knowledge/header}-->
+<div class="page-header">
+    <h3><small>未读消息</small></h3>
+</div>
+
+<form action="" method="post">
+<table class="table table-hover table-condensed table-bordered">
+	<tr><th>标记为已读</th><th>消息内容</th> <th>清理</th></tr>
+	{loop $noclose $n}
+	<tr>
+		<td><input name="{$n['id']}" value="1" type="checkbox" /></td> 
+		<td><small><a href="{$n['url']}">{$n['message']}</a></small></td>
+		<td><small><a href="knowledge.php?mod=message&rm={$n['id']}">删</a></small></td>
+	</tr>
+	{/loop}
+</table>
+
+<button name="close" class="btn" type="submit">已读</button>
+</form>
+
+<div class="page-header">
+    <h3><small>已读消息</small></h3>
+</div>
+
+<table class="table table-hover table-condensed table-bordered">
+	<tr><th>消息内容</th> <th>清理</th></tr>
+	{loop $close $c}
+	<tr>
+		<td><small><a href="{$c['url']}">{$c['message']}</a></small></td>
+		<td><small><a href="knowledge.php?mod=message&rm={$c['id']}">删</a></small></td>
+	</tr>
+	{/loop}
+</table>
+
+
+<!--{template knowledge/footer}-->

@@ -1,0 +1,27 @@
+{template common/header}
+<link rel="stylesheet" href="static/vip/menu.css"type="text/css" media="all" />
+<script>
+jQuery(function(){
+	jQuery('button').attr({'disabled':'disabled'})
+	jQuery('li.air-1').click(function(){
+		jQuery('button').removeAttr('disabled');
+		jQuery('li').removeClass('selected');
+		jQuery(this).addClass('selected');
+		jQuery('#month').attr({'value':jQuery(this).attr('data')});
+	});
+});	
+</script>
+
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em>&raquo;</em><a href="vip.php">{lang dsu_kkvip:vip_center}</a>
+	</div>
+</div>
+<div>
+<ul class="nav nav-pills">
+				{loop $vipmenu $order $menu}
+					<li{if $action==$menu['action']} class="active"{/if}><a href="vip.php?action={$menu[action]}{if $menu['plugin']}&plugin=$menu['plugin']{/if}">$menu['name']</a></li>
+				{/loop}
+</ul>
+</div>
+<div class="content row-fluid">

@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<link rel="stylesheet" href="template/default/common/common.css" type="text/css" media="all" />
+
+<p class="xs3"><strong><?php showsubmenu('用户需求')?></strong></p>
+<br />
+
+<table class="wp bmw alt" border="1">
+	<tr><td>Id</td><td>用户名字</td> <td>公司</td> <td>电话/手机号</td> <td>邮箱</td> <td>性别</td> <td>QQ号</td> <td>业务</td> <td>数量</td>
+		<td>订单类型</td> <td>用户类型</td> <td>支付方式</td> <td></td>
+	</tr>
+
+	{loop $result $id $data}
+	<tr><td>{$data['id']}</td> <td>{$data['realname']}</td> <td>{$data['company']}</td> <td>{$data['phone']}</td> <td>{$data['email']}</td> <td>{eval echo $data['gender']?'男':'女'}</td> <td>{$data['qq']}</td> <td>{$data['productid']}个月会员</td> <td>{$data['productnum']}</td> <td>{$data['ordertype']}</td> <td>{$data['usertype']}</td> <td>{$data['paymethod']}</td> <td><a href="admin.php?action=client&operation=requirement&view={$data['id']}">详情</a> 
+		<a href="admin.php?action=client&operation=createaccount&id={$data['id']}">创建账户</a> 
+		<a href="admin.php?action=client&operation=removeneeds&id={$data['id']}" target="blank">移除</a></td></tr>
+
+	{/loop}
+</table>

@@ -1,0 +1,22 @@
+{template examination/view_header}
+
+<div class="page-header">
+	<h4>参加 <a href="examination.php?mod=do&id={$bucket_info['id']}">{$bucket_info['title']}</a> 测试的用户</h4>
+	<small>{$bucket_info['info']}</small>
+</div>
+
+<table class="table table-hover table-condensed table-bordered">
+	<tr><th>排行</th><th>用户</th><th>分数</th><th>考试日期</th><th>了解</th></tr>
+	{loop $list $key $user}
+	<tr><td>{eval echo $key+1}</td>
+		<td>{$user['username']}</td>
+		<td>{$user['user_goal']}</td>
+		<td>{eval echo date('Y / m / d h : i' , $user['generate_date'])}</td>
+		<td><a href="examination.php?mod=admin&ac=home&op=detail&id={$user['id']}">详细</a></td>
+	</tr>
+	{/loop}
+</table>
+
+
+
+{template examination/footer}

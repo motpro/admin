@@ -1,0 +1,64 @@
+<!--{template common/header}-->
+
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+<script>
+widthauto();
+</script>
+<br /><br /><br /><br />
+
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em>
+		课程
+		
+	</div>
+</div>
+
+<div class="content row-fluid">
+<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+</div>
+
+<div id="ct" class="span10">
+	<div class="mn">
+		<div class="">
+			<p>课程列表
+				<a class="btn" style="margin-left:100px;padding-left:20px;padding-right:20px;" href="portal.php?mod=lesson&ac=add_course">添加课程</a> 
+				<a class="btn" style="padding-left:20px;padding-right:20px;" href="portal.php?mod=lesson&ac=add_category">添加分类</a> 
+				<a class="btn" style="padding-left:20px;padding-right:20px;" href="portal.php?mod=lesson&ac=edit_category">编辑分类</a> 
+				<a class="btn" style="padding-left:20px;padding-right:20px;" href="portal.php?mod=lesson&ac=generate">缓存缩略图</a>
+
+			</p>
+			<table class="table table-bordered table-condensed">
+				<tr><th>类别</th> <th>序号</th> <th>课程名</th> <th>单元数目</th> <th>视频数目</th> <th>类型</th> <th>状态</th> <th>操作</th></tr>
+				{loop $list $c}
+				<tr><td>{$category_list[$c['category_id']]}</td>
+					<td>{$c['sortid']}</td>
+					<td>{$c['fullname']}</td> 
+					<td>{$c['page_num']}</td>
+					<td>{$c['v_num']}{if $c['video_num']} 中:{$c['cn']} 英:{$c['en']}{/if}</td>
+					<td>{eval echo $c['is_free']?'免费':'收费';}</td> 
+					<td>{eval echo $c['is_hidden']?'<span style="color:red;">隐藏</span>':'公开'}</td> 
+					<td><a class="xi2" href="portal.php?mod=lesson&ac=course_info&id={$c['id']}">详细</a> 
+						<a class="xi2" href="portal.php?mod=lesson&ac=course_delete&id={$c['id']}">删除</a></td>
+				</tr>
+				{/loop}
+			</table>
+
+		</div>
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+
+</div>
+
+</div>
+<!--{template common/footer}-->
+

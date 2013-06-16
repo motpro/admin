@@ -1,0 +1,37 @@
+<!--{template common/header}-->
+<script type="text/javascript" src="static/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    language: "zh_CN",
+    toolbar: "",
+    statusbar : false,
+    menubar : false,
+ });
+</script>
+
+<h1>Library <small>在线课程学习</small>
+  	<div class="pull-right">
+	<wb:share-button type="button" size="small" relateuid="1806407650" ></wb:share-button>
+	</div>
+</h1>
+
+</div>
+
+<div class="container">
+<table class="table table-bordered">
+<tr><td>
+
+    <h3><small><i class="icon-search"></i> 快速索引 </small></h3>
+	<ul class="nav nav-pills">
+        <li><a href="lesson.php">所有课程</a></li>
+        {loop $category $nav}
+        <li><a href="lesson.php?category={$nav['id']}">{$nav['category']}</a></li>
+        {/loop}
+    </ul>
+
+</td></tr>
+</table>
+</div>
+
+<div class="container">

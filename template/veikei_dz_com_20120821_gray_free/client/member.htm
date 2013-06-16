@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<?php shownav('client','menu_client_member');?>
+
+<p class="xs3"><strong><?php showsubmenu('用户管理')?></strong></p>
+<br />
+<div class="wp bmw">
+	<?php showtableheader('' , 'nobottom' , 'width="100%"')?>
+	<?php showtablerow('' , array('class="alt"','class="alt"','class="alt"','class="alt"','class="alt"','class="alt"','class="alt"') , array('<a href="admin.php?action=client&operation=member&orderby=uid">用户ID</a>','<a href="admin.php?action=client&operation=member&orderby=username">账户名</a>','<a href="admin.php?action=client&operation=member&orderby=company">公司</a>','<a href="admin.php?action=client&operation=member&orderby=realname">姓名/用户名</a>','<a href="admin.php?action=client&operation=member&orderby=gender">性别','<a href="admin.php?action=client&operation=member&orderby=position">职位</a>','<a href="admin.php?action=client&operation=member&orderby=mobile">联系方式</a>','<a href="admin.php?action=client&operation=member&orderby=email">邮箱</a>'))?>
+	{eval $flag = 0}
+	{loop $u $key $value}
+		{eval $flag++}
+	<tr>
+
+		<td class="alt"><a href="./home.php?mod=space&uid={$value['uid']}">{$value['uid']}</a></td>
+		<td class="alt">{$value['username']}</td>
+		<td class="alt">{eval echo $value['company']? $value['company']:'无'}</td> 
+		<td class="alt">{eval echo $value['realname']? $value['realname']:'无'}</td> 
+		<td class="alt">{eval echo $value['gender']?'男':'女'}</td>
+		<td class="alt">{eval echo $value['position']? $value['position']:'无'}</td>
+		<td class="alt">{eval echo $value['mobile']? $value['mobile']:'无'}</td>
+		<td class="alt">{eval echo $value['email']? $value['email']:'无'}</td>
+	</tr>
+	{/loop}
+	<?php showtableheader();?>
+
+	[ <a href="./admin.php?action=client&operation=member&page=1">首页</a> ] 
+	{if ($page > 0)}
+	[ <a href="./admin.php?action=client&operation=member&page={eval echo($page)}">上一页</a> ] 
+	{/if}
+
+	[ <a href="./admin.php?action=client&operation=member&page={eval echo($page+1)}">{eval echo($page+1)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=member&page={eval echo($page+2)}">{eval echo($page+2)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=member&page={eval echo($page+3)}">{eval echo($page+3)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=member&page={eval echo($page+2)}">下一页</a> ] 
+
+</div>

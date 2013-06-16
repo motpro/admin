@@ -1,0 +1,25 @@
+<!--{subtemplate common/header}-->
+<h1>portal_topic_content</h1>
+<div id="pt" class="bm cl">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em> $topic[title]
+	</div>
+</div>
+<link id="style_css" rel="stylesheet" type="text/css" href="static/topic/t1/style.css">
+<style id="diy_style" type="text/css">#portal_block_467 .dxb_bc {  margin:0px !important;}#frame1 {  margin:0px !important;border:#000000 0px !important;}#portal_block_467 {  margin:0px !important;}#framej6Zj6L {  border:#000000 0px !important;}#portal_block_472 .dxb_bc {  margin-top:15px !important;}#portal_block_473 .dxb_bc {  margin-top:15px !important;}#portal_block_469 .dxb_bc {  margin:10px !important;}#portal_block_470 .dxb_bc {  margin:10px !important;}#portal_block_474 .dxb_bc {  margin:0px !important;}#frameff25dK {  border:0px !important;}#portal_block_482 .dxb_bc {  margin-left:15px !important;}#portal_block_483 .dxb_bc {  margin-top:0px !important;margin-right:10px !important;margin-bottom:10px !important;margin-left:10px !important;}#portal_block_483 {  margin-top:0px !important;margin-bottom:20px !important;}#portal_block_484 {  border:#14aadd 1px solid !important;margin:20px !important;}#portal_block_484 .dxb_bc {  margin:20px !important;font-size:14px !important;}#framep4IJpF {  border:0px !important;}</style>
+<div id="widgets">
+</div>
+<div class="wp">
+<!--[diy=diypage]--><div id="diypage" class="area"><div id="frame1" class=" frame move-span frame-1 cl"><div class="frame-title title" style='background-repeat:repeat;'><span class="titletext" style="font-size:14px;color:rgb(0, 0, 0);">精益办公专题</span></div><div id="frame1_left" class="column frame-1-c"><div id="frame1_left_temp" class="move-span temp"></div><!--{block/467}--></div></div><div id="framekcuXB1" class="frame move-span cl frame-2-1"><div class="title frame-title"><span class="titletext">课程简介</span></div><div id="framekcuXB1_left" class="column frame-2-1-l"><div id="framekcuXB1_left_temp" class="move-span temp"></div><!--{block/469}--><div id="frameff25dK" class=" frame move-span cl frame-1"><div class="title frame-title"><span class="titletext">适合对象</span></div><div id="frameff25dK_left" class="column frame-1-c"><div id="frameff25dK_left_temp" class="move-span temp"></div><!--{block/470}--></div></div><div id="framej6Zj6L" class=" frame move-span cl frame-1-1"><div class="title frame-title"><span class="titletext">实例赏析</span></div><div id="framej6Zj6L_left" class="column frame-1-1-l"><div id="framej6Zj6L_left_temp" class="move-span temp"></div><!--{block/471}--><!--{block/472}--><!--{block/473}--></div><div id="framej6Zj6L_center" class="column frame-1-1-r"><div id="framej6Zj6L_center_temp" class="move-span temp"></div><!--{block/474}--><!--{block/475}--></div></div></div><div id="framekcuXB1_center" class="column frame-2-1-r"><div id="framekcuXB1_center_temp" class="move-span temp"></div><!--{block/484}--><!--{block/482}--><div id="framep4IJpF" class=" frame move-span cl frame-1"><div id="framep4IJpF_left" class="column frame-1-c"><div id="framep4IJpF_left_temp" class="move-span temp"></div><!--{block/483}--></div></div></div></div></div><!--[/diy]-->
+<!--{if $topic['allowcomment']==1}-->
+	{eval
+		$data = &$topic;
+		$common_url = "portal.php?mod=comment&id=$topicid&idtype=topicid";
+		$form_url = "portal.php?mod=portalcp&ac=comment";
+		$commentlist = portaltopicgetcomment($topicid);	}
+	<!--{template portal/portal_comment}-->
+<!--{/if}-->
+</div>
+<script src="misc.php?mod=diyhelp&action=get&type=topic&diy=$_GET['diy']&topicid=$topicid&r={echo random(4)}" type="text/javascript">
+</script>
+<!--{subtemplate common/footer}-->

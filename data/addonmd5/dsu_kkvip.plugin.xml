@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Addon MD5]]></item>
+	<item id="ID"><![CDATA[dsu_kkvip.plugin]]></item>
+	<item id="RevisionID"><![CDATA[2052]]></item>
+	<item id="SN"><![CDATA[20130416227ovK23G4ZH]]></item>
+	<item id="RevisionDateline"><![CDATA[1351073649]]></item>
+	<item id="Data">
+		<item id="/api.inc.php"><![CDATA[955d069aa791e716ce710c54a72c7e8c]]></item>
+		<item id="/discount.inc.php"><![CDATA[cd61d69cec1c53c924d2303d34ed9c2b]]></item>
+		<item id="/discuz_plugin_dsu_kkvip_SC_GBK.xml"><![CDATA[a955565ad9d4924cc3748230e8ef84e4]]></item>
+		<item id="/discuz_plugin_dsu_kkvip_SC_UTF8.xml"><![CDATA[f8a286990d04b14e92d120b4cd9a0687]]></item>
+		<item id="/discuz_plugin_dsu_kkvip_TC_BIG5.xml"><![CDATA[b403e37dff53053c3e3d6733c3897821]]></item>
+		<item id="/discuz_plugin_dsu_kkvip_TC_UTF8.xml"><![CDATA[1134d125a97e06f2768515ee79070236]]></item>
+		<item id="/extend/vip_data.api.php"><![CDATA[2687a21b1c6f5fc0c174d41a34d3808a]]></item>
+		<item id="/images/bg.png"><![CDATA[c97a520efbb1b227920cb460551eed1d]]></item>
+		<item id="/images/centerbg.png"><![CDATA[26b38af5f19606691d44791af72a2e7e]]></item>
+		<item id="/images/level.swf"><![CDATA[bf14e83672ccafcebafaa9d63f2ba403]]></item>
+		<item id="/images/no_year_vip.jpg"><![CDATA[1df4ba050bb7ac89c215b6fe7e744036]]></item>
+		<item id="/images/novip.jpg"><![CDATA[fc49ac5d2f51c17312cb4d188b973386]]></item>
+		<item id="/images/novip.png"><![CDATA[8ac9aec7364890e137711c9fe564b256]]></item>
+		<item id="/images/rights.png"><![CDATA[ae7cb976f7937cfa84f0de27b68a8352]]></item>
+		<item id="/images/vip.gif"><![CDATA[75b79e879365415c1ddd55ff842bb376]]></item>
+		<item id="/images/vip.png"><![CDATA[0ac3254cbfd8d72d3f8ee43709397e44]]></item>
+		<item id="/images/vip1.gif"><![CDATA[b90c9c32d3a4f5cc2ab9d9da97540e32]]></item>
+		<item id="/images/vip2.gif"><![CDATA[cdc4cd62fa5ee64bc62dea82c314f269]]></item>
+		<item id="/images/vip3.gif"><![CDATA[41568ed80c41173a338df11851360498]]></item>
+		<item id="/images/vip4.gif"><![CDATA[d5e6a5ea99b0aba3b10f94d81510789a]]></item>
+		<item id="/images/vip5.gif"><![CDATA[8b28c649b5a794751d561d818304f7de]]></item>
+		<item id="/images/vip6.gif"><![CDATA[4551e39ac22345c4b19a2ee8b6c6b6cf]]></item>
+		<item id="/images/year_btn.png"><![CDATA[b564155b4299fe54083bc46e450df0e7]]></item>
+		<item id="/images/year_vip.jpg"><![CDATA[ce8aa1c41767689e8fc556f36d2f1401]]></item>
+		<item id="/install.php"><![CDATA[9f440cec417d68fc891076d5774de291]]></item>
+		<item id="/kk_lang.func.php"><![CDATA[8854aea27f87d6815a4bfc2351a6f545]]></item>
+		<item id="/module/give_vip.inc.php"><![CDATA[f81dc80df61370eb4e43085d8c5d59bd]]></item>
+		<item id="/module/mylevel.inc.php"><![CDATA[dc52fc9ed0746cb1f10c8684234abe3a]]></item>
+		<item id="/module/new_vip.inc.php"><![CDATA[ec19001febd4b0c4e9f84a8015c86f13]]></item>
+		<item id="/module/paycenter.inc.php"><![CDATA[bb14908fbca79e0bf9851216448ed3d4]]></item>
+		<item id="/module/vip_top.inc.php"><![CDATA[9413887533ad3b4b4f1bae1114b1cc0b]]></item>
+		<item id="/module/vipcenter.inc.php"><![CDATA[62bd4769747ac4b6ef104e212fe1a09b]]></item>
+		<item id="/module/year.inc.php"><![CDATA[4e1cf2590168c347d4358f089b4f78eb]]></item>
+		<item id="/template/extend_module.css"><![CDATA[5fd56b48f65e4f73053a294b79f11511]]></item>
+		<item id="/template/header.htm"><![CDATA[8c9cc8ffe5908c8d1adb1d20c9c15965]]></item>
+		<item id="/template/mylevel.htm"><![CDATA[71f5a1a7d8a5d0f18c084e25ea9c9152]]></item>
+		<item id="/template/new_vip.htm"><![CDATA[4ce2b0dbcd0e3f8bdad504ce6397ad3c]]></item>
+		<item id="/template/paycenter.htm"><![CDATA[befc87103a8aa854901869f22e967d20]]></item>
+		<item id="/template/paycenter_give.htm"><![CDATA[5533200fecc817b4de808a2e6c2d1cee]]></item>
+		<item id="/template/vip_sidebar.htm"><![CDATA[20ebd6ae874984de8cf0e0155ece7d26]]></item>
+		<item id="/template/vip_top.htm"><![CDATA[14a33409f21e72029a5cf6cb4e4139d5]]></item>
+		<item id="/template/vipcenter.htm"><![CDATA[2a2738406d7841f21b00b9d1cdc9d3af]]></item>
+		<item id="/template/year.htm"><![CDATA[3b04526dcf42bf0c06638a894e9715c8]]></item>
+		<item id="/uninstall.php"><![CDATA[91d4693fd4c13335ad0069ef6a821d9a]]></item>
+		<item id="/user.inc.php"><![CDATA[11e96f65aacfc0d950d9a14cb33366e6]]></item>
+		<item id="/vip.class.php"><![CDATA[2608eaaef45454264a29541f92830422]]></item>
+	</item>
+</root>

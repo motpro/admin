@@ -1,0 +1,21 @@
+{template user/header}
+
+<ul class="breadcrumb">
+	<li><a href="user.php">{lang user_center}</a> <span class="divider">/</span></li>
+    <li>{lang study} <span class="divider">/</span></li>
+    <li><a href="user.php?ac=sub_newsfeed">{lang newsfeed}</a></li>
+</ul>
+
+<div class="container-fluid">
+	{loop $news $n}
+	<blockquote>
+		{avatar( $n['uid'],'small')}
+		<small>{eval echo date('Y/m/d h:i:s' , $n['createddate'])}</small>
+    	<p>{eval echo $n['padtext']}</p>
+    	<small class="text-center">{lang from} <cite title="Source Title">{$n['username']}</cite> 
+    	{if $_G['uid'] === $n['uid']}<a href="user.php?ac=sub_newsfeed&pad_delete={$n['id']}">删除</a>{/if}</small>
+    </blockquote>
+	{/loop}
+</div>
+
+{template user/footer}

@@ -1,0 +1,31 @@
+{template lesson/mobile/header}
+	{if $pages}
+	<ul data-role="listview" data-inset="true" data-divider-theme="d">
+    	<li data-role="list-divider">{$course['fullname']} - 本课目录</li>
+    	{eval $n = 1}
+    		{loop $pages $p}
+    		<li><a href="lesson.php?enter_page={$p['id']}">{$n} . {$p['title']}</a></li>
+    		{eval $n++}
+    		{/loop}
+	</ul>
+	{elseif $content}
+		{if $_G['uid']}
+		<h1>{$content['title']}</h1>
+		<p class="ui-body-d" style="padding:2em;">
+			<a data-role="button" data-mini="true" data-inline="true" data-icon="check" data-theme="b" href="lesson.php?play={$content['id']}" target="blank">播放本视频</a>
+		</p>
+		<div data-role="content">{$content['contents']}</div>
+		{else}
+		<p class="ui-body-d" style="padding:2em;">您需要先登陆才能学习本课程</p>
+		<a href="lesson.php?login=1" data-role="button" data-theme="b">登录</a>
+		<a href="member.php?mod={$_G[setting][regname]}" data-role="button" data-theme="b">注册成为会员</a>
+		{/if}
+	{else}
+	<ul data-role="listview" data-inset="true">
+		<li data-role="list-divider">课程列表</li>
+		{loop $m_course $c}
+    	<li><a href="lesson.php?enter_course={$c['id']}">$c['fullname']</a></li>
+    	{/loop}
+	</ul>
+	{/if}
+{template lesson/mobile/footer}

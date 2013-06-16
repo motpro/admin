@@ -1,0 +1,318 @@
+﻿</div>
+
+<!--{if empty($topic) || ($topic[usefooter])}-->
+<!--{eval $focusid = getfocus_rand($_G[basescript]);}-->
+<!--{if $focusid !== null}-->
+<!--{eval $focus = $_G['cache']['focus']['data'][$focusid];}-->
+
+<div class="focus" id="sitefocus">
+  <div class="bm">
+    <div class="bm_h cl"> <a href="javascript:;" onclick="setcookie('nofocus_$focusid', 1, $_G['cache']['focus']['cookie']*3600);$('sitefocus').style.display='none'" class="y" title="{lang close}">{lang close}</a>
+      <h2><!--{if $_G['cache']['focus']['title']}-->{$_G['cache']['focus']['title']}<!--{else}-->{lang focus_hottopics}<!--{/if}--></h2>
+    </div>
+    <div class="bm_c">
+      <dl class="xld cl bbda">
+        <dt><a href="{$focus['url']}" class="xi2" target="_blank">$focus['subject']</a></dt>
+        <!--{if $focus[image]}-->
+        <dd class="m"><a href="{$focus['url']}" target="_blank"><img src="{$focus['image']}" alt="$focus['subject']" /></a></dd>
+        <!--{/if}-->
+        <dd>$focus['summary']</dd>
+      </dl>
+      <p class="ptn hm"><a href="{$focus['url']}" class="xi2" target="_blank">{lang focus_show} &raquo;</a></p>
+    </div>
+  </div>
+</div>
+<!--{/if}--> 
+
+<!--{ad/footerbanner/wp a_f/1}--><!--{ad/footerbanner/wp a_f/2}--><!--{ad/footerbanner/wp a_f/3}--> 
+<!--{ad/float/a_fl/1}--><!--{ad/float/a_fr/2}--> 
+<!--{ad/couplebanner/a_fl a_cb/1}--><!--{ad/couplebanner/a_fr a_cb/2}--> 
+<!--{ad/cornerbanner/a_cn}--> 
+
+<!--{hook/global_footer}-->
+<div class="ft_wp">
+  <div id="ft" class="wp cl">
+    <div class="ft_info">
+      <ul class="ft_info1">
+        <li>
+        <!--{if !isset($_G['setting']['navlogos'][$mnid])}-->
+        <a href="./" title="$_G['setting']['bbname']">{$_G['style']['boardlogo']}</a><!--{else}-->$_G['setting']['navlogos'][$mnid]<!--{/if}-->
+<!--        
+        <a href="" target="_blank"><img width="260" height="260" src="images/ft_logo.png" /> </a>
+-->        
+        </li>
+      </ul>
+      <ul class="ft_info2">
+        <li><a href="misc.php?mod=faq&action=faq&id=4" target="_blank">联系我们 </a></li>
+        <li> 电话：8888 - 88888888</li>
+        <li> <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=1508085698&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1508085698:45" alt="未来科技客服 1" title="未来科技客服 1"> 1508085698 </a>&nbsp; </li>
+        <li> <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&uin=1508085698&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1508085698:45" alt="未来科技客服 1" title="未来科技客服 1"> 1508085698 </a>&nbsp; </li>
+        <li> 邮箱：veikeicom#gmail.com </li>
+      </ul>
+      <ul class="ft_info3">
+        <li><a href="misc.php?mod=faq&action=faq&id=3" target="_blank"> 产品介绍</a></li>
+        <li><a href="#" target="_blank">产品类别 I </a></li>
+        <li><a href="misc.php?mod=faq&action=faq&id=6" target="_blank">产品类别 II  </a></li>
+        <li><a href="misc.php?mod=faq&action=faq&id=3" target="_blank">产品类别 III  </a></li>
+        <li><a href="misc.php?mod=faq&action=faq&id=2" target="_blank">产品类别 IV  </a></li>
+      </ul>
+      <ul class="ft_info4">
+        <li><a href="misc.php?mod=faq&action=faq&id=1" target="_blank">关于我们</a></li>
+        <li><a href="misc.php?mod=faq&action=faq&id=1" target="_blank">企业文化</a></li>
+        <li><a href="#" target="_blank">联系我们</a></li>
+      </ul>
+    </div>
+    <div class="clear"></div>
+    <div id="flk" class="y">
+      <p> 
+        <!--{loop $_G['setting']['footernavs'] $nav}--><!--{if $nav['available'] && ($nav['type'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1)) ||
+						!$nav['type'] && ($nav['id'] == 'stat' && $_G['group']['allowstatdata'] || $nav['id'] == 'report' && $_G['uid'] || $nav['id'] == 'archiver' || $nav['id'] == 'mobile'))}--><!--{if $nav['id'] == 'mobile' && $_G['setting']['mobile']['allowmobile'] != 1}--><!--{eval continue;}--><!--{/if}-->$nav[code]<span class="pipe">|</span><!--{/if}--><!--{/loop}--> 
+        
+        <!--        <strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename']</a></strong> 
+--> <!--{if $_G['setting']['icp']}-->( <a href="http://www.miitbeian.gov.cn/" target="_blank">$_G['setting']['icp']</a> )<!--{/if}--> 
+        <!--{hook/global_footerlink}--> 
+        <!--{if $_G['setting']['statcode']}-->$_G['setting']['statcode']<!--{/if}--> 
+      </p>
+      <p class="xs0">
+      </p>
+    </div>
+    <div id="frt">
+      <p>
+      <strong><a href="$_G['setting']['siteurl']" target="_blank">$_G['setting']['sitename'] </a></strong>
+		 Powered by  <a href="http://www.discuz.net" target="_blank"> Discuz!</a> <em> $_G['setting']['version']</em>
+            <!--{if !empty($_G['setting']['boardlicensed'])}--> <a href="http://license.comsenz.com/?pid=1&host=$_SERVER[HTTP_HOST]" target="_blank">Licensed</a><!--{/if}-->
+       </p>
+      <p class="xs0">&copy; 2001-2012 <a href="http://www.comsenz.com" target="_blank"> Comsenz Inc.</a></p>
+      <p class="xs0"><a href="http://www.veikei.com" target="_blank"></a></p>
+    </div>
+    <!--{eval updatesession();}--> 
+    <!--{if $_G['uid'] && $_G['group']['allowinvisible']}--> 
+    <script type="text/javascript">
+		var invisiblestatus = '<!--{if $_G['session']['invisible']}-->{lang login_invisible_mode}<!--{else}-->{lang login_normal_mode}<!--{/if}-->';
+		var loginstatusobj = $('loginstatusid');
+		if(loginstatusobj != undefined && loginstatusobj != null) loginstatusobj.innerHTML = invisiblestatus;
+		<!--{/if}-->
+		</script> 
+  </div>
+</div>
+<!--{if $upgradecredit !== false}-->
+<div id="g_upmine_menu" class="tip tip_3" style="display:none;">
+  <div class="tip_c"> {lang credits} $_G[member][credits], {lang thread_groupupgrade} $upgradecredit {lang credits} </div>
+  <div class="tip_horn"></div>
+</div>
+<!--{/if}--> 
+<!--{/if}--> 
+
+<!--{if !$_G['setting']['bbclosed']}--> 
+<!--{if $_G[uid] && !isset($_G['cookie']['checkpm'])}--> 
+<script type="text/javascript" src="home.php?mod=spacecp&ac=pm&op=checknewpm&rand=$_G[timestamp]"></script> 
+<!--{/if}--> 
+
+<!--{if !isset($_G['cookie']['sendmail'])}--> 
+<script type="text/javascript" src="home.php?mod=misc&ac=sendmail&rand=$_G[timestamp]"></script> 
+<!--{/if}--> 
+<!--{/if}--> 
+
+<!--{if $_GET['diy'] == 'yes'}--> 
+<!--{if (CURMODULE == 'topic' || $_G['group']['allowdiy']) && (empty($do) || $do != 'index') && !empty($_G['style']['tplfile'])}--> 
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script> 
+<script type="text/javascript" src="{$_G[setting][jspath]}portal_diy.js?{VERHASH}"></script> 
+<!--{/if}--> 
+<!--{if $space['self'] && CURMODULE == 'space' && $do == 'index'}--> 
+<script type="text/javascript" src="{$_G[setting][jspath]}common_diy.js?{VERHASH}"></script> 
+<script type="text/javascript" src="{$_G[setting][jspath]}space_diy.js?{VERHASH}"></script> 
+<!--{/if}--> 
+<!--{/if}--> 
+<!--{if $_G['member']['newprompt'] && (empty($_G['cookie']['promptstate_'.$_G[uid]]) || $_G['cookie']['promptstate_'.$_G[uid]] != $_G['member']['newprompt']) && $_G['gp_do'] != 'notice'}--> 
+<script type="text/javascript">noticeTitle();</script> 
+<!--{/if}--> 
+
+<!--{eval userappprompt();}--> 
+<span id="scrolltop" onclick="window.scrollTo('0','0')">{lang scrolltop}</span> 
+<script type="text/javascript">_attachEvent(window, 'scroll', function(){showTopLink();});</script> 
+<!--{eval output();}--> 
+
+
+
+<!-- 浮动在线客服代码 start -->
+<style type="text/css">
+.service_online {z-index:99999; }
+#vk_kefu { position:relative;  z-index:9999; }
+.main_head { BACKGROUND: url($_G['style']['styleimgdir']/img3-5_2.png) no-repeat; }
+.info { font-size:14px; padding:5px; background: url($_G['style']['styleimgdir']/img3-5_3.png) repeat-y; PADDING-TOP: 5px }
+.info span { }
+.down_kefu { WIDTH: 200px; BACKGROUND: url($_G['style']['styleimgdir']/img3-5_4.png) no-repeat; HEIGHT:20px /* 8px */ ; }
+.Obtn { MARGIN-TOP: 104px; WIDTH: 50px; BACKGROUND: url($_G['style']['styleimgdir']/img3-5_1.png) no-repeat; FLOAT: left; HEIGHT: 180px; MARGIN-LEFT: -5px }
+.qqtable SPAN { PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px; COLOR: #f90; FONT-SIZE: 13px; FONT-WEIGHT: bold; PADDING-TOP: 5px }
+.qqtable A { TEXT-DECORATION: none; COLOR: #0ad; font-size:14px; font-weight:bold; }
+.qqtable A:hover { TEXT-DECORATION: none;  COLOR: #f60; }
+.qun { BORDER-BOTTOM: #ffd2bf 1px solid; BORDER-LEFT: #ffd2bf 1px solid; PADDING-BOTTOM: 5px; LINE-HEIGHT: 20px; BACKGROUND-COLOR: #ffffff; PADDING-LEFT: 0px; WIDTH: 100px; PADDING-RIGHT: 0px; FONT-SIZE: 12px; BORDER-TOP: #ffd2bf 1px solid; BORDER-RIGHT: #ffd2bf 1px solid; PADDING-TOP: 5px }
+.qun SPAN { COLOR: #ff6600; FONT-SIZE: 13px; FONT-WEIGHT: bold }
+</style>
+<div class="service_online">
+  <DIV id="vk_kefu" onmouseover=toBig() onmouseout=toSmall()>
+    <TABLE style="FLOAT: left" border="0" cellSpacing="0" cellPadding="0" width="200">
+        <TBODY>
+      
+      <TR>
+        <TD class="main_head" height="39" vAlign="top">&nbsp;</TD>
+      </TR>
+      <TR>
+        <TD class="info" vAlign="top"><TABLE class="qqtable" border="0" cellSpacing="0" cellPadding="0" width="185"  align="left">
+            <TBODY>
+              <TR>
+                <TD height="15"></TD>
+              </TR>
+              
+              <TR>
+                <TD  align="left"> <strong>【电话】</strong><span>(此处填写电话号码)</span> </TD>
+              </TR>
+              <TR>
+                <TD height="25"></TD>
+              </TR>
+              
+              <!-- QQ客服，直接把下列两处QQ号码修改成您的即可 ，或者到 http://wp.qq.com/index.html 选择自己喜欢的风格，然后替换掉下面的链接代码 -->
+              <TR>
+                <TD  align="left"> <strong>【QQ】</strong> <a target="_blank" href="http://wpa.qq.com/msgrd?v=1&amp;uin=1508085698&amp;site=qq&amp;menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:1508085698:45" alt="未来科技" title="未来科技"> 1508085698</a>
+ </TD>
+              </TR>
+              <TR>
+                <TD height="15"></TD>
+              </TR>
+              
+
+
+              
+              <!-- 旺旺客服，请到 http://wangwang.taobao.com/2010_fp/world.php 申请客服代码，把下列链接改成自己的即可 -->
+              <TR>
+                <TD  align="left"> <strong>【旺旺】</strong>
+                <a target="_blank" href="http://amos.im.alisoft.com/msg.aw?v=2&uid=%E7%8E%89%E6%B0%B4%E6%B5%81%E9%A3%8E&site=cntaobao&s=1&charset=utf-8" ><img border="0" src="http://amos.im.alisoft.com/online.aw?v=2&uid=%E7%8E%89%E6%B0%B4%E6%B5%81%E9%A3%8E&site=cntaobao&s=1&charset=utf-8" alt="点击这里给我发消息" /></a>
+              </TD>
+              </TR>
+              <TR>
+                <TD height="15"></TD>
+              </TR>
+
+              
+              <!--MSN 客服代码，请到 http://settings.messenger.live.com/applications/WebSettings.aspx 申请，然后把下列代码替换成自己的即可-->
+              <TR>
+                <TD  align="left"> <strong> 【MSN】</strong> <br/>
+                <a target="_blank" href="http://settings.messenger.live.com/Conversation/IMMe.aspx?invitee=f966a66a831f022f@apps.messenger.live.com&mkt=en-US"><img style="border-style: none;" src="http://messenger.services.live.com/users/f966a66a831f022f@apps.messenger.live.com/presenceimage?mkt=en-US" width="16" height="16" /> veikei#live.com  </a>
+                 </TD>
+              </TR>
+              <TR>
+                <TD height="15"></TD>
+              </TR>
+                            
+
+              
+              <TR>
+                <TD  align="left"> <strong>【邮箱】 </strong><br/><span> veikeicom#gmail.com </span><br/> (请把#改成@) </TD>
+              </TR>
+              <TR>
+              <TR>
+                <TD height="15"></TD>
+              </TR>
+              
+              
+              <TR>
+                <TD  align="left"> <strong>【地址】</strong> （请填写公司地址）</TD>
+              </TR>
+              <TR>
+                <TD height="25"></TD>
+              </TR>
+              
+              
+              <TR>
+                <TD  align="left"> <a href="http://www.veikei.com" target="_blank">【未来科技】</a><br/>
+                <a href="http://www.veikei.com" target="_blank">【www.veikei.com】</a></TD>
+              </TR>
+              <TR>
+                <TD height="25"></TD>
+              </TR>
+ 
+             
+            <TR>
+              <TD align="middle">&nbsp;</TD>
+            </TR>
+              </TBODY>
+          </TABLE></TD>
+      </TR>
+      <TR>
+        <TD class="down_kefu" vAlign="top"></TD>
+      </TR>
+        </TBODY>
+    </TABLE>
+    <DIV class="Obtn"></DIV>
+  </DIV>
+  <SCRIPT language=javascript>
+		客服=function (id,_top,_left){
+		var me=id.charAt?document.getElementById(id):id, d1=document.body, d2=document.documentElement;
+		d1.style.height=d2.style.height='100%';me.style.top=_top?_top+'px':0;me.style.left=_left+"px";//[(_left>0?'left':'left')]=_left?Math.abs(_left)+'px':0;
+		me.style.position='absolute';
+		setInterval(function (){me.style.top=parseInt(me.style.top)+(Math.max(d1.scrollTop,d2.scrollTop)+_top-parseInt(me.style.top))*0.1+'px';},10+parseInt(Math.random()*20));
+		return arguments.callee;
+		};
+		window.onload=function (){
+		客服
+		('vk_kefu',100,-200)
+		}
+	</SCRIPT> 
+  <SCRIPT language=javascript> 
+			lastScrollY=0; 
+			
+			var InterTime = 1;
+			var maxWidth=-1;
+			var minWidth=-200;
+			var numInter = 8;
+			
+			var BigInter ;
+			var SmallInter ;
+			
+			var o =  document.getElementById("vk_kefu");
+				var i = parseInt(o.style.left);
+				function Big()
+				{
+					if(parseInt(o.style.left)<maxWidth)
+					{
+						i = parseInt(o.style.left);
+						i += numInter;	
+						o.style.left=i+"px";	
+						if(i==maxWidth)
+							clearInterval(BigInter);
+					}
+				}
+				function toBig()
+				{
+					clearInterval(SmallInter);
+					clearInterval(BigInter);
+						BigInter = setInterval(Big,InterTime);
+				}
+				function Small()
+				{
+					if(parseInt(o.style.left)>minWidth)
+					{
+						i = parseInt(o.style.left);
+						i -= numInter;
+						o.style.left=i+"px";
+						
+						if(i==minWidth)
+							clearInterval(SmallInter);
+					}
+				}
+				function toSmall()
+				{
+					clearInterval(SmallInter);
+					clearInterval(BigInter);
+					SmallInter = setInterval(Small,InterTime);
+					
+				}
+				
+</SCRIPT> 
+</div>
+
+<!-- 浮动在线客服代码 end -->
+
+
+
+</body></html>

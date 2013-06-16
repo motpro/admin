@@ -1,0 +1,52 @@
+{template common/header}
+<div class="container-fluid mot-block-a">
+<div class="row-fluid">
+	<div class="span2">
+		<a href="konwledge.php" title="36lean.com问答社区">
+			<img class="img-polaroid" src="static/mot/knowledge.jpeg" />
+		</a>
+		
+	</div>
+
+	<div class="span10">
+		<blockquote>
+			<strong>问答社区</strong>
+    		<small>知识就是力量 knowledge is power</small>
+    	</blockquote>
+
+    	<form class="form-search pull-right">
+    		<div class="input-append">
+    			<input type="text" class="span8 search-query"><button type="submit" class="btn">找我的答案</button>
+    		</div>
+    	</form>
+
+    	<ul class="nav nav-pills">
+    		<li class="{if $mod === 'home'}active{/if}">
+    			<a href="knowledge.php">首页</a>
+    		</li>
+    		
+    		<li class="{if $mod === 'question'}active{/if}">
+    			<a href="knowledge.php?mod=question">我要提问</a>
+    		</li>
+
+    		<li class="{if $mod === 'answer'}active{/if}">
+    			<a href="knowledge.php?mod=answer">我要回答</a>
+    		</li>
+
+    		<li class="{if $mod === 'hottopic'}active{/if}">
+    			<a href="knowledge.php?mod=hottopic">热门话题</a>
+    		</li>
+
+    		<li class="{if $mod === 'repository'}active{/if}">
+    			<a href="knowledge.php?mod=repository">资料库</a>
+    		</li>
+    	</ul>
+
+	</div>
+</div>
+</div>
+<hr />
+<div class="container-fluid margin-top">
+<div class="row-fluid">
+
+  <div class="span12">

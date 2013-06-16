@@ -1,0 +1,17 @@
+<!--{block return}-->
+<script type="text/javascript">
+function dl_syc(media){
+	ajaxget('plugin.php?id=denglu:ajax&inajax=1&module=blog&media='+media,'iconshow');
+}
+</script>
+
+<div style="margin-top:10px;">
+	<p style="float:left;">{lang denglu:title_syn_tip}</p>
+	<div class="icon" id="iconshow" style="float:left; margin-left:5px;">
+	<!--{$image}-->
+	</div>
+	<p style="margin-left:10px; float:left; color:#707070;">{lang denglu:click_make_syn}</p>
+	<p style="margin-left:20px; float:left;"><a href="home.php?mod=spacecp&ac=plugin&id=denglu:bind" style="color:#336699;">{lang denglu:do_bind_more}</a></p>
+</div>
+<div style="height:0;font-size:0px;clear:both;"></div>
+<!--{/block}-->

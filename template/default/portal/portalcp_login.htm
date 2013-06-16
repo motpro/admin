@@ -1,0 +1,78 @@
+<!--{template common/header}-->
+<h1>portalcp_login</h1>
+<style type="text/css">
+.parentcat {}
+.cat { margin-left: 20px; }
+.lastchildcat, .childcat { margin-left: 40px; }
+</style>
+
+<div class="content row-fluid">
+
+<div>
+
+<!--{if $op == 'push'}-->
+	<h4>
+	<em>{lang article_push}</em>
+	<!--{if $_G[inajax]}--><span><a href="javascript:;" onclick="hideWindow('$_GET[handlekey]');" class="flbc" title="{lang close}">{lang close}</a></span><!--{/if}-->
+	</h4>
+
+	<div>
+		<p>{lang category_push_select}</p>
+		<table class="mtw dt">
+			$categorytree
+		</table>
+	</div>
+</div>
+<!--{else}-->
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em>
+		{lang login}
+	</div>
+</div>
+
+<div id="ct">
+	
+	<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+
+	<div class="span10">
+		<table class="table">
+			<tr><td>
+			<h3>{lang panel_login}</h3>
+			<div>{lang panel_notice_login}</div>
+			<form method="post" autocomplete="off" action="portal.php?mod=portalcp" class="form-inline">
+				<input type="hidden" name="formhash" value="{FORMHASH}">
+				<input type="hidden" name="submit" value="yes">
+				<input type="hidden" name="login_panel" value="yes">
+				<table cellspacing="0" cellpadding="5">
+					<tr>
+						<th width="60">{lang panel_login_username}:</th><td>{$_G[member][username]}</td>
+					</tr>
+					<tr>
+						<th>{lang panel_login_password}:</th><td><input id="cppwd" type="password" name="cppwd" class="px" /></td>
+					</tr>
+					<tr>
+						<th></th><td>
+						<button type="submit" class="btn" name="submit" id="submit" value="true">
+							<strong>{lang submit}</strong>
+						</button></td>
+					</tr>
+				</table>
+			</form>
+		</td></tr></table>
+	</div>
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+
+</div>
+<!--{/if}-->
+
+</div>
+<!--{template common/footer}-->
+

@@ -1,0 +1,165 @@
+<!--{subtemplate common/header}-->
+<!---->
+<header id="hero" align="center">
+
+  {if $_G['uid'] > 0}
+  <!--{subtemplate portal/index_newsfeed}-->
+  {/if}
+
+  <style id="diy_style" type="text/css">#portal_block_6 .dxb_bc a {  color:#369 !important;}#portal_block_7 .dxb_bc {  font-size:14px !important;}#portal_block_15 .dxb_bc {  font-size:14px !important;}#portal_block_17 .dxb_bc {  font-size:14px !important;}#portal_block_18 .dxb_bc {  font-size:14px !important;}#portal_block_19 .dxb_bc {  font-size:14px !important;}#portal_block_29 {  border:#ccc 1px solid !important;}#portal_block_29 .dxb_bc {  margin:5px 5px 5px 15px !important;}#portal_block_30 {  border:#ccc 1px solid !important;}#portal_block_30 .dxb_bc {  margin:10px !important;}#portal_block_14 .dxb_bc a {  font-size:14px !important;}#portal_block_35 .dxb_bc a {  color:#369 !important;}#portal_block_36 {  border:#cccccc 1px solid !important;}#portal_block_36 .dxb_bc {  margin:5px !important;}#portal_block_37 .dxb_bc {  font-size:14px !important;}#portal_block_38 .dxb_bc {  font-size:14px !important;}#portal_block_47 .dxb_bc a {  color:#369 !important;}#portal_block_50 .dxb_bc a {  color:#369 !important;}#portal_block_51 {  border:#cccccc 1px solid !important;}#portal_block_51 .dxb_bc {  margin:0px 10px 10px !important;}#portal_block_54 .dxb_bc {  font-size:14px !important;}#portal_block_53 .dxb_bc {  font-size:14px !important;}#frameFU4oE4 {  background-color:#f5f5f5 !important;margin-bottom:0px !important;border-top:#cccccc 1px solid !important;}#framev5H4Ww {  margin:10px !important;border:#cccccc 1px solid !important;}</style>
+
+         <div>
+            <div id="myCarousel" class="carousel slide">
+                <ol class="carousel-indicators">
+                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="item active">
+                    <img src="static/mot/image/bootstrap-mdo-sfmoma-01.jpg" width="100%" alt="">
+                    <div class="carousel-caption">
+                      <h4>六西格玛</h4>
+                      <p>
+                        六西格玛（Six Sigma）是在20世纪90年代中期开始被GE从一种全面质量管理方法演变成为一个高度有效的企业流程设计、改善和优化的技术，并提供了一系列同等地适用于设计、生产和服务的新产品开发工具。继而与GE的全球化、服务化等战略齐头并进，成为全世界上追求管理卓越性的企业最为重要的战略举措。六西格玛逐步发展成为以顾客为主体来确定和产品开发设计的标尺，追求持续进步的一种管理哲学。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <img src="static/mot/image/bootstrap-mdo-sfmoma-02.jpg" width="100%" alt="">
+                    <div class="carousel-caption">
+                      <h4>精益生产</h4>
+                      <p>精益生产是通过系统结构、人员组织、运行方式和市场供求等方面的变革，使生产系统能很快适应用户需求不断变化，并能使生产过程中一切无用、多余的东西被精简，最终达到包括市场供销在内的生产的各方面最好结果的一种生产管理方式。与传统的大生产方式不同，其特色是“多品种”，“小批量”。
+                      </p>
+                    </div>
+                  </div>
+                  <div class="item">
+                    <img src="static/mot/image/bootstrap-mdo-sfmoma-03.jpg" width="100%" alt="">
+                    <div class="carousel-caption">
+                      <h4>改善（Kaizen）</h4>
+                      <p>
+                        取自日本语，KAI表示变化之意，ZEN表示良好之意，此词的通俗含义为对公司的所有领域进行不断地改进，不仅仅是质量。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <a class="left carousel-control" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+                <a class="right carousel-control" href="#myCarousel" data-slide="next">&rsaquo;</a>
+            </div>
+          </div>
+</header>
+
+<!--  上部幻灯 普通版  id="diy_top" -->
+<div class="vk_index">
+      <!--[diy=diy_top]--> <div id="diy_top" class="area"></div><!--[/diy]--> 
+</div>
+
+
+
+<!--  一行滚动新闻  -->
+<div>
+      <!--[diy=diy_col_1_new]--> <div id="diy_col_1_new" class=""></div><!--[/diy]--> 
+</div>
+
+<!--中间课程以及课程搜索部分-->
+
+<div class="row row-fluid container">
+
+<table class="table table-bordered">
+  <tr>
+  <td class="span9">
+    <div><!--{subtemplate portal/index_category}--></div>
+    <hr />
+    <div><!--{subtemplate portal/index_latest}--></div>
+  </td>
+
+  <td class="span3">
+    <!--{subtemplate portal/index_right}-->
+  </td>
+  </tr>
+</table>
+
+</div>
+
+<!--中间课程以及课程搜索部分-->
+
+<!-- 4列盒子模式 -->
+<!-- 纯图片样式 -->
+<div class="wp col_4_box vk_index pd_top_15 ">
+    <div class="col_4_1-1-1_pic vk_border_1">
+        <div class="vk_diy_pd_none">
+          <!--[diy=diy_col_4_box_1_left_1]--> <div id="diy_col_4_box_1_left_1" class="area"></div><!--[/diy]--> 
+          </div>
+    </div>
+        
+    <div class="col_4_1-1-1_pic vk_border_1">
+        <div class="vk_diy_pd_none">
+          <!--[diy=diy_col_4_box_1_mid_1]--> <div id="diy_col_4_box_1_mid_1" class="area"></div><!--[/diy]--> 
+          </div>
+    </div>
+        
+    <div class="col_4_1-1-1_pic vk_border_1">
+        <div class="vk_diy_pd_none">
+          <!--[diy=diy_col_4_box_1_mid_2]--> <div id="diy_col_4_box_1_mid_2" class="area"></div><!--[/diy]--> 
+          </div>
+    </div>
+
+    <div class="col_4_1-1-1_pic vk_border_1 m_r_0 right ">
+        <div class="vk_diy_pd_none">
+        <!--[diy=diy_col_4_box_1_right_1]--> <div id="diy_col_4_box_1_right_1" class="area"></div><!--[/diy]-->
+          </div>
+    </div>
+    
+</div>
+
+
+
+
+
+<!-- 3列盒子模式 -->
+<div class="">
+<div class="content">  
+  <!--[diy=diy_ad_1]--> <div id="diy_ad_1" class="area"></div><!--[/diy]--> 
+</div>
+
+<div class="content">  
+  <!--[diy=diy_ad_2]--> <div id="diy_ad_2" class="area"></div><!--[/diy]--> 
+</div>
+
+ 
+
+
+
+
+
+<div class="vk_index">
+      <!--[diy=diy_top]--> <div id="diy_top" class="area"></div><!--[/diy]--> 
+</div>
+
+
+<div class="row row-fluid container"><!--{subtemplate portal/index_subcontent2}--></div>
+
+
+<div class="content" align="center">
+  <!--[diy=diy_bottom]--> 
+    <h1><small>目前已有超过1000家不同行业来自全球的客户，正在学习我们的精益课程...</small></h1>
+    <img src="static/mot/image/143144execezxy3xouimeu.jpg" />
+  <!--[/diy]--> 
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--{subtemplate common/footer}-->

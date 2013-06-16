@@ -1,0 +1,42 @@
+<!--{template common/header}-->
+
+<br /><br /><br /><br />
+<div id="pt">
+	<div class="z">
+		<a href="./" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a> <em>&rsaquo;</em>
+		<!--{if $_G['setting']['portalstatus'] }--><a href="portal.php">{lang portal}</a> <em>&rsaquo;</em><!--{/if}-->
+		<a href="portal.php?mod=portalcp"><!--{if $_G['setting']['portalstatus'] }-->{lang portal_manage}<!--{else}-->{lang portal_block_manage}<!--{/if}--></a> <em>&rsaquo;</em> <a href="portal.php?mod=lesson&ac=lesson">课程</a> <em>&rsaquo;</em>
+		 添加分类
+	</div>
+</div>
+
+
+<div id="ct" class="content row-fluid">
+
+	<div class="span2">
+		<!--{subtemplate portal/portalcp_nav}-->
+	</div>
+
+
+	<div class="span10">
+			<form class="form-inline" name="__add_new__category" action="" method="post">
+			<table class="table table-bordered">
+				<tr><th></th> <th><a class="xi2" href="portal.php?mod=lesson&ac=edit_category">编辑分类</a> </th></tr>
+				<tr><td>分类名称</td> <td><input type="text" name="category" /></td></tr>
+				<tr><th></th><th><input type="submit" name="add_category_name" value="添加" /></th></tr>
+				<tr><td>已有分类</td><td></td></tr>
+				<tr><th>分类</th> <th>操作</th></tr>
+				{loop $c $one}
+				<tr><td> [ {$one['category']} ]</td> <td><a href="portal.php?mod=lesson&ac=delete_category&id={$one['id']}">删除</a></td></tr>
+				{/loop}
+			</table>
+			</form>
+		<script type="text/javascript">
+			$("cppwd").focus();
+		</script>
+	</div>
+
+</div>
+
+<!--{template common/footer}-->
+

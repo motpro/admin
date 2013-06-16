@@ -1,0 +1,1 @@
+<?php return array('playername'=>'kaizenyun','fpurl'=>'http://www.kicn.cn/jwplayer/player.swf','width'=>'840','height'=>'480','mobileurl'=>'http://oss.aliyuncs.com/mobileyun/','videourl'=>'http://oss.aliyuncs.com/websiteyun/','controlbar'=>'bottom','subtitle'=>'http://oss.aliyuncs.com/websiteyun/','stretch'=>'uniform','dock'=>' true',);

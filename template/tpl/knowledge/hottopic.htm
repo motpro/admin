@@ -1,0 +1,14 @@
+<!--{template knowledge/header}-->
+
+<div class="page-header">
+    <h1>热门话题 <small>Hot topic</small></h1>
+</div>
+
+{loop $topic $t}<a href="knowledge.php?type={$t['id']}">
+	<span class="label">{$t['topic_words']}</span>
+	</a>
+{/loop}
+
+
+
+<!--{template knowledge/footer}-->

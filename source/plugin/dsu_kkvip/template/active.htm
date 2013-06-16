@@ -1,0 +1,48 @@
+{template dsu_kkvip:header}
+
+<div class="span9">
+	
+	<table class="table">
+	<tr><td><h3>购买会员 {if $vip->is_vip()}<font color="red">您已经是会员了，您可以续费</font>{/if}</h3>
+	</td></tr>
+
+	<tr><td>
+			{if $vip->is_vip()}<p><strong>选择续费类型</strong></p>{else}
+								<p><strong>选择开通类型</strong></p>
+			{/if}
+    		<ul>
+				<div class="page" id="page-plans" data-page-name="付费方案">
+					<ul class="plan-list">
+						{loop $service $sv}
+						<li class="air-1" data="{$sv['month']}">
+							<span class="price-wrap">{$sv['service']}</span>
+							<span class="desc"><b class="yen">¥</b><em class="price">{$sv['cost']}</em>，{$sv['info']}</span>
+							<span class="selected-icon"></span>
+						</li>
+						{/loop}
+					</ul>
+				</div>
+    		</ul>
+
+			<div>
+				<form name="renew" action="vip.php?action=paycenter" method="post">
+					<input type="hidden" name="formhash" value="{FORMHASH}" />
+					<input type="hidden" name="discount_code" onblur="ajaxget('vip.php?action=paycenter&getmoney=yes&discount_code='+this.value, 'discount_money');" class="px"/>
+
+					<input id="month" type="hidden" name="month" onblur="if(isNaN(this.value)||this.value<0){this.value=12;}" class="px" value="1"/>
+
+					<p><button class="btn" value="true" id="submit_btn" name="submit_btn" type="submit" onclick="if(!confirm('{lang dsu_kkvip:cost_js}')){return false;}"><span>{if !$vip->is_vip()}开通会员{else}{lang dsu_kkvip:vip_pay2}{/if}</span></button>
+
+					<a id="various3" class="btn" href="vip.php?action=offline">我要线下支付</a>
+					</p>
+				</form>
+			</div>
+
+		</td></tr>
+	</table>
+</div>
+
+
+<div class="span3">{template dsu_kkvip:sidebar}</div>
+{template dsu_kkvip:footer}
+{template common/footer}

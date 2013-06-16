@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<link rel="stylesheet" href="template/default/common/common.css" type="text/css" media="all" />
+
+<form action="admin.php?action=client&operation=receipt" method="post">
+	<div class="xi1"> [ 筛选] 
+		<select name="receipt_status" onchange="javascript:document.forms[0].submit();">
+		<option value={ALL} {eval echo $status==ALL?'selected=selected':''}>全部</option>
+		<option value={ALREADY} {eval echo $status==ALREADY?'selected=selected':''}>已开发票</option>
+		<option value={NOTRECEIPT} {eval echo $status==NOTRECEIPT?'selected=selected':''}>未开发票</option>
+		<option value={WAITRECEIPT} {eval echo $status==WAITRECEIPT?'selected=selected':''}>等待开票</option>
+	</select>
+
+		搜索范围:名字/订单号/电话/公司<input type="text" name="condition" />
+		<input type="submit" name="search_receipt" value="搜索" />
+
+			 [ <a href="admin.php?action=client&operation=receipt&new=1">添加发票</a> ] 
+	</div>
+</form>
+
+	<?php showtableheader('' , 'nobottom' , 'width="100%"')?>
+	<?php showtablerow('' , array('class="alt"','class="alt"','class="alt"','class="alt"','class="alt"','class="alt"','class="alt"') , array('发票订单','发票类型','用户类型','姓名/用户名','发票抬头','发票金额','开票时间','状态' , '操作'))?>
+	{loop $all_receipt $rec}
+	<tr>
+
+		<td class="alt">{$rec['trade_no']}</td> 
+		<td class="alt">{eval echo $rec['rec_type'] ? '增值税专用发票' : '普通发票'}</td> 
+		<td class="alt">{eval echo $rec['usertype']==0?'个人用户':'企业用户'}</td> 
+		<td class="alt">{$rec['realname']}</td>
+		<td class="alt">{$rec['corp_name']}</td>
+		<td class="alt">{$rec['rec_fee']}</td>
+		<td class="alt">{$rec['rec_date']}</td>
+		<td class="alt">{$_receipt[$rec['status']]}</td>
+
+		<td class="alt"><a href="admin.php?action=client&operation=receipt&edit={$rec['id']}">编辑</a>
+			<a>打印合同</a> <a href="admin.php?action=client&operation=receipt&setlive={$rec['id']}">开发票</a></td>
+
+	</tr>
+	{/loop}
+	<?php showtableheader();?>
+
+	[ <a href="./admin.php?action=client&operation=receipt&page=1">首页</a> ] 
+	{if ($page > 0)}
+	[ <a href="./admin.php?action=client&operation=receipt&page={eval echo($page)}">上一页</a> ] 
+	{/if}
+
+	[ <a href="./admin.php?action=client&operation=receipt&page={eval echo($page+1)}">{eval echo($page+1)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=receipt&page={eval echo($page+2)}">{eval echo($page+2)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=receipt&page={eval echo($page+3)}">{eval echo($page+3)}</a> ] 
+	[ <a href="./admin.php?action=client&operation=receipt&page={eval echo($page+2)}">下一页</a> ] 
+
+</div>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/megadrop/css/megadrop.css" />
+    <link href="static/flatui/css/docs.css" rel="stylesheet">
+    <link href="static/flatui/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="static/flatui/css/motstrap.css" rel="stylesheet">
+    <!-- Loading Bootstrap -->
+    <link href="static/flatui/css/bootstrap.css" rel="stylesheet">
+    <!-- Loading Flat UI -->
+    <link href="static/flatui/css/flat-ui.css" rel="stylesheet">
+    <!-- Loading Docs css -->
+    <script type="text/javascript" src="static/lesson/jquery-1.7.2.min.js"></script>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="static/flatui/js/html5shiv.js"></script>
+    <![endif]-->
+    <title>
+      <!--{if isset( {$content['title']})}{$content['title']} - {/if}-->
+      <!--{if isset($lesson['fullname'])} {$lesson['fullname']} - {/if}-->
+      改善在线学院 - www.kicn.cn
+    </title>
+</head>
+
+<body>
+
+<div class="row navbar-fixed-top" align="center">
+<ul class="nav nav_mot clearfix animated ">
+  <li class="new brand"><a href="index.php">改善在线学院</a></li>
+  <li>
+    <a href="lesson.php">全部课程</a>
+  </li>
+
+  {if $_G['uid']}
+  <li class="pull-right"><a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">注销</a></li>
+  <li class="pull-right"><a href="home.php?mod=space&uid=1&do=profile"><span class="fui-man-16"></span> {$_G['username']}在线</a></li>
+
+  {/if}
+
+  {if !$_G['uid']}
+    <li class="pull-right">
+      <a href="member.php?mod={$_G[setting][regname]}">注册</a>
+    </li>
+
+    <li class="pull-right">
+      <a href="lesson.php?sign=signin">登录</a>
+    </li>
+  {/if}
+</ul>
+</div>
+
+<header class="jumbotron subhead" id="overview">
+  <div class="mot-container-center">
+      <h1>改善在线学院</h1>
+      <p class="lead">提供最新的管理课程</p>
+  </div>
+</header>

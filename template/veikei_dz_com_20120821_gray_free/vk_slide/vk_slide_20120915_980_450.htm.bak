@@ -1,0 +1,122 @@
+<!--
+Slide Module
+Num: vk_slide_20120915_980_450
+
+模板文件夹： ./template/当前模板目录/vk_slide/vk_slide_20120915_980_450.htm
+图片/CSS/JS 文件夹：./template/当前模板目录/图片目录(一般为images)/vk_slide_20120915_980_450/
+
+
+【未来科技】
+【www.veikei.com】
+
+Created Time: 20120915
+Modified Time: 20120922
+Author: Veiki
+-->
+
+<!--上部 980 x 350px 幻灯 start-->
+<link rel="stylesheet" type="text/css" href="{$_G['style']['styleimgdir']}/vk_slide_20120915_980_450/vk_slide.css">
+<div id="vk_slide">
+<div class="ad">
+  <ul class="ad" id="ad">
+    <li class="ad1">
+      <div class="i"><a href="http://addon.discuz.com/?@2367.developer" target="_blank"> </a> </div>
+    </li>
+    <li class="ad2" style="display:none">
+      <div class="i"><a href="http://addon.discuz.com/?@2367.developer" target="_blank"> </a> </div>
+    </li>
+    <li class="ad3" style="display:none">
+      <div class="i"><a href="http://addon.discuz.com/?@2367.developer" target="_blank"> </a> </div>
+    </li>
+  </ul>
+  <div class="controler" id="controler"> <a href="javascript:;"></a> <a href="javascript:;"></a> <a href="javascript:;"></a> </div>
+</div>
+</div>
+
+<script type="text/javascript" src="{$_G['style']['styleimgdir']}/vk_slide_20120915_980_450/jquery00.js"></script> 
+<script type="text/javascript">
+jQuery(document).ready(function() {
+	var time = 0,
+		sliderTimer = null,
+		picNum = 0;
+		time = 1000;
+
+	slider = {
+		init: function(){
+			slider.slideBind();
+			jQuery('#ad li').hover(function(){
+				clearTimeout(sliderTimer);
+				//clearInterval(sliderTimer);
+			},function(){
+				clearTimeout(sliderTimer);
+				sliderTimer = setTimeout('slider.slideBind()', 5000);
+				//sliderTimer = setInterval('slider.slideBind()', 5000);
+			});
+			jQuery('#controler a').click(function(){
+				clearTimeout(sliderTimer);
+				//clearInterval(sliderTimer);
+				var idx = jQuery(this).index();
+				picNum = idx;
+				slider.slide(idx);
+				//picNum ++;
+			});
+		},
+		slide: function(num){
+			jQuery('#controler a').removeClass('active');
+			jQuery('#controler a').eq(num).addClass('active');
+			jQuery('#ad li').hide();
+			jQuery('#ad li').eq(num).fadeIn('1000');
+			picNum ++;
+		},
+		slideBind: function(){
+			if (picNum < 3){
+				//slider.slide(picNum);
+				//picNum ++;
+			}else{
+				picNum = 0;
+				//slider.slide(picNum);
+				//picNum ++;
+			}
+			clearTimeout(sliderTimer);
+			slider.slide(picNum);
+			sliderTimer = setTimeout('slider.slideBind()', 5000);
+			//sliderTimer = setInterval('slider.slideBind()', 5000);
+		}
+	};
+	slider.init();
+	
+	function ChangeDownloadSubver3(id) {
+		var subver = 0;
+		var url = location.href;
+		var paraString1 = url.substring(url.indexOf("?") + 1, url.length);
+		var patt1 = new RegExp("^bd([0-9]+)$");
+		if(patt1.test(paraString1)) {
+			subver = Number(patt1.exec(paraString1)[1]);
+		} else if(paraString1 == "brand") {
+			subver = 33;
+		} else if(paraString1 == "notify") {
+			subver = 4;
+		} else {
+			var para = GetUrlParms();
+			if(para["subver"] != undefined) {
+				var result = Number(para["subver"]);
+				if(NaN == result) {
+					subver = 0;
+				} else {
+					subver = result;
+				}
+			}
+		}
+		if(subver > 1 && subver <= 99){
+			document.getElementById(id).href = "http://addon.discuz.com/?@2367.developer";
+		}
+	}
+	ChangeDownloadSubver3("down1");
+	ChangeDownloadSubver3("down2");
+	ChangeDownloadSubver3("down3");
+});
+</script> 
+<script type="text/javascript"> jQuery.noConflict(); </script>
+
+<!--上部 980 x 350px 幻灯 end-->
+

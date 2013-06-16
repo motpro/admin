@@ -1,0 +1,103 @@
+<!--{template knowledge/header}-->
+{if $type === 0}
+<h2><small>未分类的问题</small></h2>
+
+{elseif $type_name['topic_words']}
+
+<h2><small>问题分类 : {$type_name['topic_words']}</small></h2>
+{else}
+<h2><small>最新的问题</small></h2>
+{/if}
+<table id="question_list" class="table table-bordered table-hover table-condensed" width="100%" rel=2>
+{loop $new $n}
+    <tr>
+        <td width="5%" title="回复数量 {$n['reply']}">
+            <p class="text-center">
+                <small class="text-success">
+                    <i class="icon-exchange"></i> <br />
+                    {$n['reply']}
+                </small>
+            </p>
+        </td>
+
+        <td width="5%" title="浏览量 {$n['view']}">
+            <p class="text-center">
+                <small class="text-success"><i class="icon-eye-open"></i> <br /> 
+                {$n['view']}</small>
+            </p>
+        </td>
+        
+        <td>
+            <strong>
+                {if $n['status']}
+                <a href="#" title="已经解决"><i class="icon-check"></i></a>
+                {else}
+                <a href="#" title="未解决"><i class="icon-check-empty"></i></a>
+                {/if}
+                <a href="knowledge.php?mod=discussion&id={$n['id']}">{eval echo cutstr( $n['title'] , 60 , ' .. ')}</a>
+            </strong> 
+            <br />
+            
+            <span class="label pull-left" title="分类"><a href="knowledge.php?type={$n['topicid']}" style="color:#fff;">{if $n['topic_words']}<small>{$n['topic_words']}</small>{else}<small>未分类的问题</small>{/if}</a></span>
+
+            <span class="pull-right"><small><i class="icon-time"></i> 发布于 {eval echo  dintval(( time() - $n['createddate']) / 86400) }天前</small></span>
+        </td>
+
+        <td>{avatar($n['uid'] , 'small')}</td>
+    </tr>
+{/loop}
+
+<script>
+jQuery(function() {
+    jQuery('.label').on('mouseover mouseout' ,function( event) { 
+
+        if (event.type == 'mouseover')
+            jQuery(this).addClass("label-info") 
+        else if( event.type == 'mouseout')
+            jQuery(this).removeClass('label-info');
+    });
+});
+</script>
+
+</table>
+
+<script>
+jQuery( function() {
+    
+    jQuery("#question_list").autobrowse(
+    {
+        url: function ( offset)
+        {
+            return "knowledge.php?get_more_question="+offset+"{if $type !== NULL}&type={$type}{/if}";
+        },
+        template: function ( response)
+        {   
+            if( response == null || response == '') {
+                return ;
+            }
+            
+            var rt = '';
+            //response = eval('('+response+')');
+            for( var i = 0 ; i < response.length ; i++)
+                rt = rt + '<tr><td width="5%" title="回复数量 '+response[i]['reply']+'"><p class="text-center"><small class="text-success"><i class="icon-exchange"></i> <br />'+response[i]['reply']+'</small></p></td><td width="5%" title="浏览量 '+response[i]['view']+'"><p class="text-center"><small class="text-success"><i class="icon-eye-open"></i> <br />'+response[i]['view']+'</small></p></td><td><strong>' + (response[i]['status']?'<a href="#" title="已经解决"><i class="icon-check"></i></a>':'<a href="#" title="未解决"><i class="icon-check-empty"></i></a>') + '<a href="knowledge.php?mod=discussion&id='+response[i]['id']+'">'+response[i]['title']+'</a></strong> <br /><span class="label pull-left"><a href="knowledge.php?type='+response[i]['topicid']+'" style="color:#fff;"><small>'+(response[i]['topic_words']? response[i]['topic_words'] : '未分类的问题')+'</small></span><span class="pull-right"><small><i class="icon-time"></i>发布于 '+Math.floor((new Date().getTime() / 1000 - response[i]['createddate'])/86400)+'天前</small></span></td><td>{avatar($n['uid'] , 'small')}</td></tr>'
+    jQuery('.label').on('mouseover mouseout' ,function( event) { 
+
+        if (event.type == 'mouseover')
+            jQuery(this).addClass("label-info") 
+        else if( event.type == 'mouseout')
+            jQuery(this).removeClass('label-info');
+    });
+            return rt;
+        },
+        itemsReturned: function( response) { if(null == response) return 0 ; return Math.ceil(response.length / 10);} ,
+        stopFunction: function() {},
+        offset: 2,
+        max: 30,
+        loader: '',
+        useCache: true,
+        expiration: 1
+    });
+});
+</script>
+
+<!--{template knowledge/footer}-->

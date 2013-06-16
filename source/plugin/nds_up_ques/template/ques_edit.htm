@@ -1,0 +1,149 @@
+{subtemplate common/header}
+<script language="javascript"> var node = 1;</script>
+<script src="$_G['siteurl']source/plugin/nds_up_ques/js/ques_edit.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="$_G['siteurl']source/plugin/nds_up_ques/template/nds_ques.css" /> 
+<div id="pt" class="wp">
+<div class="z">
+<a href="./" class="nvhm">$_G['setting']['bbname']</a><em>&rsaquo;</em><a href="plugin.php?id=nds_up_ques"><!--{if !empty($ndsquesname)}-->$ndsquesname<!--{else}-->{lang nds_up_ques:ques}<!--{/if}--></a><em>&rsaquo;</em>{lang nds_up_ques:action_5}
+</div>
+</div>
+<div id="ct" class="wp cl">
+<div class="mn">
+<div class="bm bml">
+<div class="bm_h cl">
+<h1 class="xs2">
+{lang nds_up_ques:action_5}</h1>&nbsp;&nbsp;<!--{if $sysmode == 2}-->{lang nds_up_ques:nds_quesmode2}<!--{elseif $sysmode == 1}-->{lang nds_up_ques:nds_quesmode1}<!--{/if}-->
+</div>
+</div>
+<script language="javascript">
+  function Showmax(oid,s)
+{
+  var chmaxsp = document.getElementById("chmaxsp"+oid);
+  var ohtinputsp = document.getElementById("ohtinputsp"+oid);
+  var textsizesp = document.getElementById("textsizesp"+oid);
+  var textareawidthsp = document.getElementById("textareawidthsp"+oid);
+  var tktsp = $("tktsp"+oid);
+  textsizesp.style.display ="none";
+  chmaxsp.style.display ="none";
+  ohtinputsp.style.display="none";
+  textareawidthsp.style.display ="none";
+  tktsp.style.display ="none";
+ <!--{if $sysmode  == 1}-->
+  var imgttsp = document.getElementById("imgttsp"+oid);
+  var imginsp = document.getElementById("imginsp"+oid);
+  var imgstylesp = document.getElementById("imgstylesp"+oid);
+  var hdtsp =  document.getElementById("hdtsp"+oid);
+  imgttsp.style.display ="none";
+  imginsp.style.display ="none";
+  imgstylesp.style.display ="none";
+  hdtsp.style.display ="none";
+   <!--{/if}-->
+  switch(s) {
+           case "2":  case "3":  
+		   ohtinputsp.style.display="inline";
+    	    break;
+           case "4":  case "5":
+		    chmaxsp.style.display="inline";
+			ohtinputsp.style.display="inline";  
+    	    break;
+		   case "6":
+			 textsizesp.style.display ="inline";
+			 tktsp.style.display ="inline";	
+    	    break;
+		   case "7":
+             textsizesp.style.display ="inline";
+			 textareawidthsp.style.display ="inline";
+    	    break;
+		    case "8":
+			  hdtsp.style.display = "inline";
+              break;
+    	    break;
+			case "9":
+              chmaxsp.style.display="inline"; 
+			  imgttsp.style.display="inline";
+			  imginsp.style.display="inline";
+			  imgstylesp.style.display="inline";
+    	    break;
+		    default:
+            break;
+	}
+}
+
+
+  function Showmax2(ndsdiv1,s)
+{  
+    var td2=ndsdiv1.parentNode.parentNode.parentNode;
+    var tindex2=td2.rowIndex;
+    var chmaxsp = getElementsByName2("span","chmaxsp")[tindex2];
+    var ohtinputsp = getElementsByName2("span","ohtinputsp")[tindex2];
+    var textsizesp = getElementsByName2("span","textsizesp")[tindex2];
+    var textareawidthsp = getElementsByName2("span","textareawidthsp")[tindex2];
+    var tktsp = getElementsByName2("span","tktsp")[tindex2];
+  textsizesp.style.display ="none";
+  chmaxsp.style.display ="none";
+  ohtinputsp.style.display="none";
+  textareawidthsp.style.display ="none";
+  tktsp.style.display ="none";
+   <!--{if $sysmode  == 1}-->
+	var imgttsp = getElementsByName2("span","imgttsp")[tindex2];
+    var imginsp = getElementsByName2("span","imginsp")[tindex2];
+    var imgstylesp = getElementsByName2("span","imgstylesp")[tindex2];
+    var hdtsp =  getElementsByName2("span","hdtsp")[tindex2];
+  imgttsp.style.display ="none";
+  imginsp.style.display ="none";
+  imgstylesp.style.display ="none";
+  hdtsp.style.display ="none";
+     <!--{/if}-->
+  switch(s) {
+           case "2":  case "3":  
+		   ohtinputsp.style.display="inline";
+    	    break;
+           case "4":  case "5":
+		    chmaxsp.style.display="inline";
+			ohtinputsp.style.display="inline";  
+    	    break;
+		   case "6":
+			 textsizesp.style.display ="inline";
+			 tktsp.style.display ="inline";	
+    	    break;
+		   case "7":
+             textsizesp.style.display ="inline";
+			 textareawidthsp.style.display ="inline";
+    	    break;
+		    case "8":
+			  hdtsp.style.display = "inline";
+              break;
+    	    break;
+			case "9":
+              chmaxsp.style.display="inline"; 
+			  imgttsp.style.display="inline";
+			  imginsp.style.display="inline";
+			  imgstylesp.style.display="inline";
+    	    break;
+		    default:
+            break;
+	}	
+}
+</script>
+
+
+<form method="post" action="plugin.php?id=nds_up_ques&action=edit&topicid=$topicid">
+<input type="hidden" name="formhash" value="{FORMHASH}">
+<input type="hidden" name="editsubmit" value="True">
+<input type="hidden" name="ques_mode" value="$sysmode">
+{template nds_up_ques:ques_queshead}		
+ $optionlist
+	</table>	
+    <table  width="100%" cellspacing="0" cellpadding="0" class="datatable2">
+     <tbody id="quesbody">
+     </tbody>
+    </table>
+{template nds_up_ques:ques_addnode} 
+  <a  href="javascript:void(0)" onclick="addRow('quesbody');"><img src="{$imgurl}add.gif" alt="{lang nds_up_ques:addopa}" /> {lang nds_up_ques:add}</a> 
+ <div class="mtm mbm">
+  <button type="submit" id="postsubmit" class="pn pnc" value="true" name="editsubmit_bt" onclick =" return confirm('$mischecktm')"><span>{lang nds_up_ques:btnewques}</span></button>
+</div> 
+</form>
+  </div>
+ </div>
+{subtemplate common/footer}

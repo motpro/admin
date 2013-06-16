@@ -1,0 +1,114 @@
+<!--{subtemplate common/header}-->
+<style id="diy_style" type="text/css"></style>
+
+
+
+<!--上部 980 x 450px 幻灯 start-->
+<!--{subtemplate vk_slide/vk_slide_20120915_980_450}-->
+<!--上部 980 x 450px 幻灯 end-->
+
+
+
+
+<!--  上部幻灯 普通版  id="diy_top" -->
+<div class="vk_index">
+  		<!--[diy=diy_top]--> <div id="diy_top" class="area"></div><!--[/diy]--> 
+</div>
+
+
+
+<!--  一行滚动新闻  -->
+<div class="vk_index  vk_border_1">
+  		<!--[diy=diy_col_1_new]--> <div id="diy_col_1_new" class="area"></div><!--[/diy]--> 
+</div>
+
+
+
+<!-- 4列盒子模式 -->
+<!-- 纯图片样式 -->
+<div class="wp col_4_box vk_index pd_top_15 ">
+		<div class="col_4_1-1-1_pic vk_border_1">
+	    	<div class="vk_diy_pd_none">
+  				<!--[diy=diy_col_4_box_1_left_1]--> <div id="diy_col_4_box_1_left_1" class="area"></div><!--[/diy]--> 
+	        </div>
+		</div>
+        
+		<div class="col_4_1-1-1_pic vk_border_1">
+	    	<div class="vk_diy_pd_none">
+  				<!--[diy=diy_col_4_box_1_mid_1]--> <div id="diy_col_4_box_1_mid_1" class="area"></div><!--[/diy]--> 
+	        </div>
+		</div>
+        
+		<div class="col_4_1-1-1_pic vk_border_1">
+	    	<div class="vk_diy_pd_none">
+  				<!--[diy=diy_col_4_box_1_mid_2]--> <div id="diy_col_4_box_1_mid_2" class="area"></div><!--[/diy]--> 
+	        </div>
+		</div>
+
+		<div class="col_4_1-1-1_pic vk_border_1 m_r_0 right ">
+	    	<div class="vk_diy_pd_none">
+  			<!--[diy=diy_col_4_box_1_right_1]--> <div id="diy_col_4_box_1_right_1" class="area"></div><!--[/diy]-->
+       	 	</div>
+		</div>
+    
+</div>
+
+
+
+
+
+<!-- 3列盒子模式 -->
+<div class="wp col_3_box vk_index pd_top_15 ">
+		<div class="col_3_1-1-1 height_400 vk_border_5">
+    		<h2><a href="#" target="_blank"> 新闻热点 </a> <span><a href="#" target="_blank">  </a></span></h2>
+	    	<div class="col_3_box_diy">
+  				<!--[diy=diy3-1_left]--> <div id="diy3-1_left" class="area"></div><!--[/diy]--> 
+	        </div>
+            <div class="vk_more"><a href="#" target=""> 更多>> </a></div>
+		</div>
+
+		<div class="col_3_1-1-1 height_400 vk_border_5">
+    		<h2><a href="#" target="_blank"> 产品动态 </a> <span><a href="#" target="_blank">  </a></span></h2>
+	    	<div class="col_3_box_diy"> -->
+  				<!--[diy=diy3-2_right]--> <div id="diy3-2_right" class="area"></div><!--[/diy]--> 
+	     </div>
+            <div class="vk_more"><a href="#" target=""> 更多>> </a></div>
+		</div>
+
+		<div class="col_3_1-1-1 height_400 vk_border_5 m_r_0 right ">
+    		<h2><a href="#" target="_blank"> 关于我们 </a> <span><a href="#" target="_blank">   </a></span> </h2>
+	    	<div class="col_3_box_diy">
+  			<!--[diy=diy1_right_1]--> <div id="diy1_right_1" class="area"></div><!--[/diy]-->
+       	 	</div>
+	    	<div class="col_3_box_diy">
+  			<!--[diy=diy1_right_2]--> <div id="diy1_right_2" class="area"></div><!--[/diy]--> 
+        	</div>
+	    	<div class="col_3_box_diy">
+  			<!--[diy=diy1_right_3]--> <div id="diy1_right_3" class="area"></div><!--[/diy]--> 
+        	</div>
+            <div class="vk_more"><a href="#" target=""> 更多详情>> </a></div>
+		</div> 
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div  style="clear:both;"></div>
+<div class="wp vk_index pd_top_15 ">  
+  <!--[diy=diy_ad_1]--> <div id="diy_ad_1" class="area"></div><!--[/diy]--> 
+</div>
+
+<div class="wp  vk_index pd_top_15 ">  
+  <!--[diy=diy_ad_2]--> <div id="diy_ad_2" class="area"></div><!--[/diy]--> 
+</div>
+
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=$_G['gp_diy']&r={echo random(4)}" type="text/javascript"></script> 
+<!--{subtemplate common/footer}--> 

@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib
+END
+api.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/api.class.php
+END
+json.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/json.class.php
+END
+Denglu.php
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/Denglu.php
+END
+Extension_class.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/Extension_class.php
+END
+denglu_cache.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/denglu_cache.php
+END
+thumb.class.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/thumb.class.php
+END
+cache_timestamp.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/cache_timestamp.php
+END
+denglu.data.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/denglu.data.php
+END
+denglu.func.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/denglu/!svn/ver/2490/test/discuz/x2.5/branches/discuz_x2.5_build03/utf8/denglu/lib/denglu.func.php
+END

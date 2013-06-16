@@ -1,0 +1,77 @@
+{template user/header}
+<ul class="breadcrumb">
+	<li><a href="user.php">{lang user_center}</a> <span class="divider">/</span></li>
+    <li>{lang study} <span class="divider">/</span></li>
+    <li><a href="user.php?ac=sub_plan">{lang plan}</a></li>
+</ul>
+
+<div class="container-fluid">
+	<div class="page-header">
+	<h3 class="text-info">我的选课
+	<small>数目 : {eval echo count( $list)}</small>
+	</h3>
+	</div>
+<script>
+jQuery( function () {
+	jQuery("ul[rel='menu']").menu();
+});
+
+</script>
+
+<div class="container-fluid">
+	{eval $f = 0}
+	{loop $list $c}
+	<blockquote class="span4">
+		<h3>
+			{$c['fullname']}
+			<small><a href="lesson.php?pages_list={$c['courseid']}">继续学习</a></small>
+		</h3>
+ 		    <div class="clearfix">
+                    <ul class="span12" id="menu" rel="menu">
+                      <li><a>课程页面</a>
+                      	<ul>
+                      		{loop $c['pages'] $p}
+                      		<li><a href="lesson.php?page_content={$p['id']}" target="blank">{$p['title']}</a></li>
+                      		{/loop}
+                      	</ul>
+                      </li>
+
+                      <li><a href="#">课程相关问答</a></li>
+
+                      <li><a href="#" class="disabled">考试</a></li>
+                      <li>
+                          <a>阅读材料</a>
+                          <ul>
+                              <li>
+                                  <a href="#">Delphi</a>
+                                  <ul>
+                                      <li><a href="#">Ada</a></li>
+                                      <li><a href="#">Saarland</a></li>
+                                      <li><a href="#">Salzburg</a></li>
+                                  </ul>
+                              </li>
+                              <li>
+                                  <a href="?Delphi">Delphi</a>
+                                  <ul>
+                                      <li><a href="#">Ada</a></li>
+                                      <li><a href="#">Saarland</a></li>
+                                      <li><a href="#">Salzburg</a></li>
+                                  </ul>
+                              </li>
+                              <li><a href="#">Perch</a></li>
+                          </ul>
+                      </li>
+                    </ul>
+                </div>
+    </blockquote>
+    	{eval ++$f}
+    	{if $f%3 === 0}
+    	</div>
+    	<div class="container-fluid">
+    	{/if}
+	{/loop}
+</div>
+</div>
+
+
+{template user/footer}

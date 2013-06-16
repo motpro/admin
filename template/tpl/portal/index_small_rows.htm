@@ -1,0 +1,19 @@
+<div class="container margin-top">
+<div class="row-fluid">
+	{eval $_row_3 = 1}
+    {loop $hidden $h}
+        <div class="span3 mot-block-b">
+            <a href="lesson.php?pages_list={$h['id']}"><img src="uploads/lesson/{$h['logo']}" width="100%" /></a>
+            <h4 class="text-center"><a href="lesson.php?pages_list={$h['id']}">{$h['fullname']}</a></h4>
+        </div>
+
+        {if $_row_3%4 == 0}
+</div>
+</div>
+<div class="container margin-top">
+<div class="row-fluid">
+        {/if}
+        {eval ++$_row_3}
+    {/loop}
+</div>
+</div>

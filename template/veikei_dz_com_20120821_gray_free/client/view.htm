@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="template/default/common/common.css" type="text/css" media="all" />
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+
+<?php shownav('client','menu_client_order');?>
+
+<?php showtableheader('订单详情' , 'nobottom' , 'width="80%"')?>
+<tr><td><div class="xs4">订单号 : {$o['trade_no']}</div></td></tr>
+<?php showtablefooter();?>
+
+<div class="wp bmw">
+
+	<?php showtableheader('' , 'nobottom' , 'width="80%"')?>
+
+	<tr> <td width="25%">客户姓名</td> <td width="25%"><strong>{$o['realname']}</trong></td> <td width="25%">地址</td> <td width="25%"><strong>{$o['address']}</trong></td> </tr>
+
+	<tr> <td>公司</td> <td><strong>{$o['company']}</trong></td> <td>职位</td> <td><strong>{$o['position']}</trong></td> </tr>
+
+	<tr> <td>电话</td> <td><strong>{$o['phone']}</trong></td> <td>手机号</td> <td><strong>{$o['mobile']}</trong></td> </tr>
+
+	<tr> <td>性别</td> <td><strong>{eval echo $o['gender'] ?'男士':'女士'}</trong></td> <td>QQ号</td> <td><strong>{$o['qq']}</trong></td> </tr>
+
+	<tr> <td>传真</td> <td><strong>{$o['fax']}</trong></td> <td>邮箱</td> <td><strong>{$o['email']}</trong></td> </tr>
+
+	<tr> <td>预计所需业务</td> <td><strong>{$o['pre_productid']}个月会员</trong></td> <td>业务</td> <td><strong>{$o['productid']}个月会员</trong></td> </tr>
+
+	<tr> <td>预计所需数量</td> <td><strong>{$o['pre_productnum']}</trong></td> <td>数量</td> <td><strong>{$o['productnum']}</trong></td> </tr>
+
+	<tr> <td>预计总金额</td> <td><strong>{$o['pre_total']}</strong></td> <td>总金额</td> <td><strong>{$o['total']}</strong></td> </tr>
+
+	<tr> <td>折扣</td> <td><strong>{$o['allowance']}</strong></td> <td>折扣日期</td> <td><strong>{eval echo date('Y年m月d日',$o['allowance_date'])}</strong></td> </tr>
+
+	<tr> <td>订单类型</td> <td><strong>{$_order[$o['ordertype']]}</strong></td> <td>用户类型</td> <td><strong>{$_user[$o['usertype']]}</strong></td> </tr>
+
+	<tr> <td>支付方式</td> <td><strong>{$_pay[$o['paymethod']]}</strong></td> <td>备注信息</td> <td><strong>{$o['etc']}</strong></td> </tr>
+
+	<?php showtablefooter();?>
+</div>
+
+<div class="wp bmw">
+	<p>用户反馈记录</p>
+	<form name="_user_feedback__" action="admin.php?action=client&operation=order" method="post">
+		<input type="hidden" name="order_id" value="{$o['id']}" />
+	<p><textarea name="feedback" rows="8" cols="80" style="width: 80%"></textarea></p>
+
+	<p><input type="submit" name="feedback_save" value="保存" /></p>
+
+	</form>
+
+	</div>
+
+	<?php showtableheader('用户反馈' , 'nobottom' , 'width="90%"')?>
+	<tr><td width="75%">信息</td> <td>日期</td> <td>操作</td></tr>
+	{loop $feedback $fb}
+	<tr class="alt">
+		<td class="alt">{$fb['feedback']}</td> <td>re: {eval echo date('Y年m月d日' , $fb['date']);}</td><td> <a href="admin.php?action=client&operation=order&remove_fb={$fb['id']}" target="blank">删除</a> </td>
+	</tr>
+	{/loop}
+	<?php showtablefooter();?>
+</div>

@@ -1,0 +1,51 @@
+{template dsu_kkvip:header}
+<style>
+td{
+	border:1px solid #eeeeee;padding:10px; 
+}
+hr { 
+	border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 12px 0 18px; height: 0; 
+}
+
+</style>
+
+
+	<div class="orights vipblock">
+		<h3 class="title">业务管理</h3>
+		<div class="content">
+			<h3>现有业务</h3>
+    		<table width="100%">
+    			<tr><td>业务名</td> <td>月数</td> <td>价格</td> <td>说明</td> <td>操作</td></tr>
+    			{loop $service $sv}
+    			<tr><td>{$sv['service']}</td> <td>{$sv['month']}</td> <td>{$sv['cost']}</td> <td>{$sv['info']}</td>
+    				<td><a href="vip.php?action=admin&rm={$sv['id']}">删除</a></td></tr>
+    			{/loop}
+    		
+    		</table>
+    		<br />
+    		<hr />
+    		<br />
+    		<form name="_service_produce" action="" method="post">
+    		<table style="border:1px solid #eeeeee;padding:10px;" width="100%">
+    			<tr><td>添加新的业务类型</td><td></td></tr>
+
+    			<tr><td>业务名称</td><td><input type="text" name="service" /></td></tr>
+
+    			<tr><td>月数/月</td><td><input type="text" name="month" /></td></tr>
+
+    			<tr><td>价格/￥</td><td><input type="text" name="cost"/></td></tr>
+
+                <tr><td>说明信息</td><td><input type="text" name="info"/></td></tr>
+
+    			<tr><td><input type="submit" name="create_seervice" value="添加"></td><td></td></tr>
+    			
+    		</table>
+    		</form>
+
+		</div>
+	</div>
+</div>
+</div>
+
+<div class="sd">{template dsu_kkvip:sidebar}</div></div>
+{template common/footer}

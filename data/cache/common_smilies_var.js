@@ -1,0 +1,1 @@
+var smthumb = '20';var smilies_type = new Array();var smilies_array = new Array();var smilies_fast = new Array();var smilies_fast=[];

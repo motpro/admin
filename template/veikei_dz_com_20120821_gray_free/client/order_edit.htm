@@ -1,0 +1,82 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<p class="xs3">添加/编辑/ 订单</p>
+
+<div class="wp bmw">
+
+	<table width='50%'>
+				<tr> 	
+				<td>姓名</td> 
+				<td>{$userinfo['realname']}</td> 
+				<td>性别</td> 
+				<td>{eval echo $userinfo['gender']? '男' : '女'}</td> 
+				</tr>
+
+				<tr>
+				<td>公司</td>
+				<td>{$userinfo['company']}</td>
+				<td>职位</td>
+				<td>{$userinfo['position']}</td>
+				</tr>
+
+				<tr>
+				<td>电话</td>
+				<td>{$userinfo['phone']}</td>
+				<td>手机</td>
+				<td>{$userinfo['mobile']}</td>
+				</tr>
+
+				<tr>
+				<td>传真</td>
+				<td>{$userinfo['fax']}</td>
+				<td>网址</td>
+				<td>{$userinfo['site']}</td>
+				</tr>
+
+				<tr>
+				<td>邮箱</td>
+				<td>{$userinfo['email']}</td>
+				<td>QQ号</td>
+				<td>{$userinfo['qq']}</td>
+				</tr>
+
+				<tr>
+				<td>所需产品</td>
+				<td>{$order['product_id']}</td>
+				<td>所需数量</td>
+				<td>{$order['product_num']}</td>
+				</tr>
+
+				<tr>
+				<td>单价</td>
+				<td>{$order['single_price']}</td>
+				<td>折扣</td>
+				<td>{$order['allowance']}</td>
+				</tr>
+
+				<tr>
+				<td>总价</td>
+				<td>{$order['total_price']}</td>
+				<td>折扣日期</td>
+				<td>{$order['allowance_date']}</td>
+				</tr>
+
+				<tr>
+				<td>订单类型</td>
+				<td>{$order['typeid']}</td>
+				<td>用户类型</td>
+				<td>{$order['usertype']}</td>
+				</tr>
+
+				<tr>
+				<td>支付方式</td>
+				<td>{$order['paymethod']}</td>
+				<td></td>
+				<td><input type="submit" name="setlive" value="开通会员"></td>
+				</tr>
+	</table>
+	<hr />
+	<div>沟通记录</div>
+	<div>xxxxxxxxxxxx</div>
+
+	
+</div>

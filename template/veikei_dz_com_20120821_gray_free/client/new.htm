@@ -1,0 +1,100 @@
+<link rel="stylesheet" href="static/image/admincp/admincp.css" type="text/css" media="all" />
+<link rel="stylesheet" href="template/default/common/common.css" type="text/css" media="all" />
+<?php
+showtableheader('订单信息', 'nobottom', '');
+?>
+<tr><td>
+<p class="lum">
+	{if $trade_no}添加订单记录 - 本次订单号: {$trade_no}{/if} 
+	{if $order_content}编辑订单{$order_content['trade_no']} <a style="float:right;" href="admin.php?action=client&operation=order&remove_order={$order_content['id']}">删除</a>{/if} 
+			   
+</p>
+<form action="admin.php?action=client&operation=order" method="post">
+
+	{if $order_content}<input type="hidden" name="id" value="{$order_content['id']}" />{/if}
+	
+	{if $order_content}
+		<input type="hidden" name="trade_no" value="{$order_content['trade_no']}" />
+	{else}
+		<input type="hidden" name="trade_no" value="{$trade_no}" />
+	{/if}
+
+<table class="tdat lum" border="0">
+	<tr>
+		<td>客户姓名</td> <td> <input type="text" name="realname" value="{$order_content['realname']}" /></td>
+		<td>地址</td>     <td> <input type="text" name="address" value="{$order_content['address']}" /></td>
+	</tr>
+
+	<tr>
+		<td>公司</td> <td> <input type="text" name="company" value="{$order_content['company']}" /></td>
+		<td>职位</td> <td> <input type="text" name="position" value="{$order_content['position']}" /></td>
+	</tr>
+
+	<tr><td>电话</td> <td> <input type="text" name="phone" value="{$order_content['phone']}" /></td>
+		<td>手机号</td> <td><input type="text" name="mobile" value="{$order_content['mobile']}" /></td>
+	</tr>
+
+	<tr><td>性别</td> <td> <input type="radio" name="gender" value="1" {if $order_content['gender'] == 1} checked="checked"{/if} />男 <input type="radio" name="gender" value="0" {if $order_content['gender'] == 0} checked="checked"{/if} />女 </td>
+		<td>QQ号</td> <td> <input type="text" name="qq" value="{$order_content['qq']}" /></td></tr>
+
+	<tr><td>传真</td> <td> <input type="text" name="fax" value="{$order_content['fax']}" /></td>
+		<td>邮箱</td> <td> <input type="email" name="email" value="{$order_content['email']}" /></td>
+	</tr>
+
+
+	<tr><td>预计所需业务</td> <td> <input type="text" name="pre_productid" value="{$order_content['pre_productid']}" />个月的VIP账户</td>
+		<td>业务</td> <td> <input type="text" name="productid" value="{$order_content['productid']}" />个月的VIP账户</td>
+	</tr>
+
+	<tr><td>预计所需数量</td> <td> <input type="text" name="pre_productnum" value="{$order_content['pre_productnum']}" /></td>
+		<td>数量</td> <td><input type="text" name="productnum" value="{$order_content['productnum']}" /></td>
+	</tr>
+
+	<tr><td>预计总金额</td> <td> <input type="text" name="pre_total" value="{$order_content['pre_total']}" /></td>
+		<td>总金额</td> <td> <input type="text" name="total" value="{$order_content['total']}" /></td>
+	</tr>
+
+
+	<tr><td>折扣</td> <td> <input type="text" name="allowance" value="{$order_content['allowance']}" /></td>
+		<td>折扣日期</td> <td> <input type="text" name="allowance_date" value="{eval echo date('Y年m月d日',$order_content['allowance_date'])}" /></td>
+	</tr>
+
+
+	
+	<tr><td>订单类型</td><td>
+		<select name="ordertype">
+			<option value=0 {if $order_content['paymethod']==0}selected="selected"{/if}>需求</option>
+			<option value=1 {if $order_content['paymethod']==1}selected="selected"{/if}>线上支付</option>
+			<option value=2 {if $order_content['paymethod']==2}selected="selected"{/if}>线下支付</option>
+		</select>
+			</td>
+
+		<td>用户类型</td> <td>
+		<select name="usertype">
+			<option value=0 {if $order_content['usertype']==0}selected="selected"{/if}>个人用户</option>
+			<option value=1 {if $order_content['usertype']==1}selected="selected"{/if}>企业用户</option>
+		</select>
+						</td> 
+	</tr>
+
+	<tr><td>客户备注</td><td><textarea name="etc">{$order_content['etc']}</textarea></td>
+
+		<td>支付方式</td><td>
+		<select name="paymethod">
+			<option value=1 {if $order_content['paymethod']==0}selected="selected"{/if}>线上支付</option>
+			<option value=2 {if $order_content['paymethod']==1}selected="selected"{/if}>线下支付</option>
+		</select></td></tr>
+	
+	<tr>
+		<td>
+			{if $order_content}<input type="submit" name="fix_tmp" value="保存修改" />
+			{else}<input type="submit" name="add_tmp" value="添加" />{/if}
+
+		</td>
+	</tr>
+</table>
+</form>
+
+
+</td></tr>
+<?php showtablefooter();?>

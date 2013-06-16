@@ -1,0 +1,20 @@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Loading Bootstrap -->
+    <link href="static/flatui/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Loading Flat UI -->
+    <link href="static/flatui/css/flat-ui.css" rel="stylesheet">
+    <link rel="shortcut icon" href="static/flatui/images/favicon.ico">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements. All other JS at the end of file. -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.js"></script>
+    <![endif]-->
+<div class="row" style="margin:40px;">
+    {loop $list $image}
+        <div style="float:left;padding:10px;">
+            <img alt="" src="uploads/lesson/{$image}" width="120px" height="60px" />
+            <p>{$image}</p>
+        </div>
+     {/loop}
+</div>

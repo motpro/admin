@@ -1,0 +1,111 @@
+{template examination/paper_header}
+<style>
+.colorful {
+	background:#eeeeee;
+}
+</style>
+
+<script>
+jQuery( function() {
+
+	jQuery('input:radio').click( function() {
+		var id = jQuery(this).attr('name');
+		jQuery('div #'+id).addClass('text-info');
+	});
+
+});
+</script>
+<div class="alert alert-info"><i class="icon-info-sign"></i> 提醒:考试只能进行一次，成绩以第一次为准，重复考试请先申请. <button type="button" class="close" data-dismiss="alert">&times;</button></div>
+
+{if $bucket_info['id']}
+<form action="" method="post">
+<input name="target_exam" type="hidden" value="{$id}" />
+	{loop $question $q}
+	<table class="table table-bordered">
+		<tr><td>
+		<div class="page-header">
+			<h3>
+				<div>$q['sid']. $q['title']
+				{if 's' === $q['type']}<small> <i class="icon-hand-right"></i> <abbr title="提示 : {$q['tips']}">单选题</attr> </small>
+				{elseif 'm' === $q['type']}<small> <i class="icon-hand-right"></i> <abbr title="提示 : {$q['tips']}">多选题</attr> </small>
+				{elseif 'd' === $q['type']} <small> <i class="icon-hand-right"></i> <abbr title="提示 : {$q['tips']}">描述题</attr> </small>
+				{/if}
+				</div> 
+			</h3>
+		</div>
+		{if 's' === $q['type']}
+		{eval $options = json_decode( $q['question'])}
+		
+		<label class="radio">
+			<h4>
+			<input type="radio" name="{$q['sid']}" value="A">A. 
+			{$options->A}
+			</h4>
+		</label>
+		<label class="radio">
+			<h4>
+			<input type="radio" name="{$q['sid']}" value="B">B. 
+			{$options->B}
+			</h4>
+		</label>
+		<label class="radio">
+			<h4>
+			<input type="radio" name="{$q['sid']}" value="C">C.
+			{$options->C}
+			</h4>
+		</label>
+		<label class="radio">
+			<h4>
+			<input type="radio" name="{$q['sid']}" value="D">D.
+			{$options->D}
+			</h4>
+		</label>
+		{elseif 'm' === $q['type']}
+		{eval $options = json_decode( $q['question'])}
+		<label class="checkbox">
+			<h4>
+			<input type="checkbox" name="{$q['sid']}_A" value="A" rel="{$q['sid']}">A. 
+			{$options->A}
+			</h4>
+		</label>
+		<label class="checkbox">
+			<h4>
+			<input type="checkbox" name="{$q['sid']}_B" value="B" rel="{$q['sid']}">B. 
+			{$options->B}
+			</h4>
+		</label>
+		<label class="checkbox">
+			<h4>
+			<input type="checkbox" name="{$q['sid']}_C" value="C" rel="{$q['sid']}">C.
+			{$options->C}
+			</h4>
+		</label>
+		<label class="checkbox">
+			<h4>
+			<input type="checkbox" name="{$q['sid']}_D" value="D" rel="{$q['sid']}">D.
+			{$options->D}
+			</h4>
+		</label>
+
+		{elseif 'd' === $q['type']}
+    	<blockquote>
+    	<p>{$q['question']}</p>
+    	</blockquote>
+
+    	<textarea class="span10" name="{$q['sid']}"></textarea>
+		{/if}
+		</td></tr>
+	</table>
+	{/loop}
+
+	<button name="post_paper" class="btn btn-success btn-block" type="submit"><h4><i class="icon-reply"></i> 交卷</h4></button>
+</form>
+
+	
+{else}
+
+	<p class="lead text-center"><i class="icon-info-sign"></i> 没有找到相关的试卷</p>
+
+{/if}
+
+{template examination/footer}

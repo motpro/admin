@@ -1,0 +1,17 @@
+	<!--论坛自带导航栏-->
+  <div class="navbar">
+    	<div class="navbar-inner">
+    		
+
+    		<a class="brand" href="javascript:;" id="qmenu" onmouseover="showMenu({'ctrlid':'qmenu','pos':'34!','ctrlclass':'','duration':2});">{lang my_nav}</a>
+    		
+    		<ul class="nav">
+    			<!--{loop $_G['setting']['navs'] $nav}-->
+					<!--{if $nav['available'] && (!$nav['level'] || ($nav['level'] == 1 && $_G['uid']) || ($nav['level'] == 2 && $_G['adminid'] > 0) || ($nav['level'] == 3 && $_G['adminid'] == 1))}--><li $nav[nav]></li><!--{/if}-->
+				<!--{/loop}-->
+
+				<!--{hook/global_nav_extra}-->
+    		</ul>
+        </div>
+    </div>
+    <!--论坛自带导航栏-->

@@ -1,0 +1,643 @@
+/* ----------------------------------
+
+extend_common.css  file for Discuz! X2.5
+
+【未来科技】 
+http://www.veikei.com
+专注于 Discuz模板开发设计、仿制、定制、二次开发等服务。
+详情请 查看 www.veikei.com
+或咨询 客服 QQ 1508085698
+
+Author: Veiki
+Created Time: 2012-09-05
+Modified Time: 2012-09-07
+
+自定义或重定义 属性
+
+注：为便于理解和扩展，部分注释没有去掉
+---------------------------------- */
+
+
+
+/*************************************************************************
+* 
+* 公共属性
+*
+**************************************************************************/
+body, input, button, select, textarea { background:#ffffff /* url({STYLEIMGDIR}/bg_body.jpg) repeat*/;  font: {FONTSIZE} {FONT}; color: {TABLETEXT}; font-family:"Microsoft yahei","微软雅黑" ,"黑体","helvetica neue", "lucida grande", helvetica, arial, sans-serif, "宋体"; }
+a {outline: none;}
+a:active {star:expression(this.onFocus=this.blur());}
+a:hover { color:#f60; text-decoration:none; }
+:focus { outline:0; }
+.m_r_0 { margin-right:0px !important;}
+.left { float:left !important;}
+.right { float:right !important;}
+
+img, fieldset { border:0; }
+ol, ul, menu { list-style:none; }
+td, th, div { word-break:break-all; word-wrap:break-word }
+* { outline:none } 
+
+/* 文章列表 标题 */
+.bm_c .xs2 a.xi2 { color:#333; font-size:16px; font-weight:bold; }
+/* 文章列表 标题下摘要 */
+.bm_c .xs2 { color:#999;}
+
+
+/* 重定义 diy 区块（原默认背景为白色） */
+.vk_index .block {background: transparent !important;}
+.vk_index .frame {background: transparent !important; margin-bottom:15px; }
+.col_2 .block, .col_3 .block, .col_4 .block {background: transparent !important;  margin:0 0px; padding:5px 0px;} /* .block 里面的，内容区块 */
+.col_2 .frame, .col_3 .frame, .col_4 .frame {background: transparent !important; margin:0px; padding:0px;} /* .frame 是内容区块的框架，原默认显示 左右各10px白色背景*/
+
+
+/* 顶部导航 */
+#um .diynav { text-align: right; }
+	#diy-tg { padding-top:10px;}
+	#diy-tg_menu { margin-top:-1px !important;} /* 必须加 !important 否则无效 */
+		.ie7 #diy-tg_menu, .ie8 #diy-tg_menu { margin-top:-16px !important;} /* 必须加 !important 否则无效 */
+	#diy-tg_menu ul {}
+	#diy-tg_menu li { height:24px; line-height:24px;}
+	#diy-tg_menu ul li a { color:#333;} /* 单独定义，免得和 toptb 统一字体属性相同 */
+	#diy-tg { width: 55px; background: url({STATICURL}image/diy/panel-toggle.png) no-repeat 100% 1px; text-indent: -9999px; overflow: hidden; }
+
+	#diy-tg { float: none; display: inline-block; margin-bottom:0px; height: 19px;  }
+		.ie9 #diy-tg { height: 20px; }
+	#diy-tg_menu { margin-left: -18px; }
+		#diy-tg_menu li { line-height: 2; }
+
+/* 顶部 toptb 高 35px 有背景 */
+	.avts img { width: 24px; height: 24px; vertical-align: middle; padding-top:5px; }
+
+ .wp { margin: 0 auto; width:980px; clear:both; } 
+/* 默认头部无底边框阴影时的 wp 属性
+ #wp .wp { width: auto; padding-top:15px; } 
+*/
+ #wp .wp { width: auto;}
+ 
+
+ /*头部全局属性*/
+ .top_head {  width:100%; height:140px; position:relative; z-index:20; background:url({STYLEIMGDIR}/bg_head.png) repeat-x; }
+ .vk_bg_shadow { width:100%; height:42px; position:relative; z-index:10; background:url({STYLEIMGDIR}/bg_shadow.png) no-repeat;  } /* 此处加 display:block; margin-bottom:10px;  无效，待研究 */
+ .blank_10{ width:100%; height:10px; }
+ .blank_15{ width:100%; height:15px; }
+ 
+
+/* 白色版 */
+	#toptb { line-height: 35px;/* background:url({STYLEIMGDIR}/toptb_bg.png) repeat-x; */}
+		#toptb a { float: left; padding: 0 4px; height: 35px; color: #999; }
+		#toptb a.showmenu { padding-right: 15px; }
+		#toptb a.hover { background-color: #FFF; }
+		#toptb .pipe { float: left; display: none; }
+	#hd {/*  margin-top:45px; */ border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} z-index:99;  }
+		#hd .wp { padding:5px 0 0; }
+		
+			.hdc { min-height: 70px; }
+				.ie6 .hdc { height: 70px; }
+			#hd h2 { padding: 0 20px 8px 0; float: left; margin-top:-30px; }
+				#space #hd h2 { margin-top: 0; }
+			#hd .fastlg { float: right; padding-top: 10px; }
+			
+			
+
+			
+			/*自定义 顶部 搜索框*/
+			.search_top { margin:0px 10px 0 10px;   height: 35px; width:250px /*210px*/; border:none;overflow: hidden;/* background: url({STYLEIMGDIR}/search_top.png) no-repeat;*/}
+				.scbar_txt_td, .scbar_type_td {padding-left:15px;   height: 35px;   line-height: 35px;   background: url({STYLEIMGDIR}/search_top.png) no-repeat 0 0 ; }
+					#scbar_txt { width:130px; background: none; padding-top:0px; border:none; outline: none;  height: 20px;  line-height: 20px; color:#666 !important; font-size: 12px; }  /* 输入框长度 */
+				/* 搜索下拉 选项 */	
+				.scbar_type_td { width: 50px;  height: 35px;  background:  url({STYLEIMGDIR}/search_top.png) no-repeat -50px 0 ; }
+					#scbar_type { display: block; padding-left: 5px; text-align: left; text-decoration: none; }
+						#scbar_type_menu { margin-top: -8px; }
+
+				.scbar_btn_td { width: 40px;  height: 35px;   background: url({STYLEIMGDIR}/search_top.png) no-repeat -170px 0;  text-align: center; }
+					#scbar_btn { margin: 0; padding: 0; border: none; background: transparent none; display:block; height:35px; width:40px; } 
+
+
+	/* 搜索框 弹出菜单、弹出层及弹出窗口 - 自定义 - */
+	#vk_p_pop {}
+		#vk_p_pop .p_pop li { display:list-item; width:80px; clear:both;  height:30px;  }
+		#vk_p_pop .p_pop a { display: block; width:70px; height:30px; line-height:30px; padding: 0 5px; border-bottom: 1px solid #ccc; white-space: nowrap; color:#333; font-size:14px; }
+			#vk_p_pop .p_pop li:last-child a { border: none; }
+			#vk_p_pop .ie6 .p_pop a { position: relative; }
+			#vk_p_pop .p_pop a:hover, .p_pop a.a, #sctype_menu .sca { background:#eee; color:#000 ; text-decoration: none; }
+
+
+				
+				/* 人人/qq/微博 第三方登录图标 */
+				#toptb .top_login_qq { margin-top:0px; width:31px;  height:35px;  background:url({STYLEIMGDIR}/top_login_qq_h.png) no-repeat;  }
+				#toptb .top_login_rr { margin-top:0px;  width:31px;  height:35px;  background:url({STYLEIMGDIR}/top_login_rr_h.png) no-repeat;   }
+				#toptb .top_login_weibo { margin-top:0px;   width:31px;  height:35px; background:url({STYLEIMGDIR}/top_login_weibo_h.png) no-repeat;   }
+				
+				 #toptb .top_login_qq:hover { background:url({STYLEIMGDIR}/top_login_qq.png) no-repeat; }
+				 #toptb .top_login_rr:hover {background:url({STYLEIMGDIR}/top_login_rr.png) no-repeat; }
+				 #toptb  .top_login_weibo:hover { background:url({STYLEIMGDIR}/top_login_weibo.png) no-repeat; }
+
+
+/* 白色版 */
+			#nv { display:inline; overflow: hidden;  height: 90px; margin:0px; padding:0px;  background: none; /* url({STYLEIMGDIR}/nv.png); */ } 
+			/* 导航栏属性  - 注意：此处的  height: 90px; 变动会涉及到 包含logo这一整行 */
+
+			/* LOGO  - 自定义*/
+			.vk_logo {float: left; max-width:200px /* 250px */; overflow:hidden; display:inline-block; margin-top:-15px; position: relative; z-index:99999;}
+
+			#nv ul{ float:right; max-width: 780px /*950px */ ;  height: 40px;   margin-top:35px;  overflow: hidden;  } 
+
+				#nv li { float: left; height: 40px;  font-weight:normal; font-size: 14px;  background: none;  /* background: url({STYLEIMGDIR}/nv_a.png) no-repeat 100% 0; */}
+					.ie_all #nv li { line-height: 43px;}
+					.ie6 #nv li { line-height: 40px; }
+					#nv li a { float: left; padding:0 12px; text-align:center; height: 40px;  line-height: 40px;  color: #333;     font-size:15px; width:85px;  background: none; /* background-image: url(nv.png); */ } 
+						#nv li span { display: none; }
+					#nv li.a { color:#fff;  margin-left:5px;  background: url({STYLEIMGDIR}/nv_a.png) no-repeat 0px 0px; } 
+						#nv li.a a { color:#fff; background: url({STYLEIMGDIR}/nv_a.png) no-repeat 0px 0px; } 
+						#nv li a:hover { color:#fff; text-decoration:none;  background: url({STYLEIMGDIR}/nv_a_hover.png) no-repeat;  } 
+						#nv li.hover a:hover, #nv li.hover a { color:#fff; background: url({STYLEIMGDIR}/nv_a_hover.png) no-repeat; } 
+						
+
+/* 弹出菜单（竖排导航二级菜单）、弹出层及弹出窗口 */
+
+
+/* 重定义 竖排 导航二级下拉菜单 */
+/* 白色版 */
+.hdc .p_pop  { background:#ccc; border:none;  position:relative; z-index:99999;}
+.hdc .p_pop a { max-width:150px; background:#f8f8f8; border:none; border-bottom:1px solid #ccc; display:block;  color:#000; font-size:16px; height:40px; padding:5px 30px ; line-height:40px; text-align:center; overflow: hidden; }
+	.hdc .p_pop a.a, #sctype_menu .sca  { background:#eee ; color: #000; font-weight:bold; }
+	.hdc .p_pop a:hover { background:#eee; color: #f60; }
+	.hdc .blk a:hover {  background:#eee; }
+
+
+		/* 横排 导航二级子菜单*/				
+			#mu { position: relative; z-index:10; margin-top:-42px; /* 87px */ }
+				#mu ul { margin-bottom:15px; background: none; /* url({STYLEIMGDIR}/mu_bg.png) no-repeat 0 100%; */ border-bottom:1px solid #ccc; line-height: 30px; z-index: 22; font-size: 14px; }
+					#mu li { float: left; height: 38px; }
+						#mu a { float: left; display: inline-block; margin: 5px 6px;  white-space: nowrap; }
+							#mu a:hover { margin: 4px 5px; border: 1px solid #eee; background: #eee; color: #f60;; text-decoration: none; }
+
+
+/* 重定义字体 */
+#qmenu, .fl .bm_h h2 a, .xi1, #um .new, .topnav .new, .sch .new, .el .ec .hot em, .pll .s a.joins { color: #999; }
+.pll .s a.go { color: #999; }
+.xi2, .xi2 a { color: #999; }  /* 控制顶部字体属性 */
+
+				/* 快捷导航 */
+				#qmenu {position: relative;  z-index:9800; width: 50px; height: 35px; line-height:30px; text-align: left; font-weight:normal;  color: #555;  overflow: hidden; text-shadow: none; background: url({STYLEIMGDIR}/qmenu.png) 0 0 no-repeat; }
+					#qmenu:hover { text-decoration: none; }
+					#qmenu.a { position: relative; z-index: 302; background-position: 0 -35px; color:#000;  }
+					.ie8 #qmenu { line-height: 35px; }
+				 
+				/* 快捷导航 下拉内容块 属性 */	
+				/* 边框颜色统一弄成 #555，方便用于各种风格 */
+				#qmenu_menu {position: relative;z-index:9900;  margin-top: -1px; padding: 10px 5px 10px; width: 180px; border-color: #555;/*border-top:none;*/ background:#fff;}
+					.ie_all #qmenu_menu { margin-left: 1px; }
+						.ie9 #qmenu_menu { margin-left: 0; }
+					#qmenu_menu ul {position: relative;  z-index:9999; }
+					#qmenu_menu ul li { float: left; }
+					#qmenu_menu ul a { margin-bottom: 10px; padding: 47px 0 0; width: 60px; border: none; border-radius: 4px; background: url({STYLEIMGDIR}/noicon.gif) no-repeat 50% 5px; text-align: center; }
+
+						#qmenu_menu ul a:hover {  background-color:#eee; color:#06c; text-shadow: none; }
+
+
+				/* .topnav .new, .sch .new 分别为为个人中心和搜索页面头部新消息样式 */
+				#um .new, .topnav .new, .sch .new, #toptb .new { padding-left: 20px; background-repeat: no-repeat; background-position: 0 50%; color:#999; font-weight: 700; }
+					#myprompt.new { background-image: url({STYLEIMGDIR}/notice.gif); background-position: 3px 50%; }
+					#pm_ntc.new { background-image: url({STYLEIMGDIR}/new_pm.gif); }
+					#task_ntc { background-image: url({STATICURL}image/feed/task.gif); }
+				#um .pipe { margin: 0 5px 0 0; color:#999; }
+
+
+
+/* 重定义 Tab */
+.tb .a a { border-bottom-color: #FAF6ED; background: url({STYLEIMGDIR}/background.png); }
+
+/* 重定义 主题列表 侧边导航 */
+.bdl, .bdl dt, .bdl dd.bdl_a a { border-color: #fff; background-color: #fff; }
+	.bdl dt { background-image: url({STYLEIMGDIR}/titlebg_sd.png); }
+.bdl dd.bdl_a a { color: #555; }
+
+
+/*   重定义 页尾   */
+.ft_wp { width:100%; margin-top:15px;/* border-top:1px solid #aaa; */ min-height:300px; background:#eee url({STYLEIMGDIR}/bg_ft.png) top center repeat-x;}
+.ft_wp a { color:#555; }
+
+	#ft { width:980px;  margin:0 auto;  padding: 30px 0 30px 0; border:none; line-height: 1.8; color:#999; }
+	
+	.clear { height:20px; clear:both; }
+	
+	#ft .ft_info { padding:10px 0 50px 0; border:none; clear:both;/* border-bottom:1px solid #111;*/}
+	#ft .ft_info ul { float:left; width:230px /* 280px */; height:auto; padding-right:10px; display:inline-block;/* overflow:hidden; 不能加这句，否则页脚的 LOGO 显示不完全*/ }
+	#ft .ft_info ul li  { height:30px; line-height:30px; font-size:14px; color:#555; list-style:none; }
+	#ft .ft_info ul li a { font-size:14px; color:#555; }
+	#ft .ft_info ul li:nth-child(1) a { font-size:16px;  color:#333; }
+
+	#frt { margin-top:50px; }
+	
+		#flk { margin-top:50px; text-align: right; /*border-top:1px solid #666;*/ }
+			#flk img { vertical-align: middle; }
+			#scrolltop { visibility: hidden; position: fixed; bottom:85px; display: block; margin-right:15px;width: 50px; height: 50px; background: url({STYLEIMGDIR}/scrolltop.png) no-repeat 0 0; line-height: 999px; overflow: hidden; cursor: pointer; }
+			#scrolltop:hover { background-position: 0px -50px; }
+			.ie6 #scrolltop { position: absolute; bottom: auto; }
+			
+
+
+
+
+/********************************************************************
+*
+* 首页 自定义或重定义部分
+* 适用于页宽 980px  ( = 1200px - 220px ) (右侧 285px 保持不变，左侧 895 改成 670px - 左右间距 25px )
+*********************************************************************/
+
+
+
+.vk_border_1 { background:#fff; border:1px solid #ccc; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;  box-shadow: 1px 1px 3px #afafaf; }
+.vk_border_1:hover { opacity:.8; filter: alpha(opacity=80); }
+.bg_eee { background:#eee; }
+
+
+.vk_border_5 { background:#fff; border:5px solid #e6e6e6; -webkit-border-radius:5px; -moz-border-radius:5px; border-radius:5px;  box-shadow: 1px 1px 3px #afafaf; margin-top:40px; }
+.border_white { border-color:#fff;}
+.vk_border_5:hover {  border: 5px solid #15a9dc; opacity:.8; filter: alpha(opacity=80); }
+
+.vk_border_10 { border:5px solid #ddd; -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;  box-shadow: 1px 1px 3px #afafaf; }
+.vk_border_10:hover {  border: 5px solid #000; opacity:.8; filter: alpha(opacity=80); }
+
+.vk_diy_pd_none { margin:0px; padding:0px; }
+.vk_diy_pd_10 { padding:10px; }
+
+.height_230 { height:230px;}
+.height_400 { height:400px;}
+.height_420 { height:420px;}
+
+
+/* 3列模式：3列盒子框架 980 = 300 + 40 + 300 + 40 + 300 */
+/* 图片背景 bg_box 单独出来 */
+.col_3 {}
+.col_3_box  { margin:10px 0 5px 0;}
+	/* 默认300px 宽，间距 25px ，盒子边框 5px  310*3 = 920 + 25*3 = 75 ，最右侧用 right 强制右边距 为0px */
+	.col_3_1-1-1 { float:left; width:300px;  margin-right:25px; overflow: hidden;  display:inline; }
+	.col_3_1-1-1_40 { float:left; width:300px; margin-right:40px; overflow: hidden;  display:inline; }
+	/* 图片背景 */
+/*	.bg_box {height:400px; background:url({STYLEIMGDIR}/bg_box.png)  no-repeat;}
+*/	
+		/* 标题居中 */
+		.col_3_1-1-1 h2 { position:relative; text-align:center; margin-top:-5px /* -7px */;  overflow:hidden;   height:50px; line-height:50px; color:#333;  font-size:18px; font-weight:bold;  background:url({STYLEIMGDIR}/bg_title.png) no-repeat center top;}
+			.col_3_1-1-1 h2 a {display:inline; color:#555; font-size:18px; font-weight:bold; }
+			.col_3_1-1-1 h2 a:hover {color:#fa0;}
+			.col_3_1-1-1 .vk_more a { margin-left:75px; text-align:center; width:150px; height:40px; display:block;  line-height:40px; font-size:14px; font-weight:normal;  background:url({STYLEIMGDIR}/bg_more.png) no-repeat center bottom ;}
+	.col_3_box_diy { padding:5px 10px 5px 10px; }
+
+	/* 纯图片模式 */
+	.col_3_1-1-1_pic { float:left; width:300px; height:auto; margin-right:25px; overflow: hidden;  display:inline; }
+
+
+
+
+/* 4列模式：4列盒子框架 980 = 230*4 = 920 + 20*3  */
+/* 图片背景 bg_box 单独出来 */
+.col_4 {}
+.col_4_box  { margin:10px 0 5px 0;}
+	/* 纯图片模式 */
+	.col_4_1-1-1_pic { float:left; width:230px; height:auto; margin-right:16px; overflow: hidden;  display:inline; }
+
+
+
+/* 2列模式：盒子模式 - 内边距10px */
+.col_2 { }
+	/* 左侧 640px ，默认右边距 20px */
+	.col_2_box_left { float: left; width:635px;/* margin-right:20px;*/ overflow: hidden;  display:inline;}
+	.col_2_box_left_40 { float: left; width:640px; margin-right:40px; overflow: hidden;  display:inline;}
+	.bg_box_wide { background:url({STYLEIMGDIR}/bg_box_wide.png) no-repeat;}
+		.col_2_box_left h2 { position:relative; margin:-5px 0 0px 55px;  overflow:hidden;   height:50px; line-height:50px; color:#333; font-size:18px; font-weight:bold;  background:url({STYLEIMGDIR}/bg_title.png) no-repeat left top;}
+			.col_2_box_left h2 a {display:inline; padding-left:40px; color:#333;  font-size:18px; font-weight:bold;}
+			.col_2_box_left h2 a:hover {color:#fa0;}
+			.col_2_box_left h2 span{  position:absolute; right:10px; }
+			.col_2_box_left h2 span a { color:#333; line-height:50px; float:left; font-size:14px; font-weight:normal;}
+		.col_2_box_left ul li:hover img {opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+		
+	/* 右侧 300px */
+	.col_2_box_right {float: right;  width: 300px; /*height:280px; */overflow: hidden;  display:inline; }
+	.bg_box_contact { background:url({STYLEIMGDIR}/bg_box_contact.png) no-repeat; }
+		.col_2_box_right h2 {  position:relative; text-align:center;  margin-top:-5px /* -7px */;  overflow:hidden;   height:50px; line-height:50px; color:#333; font-size:18px; font-weight:bold;  background:url({STYLEIMGDIR}/bg_title.png) no-repeat center top; }
+			.col_2_box_right h2 a { display:inline;  color:#333;  font-size:18px; font-weight:bold; }
+			.col_2_box_right h2 a:hover { color:#fa0; }
+		.col_2_box_right ul li:hover img {opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+	.col_2_box_diy { padding:10px; }
+
+
+
+
+
+
+
+
+
+
+
+
+/* 四列模式：四列图片 */
+.col_4 { width:100%; height:auto; clear: both;}
+	.col_4 h2 { position:relative; overflow:hidden; height:50px; line-height:50px;  background:url({STYLEIMGDIR}/bg_title_h2.png) no-repeat; }
+		.col_4 h2 a {display:inline;  padding:10px;  font-size:20px; color:#333; /* #fc0 */; font-weight:bold;  }
+		.col_4 h2 span  { position:absolute; right:10px;}
+			.col_4 h2 span a { float:left;  line-height:50px;font-size:14px; color:#333 /* #fc0 */; font-weight:normal; }
+	.col_4_sub {}
+	.col_4_sub ul li:hover img { opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+
+.col_4 ul li { float:left;  padding: 0px;  margin:15px 25px 0 0px; }
+.ie7 .col_4 ul li, .ie8 .col_4 ul li { float:left;  padding: 0px;  margin:15px 20px 0 0px; }
+.col_4 ul li:nth-child(4n)  { float:right; margin-right:0px !important; padding:0px !important; clear:right; }
+
+/**********************************************************************
+*
+* 自定义或重定义 分页模块属性
+* 适用于页宽 980px
+***********************************************************************/
+
+/* 页面主区域 */
+/*
+	#ct { min-height: 300px; }
+		.ie6 #ct { height: 300px; }
+		.mn { overflow: hidden; }
+		.ct1 { border: 1px solid {WRAPBORDERCOLOR}; border-top: none; }
+		.ct2 .mn { float: left; width: 730px; margin-bottom: 1em; }
+		.ct2 .sd { float: right; width: 220px; overflow: hidden; _overflow-y: visible; }
+		
+*/
+		/* 自定义[自定义]文章分类单列模板-980px,适用于 宽980px 页面主区域框架 230*4 + 20*3 =  920+60 = 980 即，所有频道文章列表图片（无论三列还是四列），都是 宽 230px 且 间距20px */
+		.ct2 .mn { float:left;  width: 730px; margin-bottom: 1em; }
+		.ct2 .sd { float:right; width: 230px; overflow: hidden; _overflow-y: visible; }
+		
+		
+		/* 文章内容页，默认为 左侧标题和内容文字 + 右侧小缩略图 80x80px */
+		/* text with thumbnail image ( must with the additional class .cl ) */
+		.xld .m { float: left; margin: 8px 8px 10px 0; }
+		.xld .atc { float: right; margin-left: 20px; }
+			.ie8 .xld .atc { max-width: 86px; }
+		
+		.xld a.d, .xl a.d, .attc a.d, .c a.d, .sinf a.d { float: right; width: 20px; height: 20px; overflow: hidden; line-height: 100px; background: url({STYLEIMGDIR}/op.png) no-repeat 0 -2px; }
+			.attc a.d { float: left; }
+		.xld a.d:hover, .xl a.d:hover, .attc a.d:hover, .c a.d:hover, .sinf a.d:hover { background-position: 0 -22px; }
+		.xld a.b { background-position: 0 -40px; }
+			.xld a.b:hover { background-position: 0 -60px; }
+	.xlda dl { padding-left: 65px; }
+		.xlda .m { display: inline; margin: 8px 0 8px -65px; }
+		.xlda .avt img { display: block; }
+		.xlda dd img { max-width: 550px; }
+			* html .xlda dd img { width: expression(this.width > 550 ? 550 : true); }
+		.xlda dd a { color: {HIGHLIGHTLINK}; }
+		.xlda dd .hot { color: {NOTICETEXT}; }
+		
+
+		/* 共同部分：图片阴影、文章发布按钮 */
+		/* 图片阴影效果 - 分页 - 适用于页宽 980px 且 图片3列或4列 - 图片230x230px 间距20px*/
+		.pic_shadow_230_230 { width:230px; height:250px; background:url({STYLEIMGDIR}/shadow_230_250.png) no-repeat;}
+		a.addnew {  font-size:16px; color:#000; padding:0 10px; text-align:center; height: 40px; width:90px; line-height: 40px;  background: url({STYLEIMGDIR}/nv_a.png) no-repeat; }
+		a.addnew:hover { color:#06c;  }
+
+		/* 自定义 文章列表页-2列-图文列表+左侧栏导航 页面主区域框架 ，且 相关模板 list_pic_3_shadow_side.htm 里的类属性 ct2 改为 ct2_list_pic   */
+		/* 自定义[自定义]文章分类单列模板-980px,适用于 宽980px 页面主区域框架 230*4 + 20*3 =  920+60 = 980 即，所有频道文章列表图片（无论三列还是四列），都是 宽 230px 且 间距20px ; 纯文章列表为 230-20-730*/
+		/* ul li 宽度为 230px， 间隙 20px  页面宽度 980 px */
+		.ct2_list_pic_3 .mn {  float: right;width: 730px; margin-bottom: 1em; }
+		.ct2_list_pic_3  .sd { float: left; width: 230px; overflow: hidden; border:none;}
+		
+			.vk_sd ul { margin:0; padding:15px 0;  background:#f8f8f8; }
+			.vk_sd ul li { width: 230px; height:40px; margin:0px; padding:0px; }
+			.vk_sd ul li a { width: 198px; height:38px; padding:0 15px; display:inline-block; overflow: hidden;  background:#eee; border-top:1px solid #fff; border-bottom:1px solid #ccc;  line-height:38px; font-size:17px; font-weight:bold; color:#333; }
+			.vk_sd ul li a:hover { background:#0ad; color:#fff; text-decoration:none; }
+
+		
+		.ct2_list_pic_3 ul { padding:0; margin:0; list-style:none;   display:block; }
+		.ct2_list_pic_3 li { list-style:none; } 
+		.ct2_list_pic_3 .list_pic_div { clear:both;}
+		.ct2_list_pic_3 .list_pic_div li { width:230px; height:310px;  display: block; float: left; padding:0; margin: 0 20px 30px 0 ;}
+			/* 下面这句是为了兼容IE7/8 ， 右边距 margin: 0 20px 30px 0; 改小了些  */
+			.ie7 .ct2_list_pic_3 .list_pic_div li,  .ie8 .ct2_list_pic_3 .list_pic_div li {margin: 0 10px 30px 0 ;}
+
+		.ct2_list_pic_3 .list_pic_div li:nth-child(3n) { margin-right:0; clear:right;}
+		.ct2_list_pic_3 .list_pic_div li h2.postTitle { color:#333; font-size:17px; font-weight:bold; height:30px; line-height:30px;  margin:5px 0 10px 0; overflow:hidden;}
+		.ct2_list_pic_3 .list_pic img { float:left; width:230px; height: 230px;  max-height:230px; padding:0; margin-top:0; border:0;}
+
+		.ct2_list_pic_3 .list_pic:hover img {opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+
+		
+		
+		
+		/* 自定义 文章列表页-图片展示 页面主区域框架 ，且 相关模板 list_pic_4_shadow_noside.htm 里的类属性 ct2 改为 ct_list_pic_4   */
+		/* ul li 宽度为 230px， 间隙 20px  页面宽度 980 px */
+		.ct_list_pic_4 .mn { float: left; width:980px; margin-bottom: 1em; padding:0; }
+		.ct_list_pic_4 .sub_cat { height:40px;  background:none; border:none; padding:5px 0; margin-bottom:10px; overflow:hidden;}
+			/* 上部二级子频道列表 - 横排 */
+			.ct_list_pic_4 a.sub_cat_value { float: left; padding:0 10px; margin-left:10px;  height: 40px; max-width:250px; line-height: 30px;  font-size:16px; color:#333; text-align:center;  background: url({STYLEIMGDIR}/list_nv_a.png) no-repeat; }
+			.ct_list_pic_4 a.sub_cat_value:hover { color:#0ad;  text-decoration:none;  background: url({STYLEIMGDIR}/list_nv_a_hover.png) no-repeat; }
+		
+		.ct_list_pic_4 ul { padding:0; margin:0; list-style:none;   display:block; }
+		.ct_list_pic_4 li { list-style:none;/* background:#fff;  border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px; */} 
+
+		.ct_list_pic_4 .list_pic_div { clear:both;}
+		.ct_list_pic_4 .list_pic_div li { width:230px; height:310px;  display: block; float: left; padding:0; margin: 0 20px 30px 0 ;}
+		
+			/* 下面这句是为了兼容IE6/7/8 ， 右边距 margin: 0 46px 60px 0; 改小了些  */
+			.ie6 .ct_list_pic_4 .list_pic_div li, .ie7 .ct_list_pic_4 .list_pic_div li,  .ie8 .ct_list_pic_4 .list_pic_div li {margin: 0 15px 30px 0 ;}
+		.ct_list_pic_4 .list_pic_div li:nth-child(4n) { margin-right:0; clear:right;}
+		
+		.ct_list_pic_4 .list_pic_div li h2.postTitle { color:#333; font-size:17px; font-weight:bold; height:30px; line-height:30px;  margin:5px 0 10px 0;  overflow:hidden;}
+
+		.ct_list_pic_4 .list_pic img {float:left; width:230px; height: 230px;  max-height:230px; padding:0; margin-top:0; border:0; }
+			.ie6 .ct_list_pic_4 .list_pic img { width: expression(this.width >230 && this.width>=this.height ? 230 : true); height: expression(this.height > 230 && this.width<=this.height ? 230 : true); }
+		
+		.ct_list_pic_4 .list_pic:hover img {opacity:.8; -moz-opacity:.8; filter:alpha(opacity=80); -webkit-border-radius:10px; -moz-border-radius:10px; border-radius:10px;}
+		.list_price {color:#555; font-size:14px; height:30px; } 
+		.list_price a {color:#08c; } 
+		.list_price span {color:#f60; font-size:16px;  } 
+		
+
+
+/* 帮助页面 左侧 导航样式*/
+/* 页面主区域 */
+	#ct { min-height: 300px; }
+		.ie6 #ct { height: 300px; }
+		.mn { overflow: hidden; }
+		.ct1 { border: 1px solid {WRAPBORDERCOLOR}; border-top: none; }
+
+		
+		/* “帮助”、“设置”等页面 左边栏（对应背景为 vlineb.png） */
+	.ct2_a { margin-bottom: 10px; border-radius: 5px; }
+	.ct2_a .appl h2 { font-size:18px; padding-left:20px;}
+		.ct2_a, .ct3_a { border: 1px solid {WRAPBORDERCOLOR};  background-image: url({STYLEIMGDIR}/vlineb.png); }
+			.ct2_a_r { border: none; background-image: none; }
+			 .ct2_a h1.mt { display: none; }
+			 .ct2_a .tb { margin-top: 3px; }
+
+		/* 帮助、广播等 页面内容区域 */
+		/*
+		.ct2_a .mn { float: right; width: 810px; }
+			.ct2_a .mn { display: inline; margin-right: 10px; padding-top: 10px; width: 800px; }
+				#nv_userapp .ct2_a .mn, .ct2_a_r .mn { margin-right: 0; width: 810px; }
+		*/
+		.ct2_a .mn {  float: right; width:810px /*860px*/; display: inline; margin-right: 10px; padding-top: 10px; }
+			#nv_userapp .ct2_a .mn, .ct2_a_r .mn { margin-right: 0; width: 810px; }
+		
+		/* 针对 faq.htm 添加 vk_help 限制，以美化“帮助”单页面 */
+		#vk_help .ct2_a { border: 1px solid {WRAPBORDERCOLOR};  background-image: url({STYLEIMGDIR}/vlineb_vk_help.png);}
+		#vk_help .ct2_a .mn {  float: right; width:730px /*860px*/; display: inline; margin-right: 10px; padding-top: 10px; }
+		#vk_help .tbn ul { margin: -1px 1px 0 0;  border-bottom: 1px solid #FFF; }
+		#vk_help .tbn li { margin: 0; padding: 0; height:40px; border-top: 1px solid #fcfcfc; border-bottom: 1px solid #ccc; }
+		#vk_help .tbn li:nth-child(1) {border-top: none; }
+		/* 当前 帮助项目块 属性
+			.tbn li.a { margin: -1px -1px 0 0; padding: 0; background: #F0F0F0 url({STYLEIMGDIR}/bg_tbn_a.png) no-repeat 100% 50%; }
+		*/
+		#vk_help .tbn li a {  padding: 5px 10px 5px 20px;  font-size:16px;}
+		#vk_help .tbn li.a {   padding:0; margin: -1px -1px 0 0;  background:#f8f8f8;  font-size:18px; }
+		/*
+		.appl { float: left; overflow: hidden; margin-bottom: 10px; padding: 6px 10px; width: 117px; }
+		*/
+		#vk_help .appl { float: left; overflow: hidden; margin-bottom: 10px; padding: 6px 10px; width: 180px  ; }
+
+
+
+/*  此处控制 家园(即 2.5版 的 动态 home.php )页面中间区域 */
+/*		.ct3_a .mn { float: left; margin-left: 20px; width: 565px; }
+		.ct3_a .sd { float: right; width: 220px; }
+*/
+		.ct3_a .mn { float: left; margin-left:0px; width: 605px; /* 700px*/ /* 965px 乱版*/  }
+		.ct3_a .sd { float: right; width: 220px; }
+			#nv_home .ct3_a .sd .bm { margin-right: 10px; border: none; }
+				#nv_home .ct3_a .sd .bm_c { padding: 10px 0; }
+				
+				.mi .moodfm_input, .mi .hover .moodfm_input {   width:380px !important /* 415px*/ ; }
+				.mi #moodfm textarea { width:380px !important;}
+
+		.mw { width: 100%; float: none; }
+		.mnw { clear: both; border-top: 1px solid #CCC; }
+		.mnh { width: 643px; background: {COMMONBG}; margin-bottom: 0; }
+
+	#nv_portal.pg_portalcp .ct2_a_r, #nv_forum.pg_post .ct2_a_r { background-image: none; }
+			 
+
+
+
+/*********************************************
+*  自定义 论坛页面 相关属性
+**********************************************/
+
+/* 通用的区域块 */
+	/*
+	.bm 是最常用的区块元素，默认带有 1px 的边框和 10px 的下边距。一般情况下，.bm 内应包括两个子容器：.bm_h 和 .bm_c，前者代表区块头部，带有灰色背景和下边框；后者是容器主体，默认带有 10px 的内边距。
+	.bm 另有三种子样式
+		.bmw	Weight		头部为彩色背景
+		.bml	Lite		头部无背景填充
+		.bmn	Notice		整体带有彩色背景，常用于提示信息
+	*/
+	.bm, .bn { margin-bottom: 10px; }
+		.bm { border: 1px solid {COMMONBORDER}; background: {WRAPBG}; }
+		
+			/*  分区下的版块标题属性 */
+			.bm_c { padding: 10px; }
+		.drag {}
+		.bm_h .o { float: right; width: 30px; }
+			.bm_h .o img { float: right; margin-top: 11px; cursor: pointer; }
+		.bm_h .i { padding-left: 10px; }
+		.bm_h .pn { margin-top: 4px; }
+		
+		/* 论坛分区名称背景属性 
+		.bm_h { padding: 0 10px; height: 31px; border-top: 1px solid #FFF; border-bottom: 1px solid {CONTENTSEPARATE}; background: {COMMONBG}; line-height: 31px; white-space: nowrap; overflow: hidden; }
+		*/
+		.bm_h { padding: 0 10px; height: 40px; border-top: 1px solid #ccc; line-height: 40px; white-space: nowrap; overflow: hidden;  border-bottom: 1px solid {CONTENTSEPARATE}; /*  background: {COMMONBG} */}
+		.bm_h h2{ font-size:17px; } /* 分区名称属性 */   /* 此处亦控制 家园及圈子页面的标题文字属性  */
+		.bm_h h2 a { font-size:17px;  } /* 分区名称 链接属性 */
+	
+
+.bm_h, .tl th, .tl td { border-bottom-color: #CDCDCD; }
+/*.fl .bm_h { border-color: #fff; background: #ddd url({STYLEIMGDIR}/titlebg.png) repeat-x 0 0; }  
+*/
+/* 论坛分区名称背景属性 注意 有 .fl 限制 才有效 */
+.fl .bm_h { border-color:#ccc; background: #eee url({STYLEIMGDIR}/titlebg.png) repeat-x 0 0; }  
+
+	.bw0 { background: transparent; } /* 面包屑下面的统计栏 */
+
+
+/* 自定义首页 版块列表后的 主题数 {threads} - 属性：小字、浅灰色 - 所有版块列表模块均适用。应用时，在版块列表链接内 加入 
+ <span class="xs0" >{threads}</span>
+即可*/
+.xs0 { font-family: {SMFONT}; font-size: {SMFONTSIZE}; -webkit-text-size-adjust: none; }
+.module span { color:#aaa; font-size:9px ; font-family:Arial, Helvetica, sans-serif; }
+
+/*
+.module .threads_num { color:#aaa; font-size:5px !important;}
+*/
+
+/* 此处自定义贴子主题列表页顶部分类项目字体颜色属性 */
+.sort_color { color:#03c;}
+.sort_color:hover { color:#e00;}
+.sort_color:active { color:#fff;}
+
+
+
+
+/******************************  自定义 主题列表页社交化版  *********************************/
+
+/* 帖子列表  */
+.tl { border-radius: 0 0 5px 5px;  border-left:none; border-right:none ; }  /* 主题列表 包围框属性: 去掉左右边框*/
+	.tl .bm_c { padding: 0; } 
+	.tl th, .tl td{ border-bottom:1px solid #E6E6E6; } /* 帖子标题列表下边框属性 */
+
+	/*	帖子标题 区块
+	.tl .bm_c tr {margin-bottom:15px;  border-bottom:1px solid #E6E6E6;  padding-bottom:0px; background: url({STYLEIMGDIR}/shadow.png) no-repeat 100% 100%;  }
+	*/	
+	.tl .bm_c tr:hover {  background: #F8F8F8;   }
+	.bw0_all tr:hover th, .bw0_all tr:hover td { background: none; }
+	.tl .th { padding: 5px 15px 5px 10px; background: #EBF1FC; }
+	.tl tbody:last-child th, .tl tbody:last-child td { border-bottom: none; }
+	#threadlist.addradius { -moz-border-radius:3px; -webkit-border-radius:3px; border-radius: 3px;  }
+	.addradius .th { border-radius: 5px 5px 0 0; }
+
+	.tl .tf a { float: left; margin-right: 5px; padding: 4px 12px 3px; height: 16px; background-color: #D9E4F9; -moz-border-radius:3px; -webkit-border-radius:3px; border-radius: 3px;  }
+		.tl .tf a.a { background-color: #367DD3; color: #FFF; }
+		.tl .tf a.a:hover { text-decoration: none; }
+		.tl .tf .showmenu { padding-right: 20px; background-image: url({STYLEIMGDIR}/arrwd.png); }
+		.forumrefresh { background-position: 50% 50%; }
+	
+	/* 帖子标题 */
+	.tl .xst, .newthread .new em, .newthread .new em a { font-size: 15px !important; /* 贴子主题字体原本可在后台自定义，现在 module.css .xst 相关的地方关闭 */}
+	.tl .xst a { color:#15b !important;  } /* 暗蓝色 主题标题链接 */
+	.tl .xst a:hover { color:#c00 !important;  }
+
+	/* 帖子标题 图片 picture_value */
+	.list_pic { margin-left: 0; }
+	.list_pic img { width: 100px; height: 80px; }
+/** end **/
+
+
+/******************************  官方 列表页社交化版  start 20120413*********************************/
+/* 类似点评那里的表单 by Pony 1204111426 */
+.xldform .bar { padding-left: 5px; border-bottom: none; background: #FFF; }
+.xldform .arrow { position: absolute; margin: 27px 0 0 -5px; width: 6px; height: 9px; background: url({IMGDIR}/bg_arrow_left_cmt.png) no-repeat 0 0; }
+	.ie6 .xldform .arrow { margin-left: -2px; }
+.xldform .tedt { width: 99.5%; border-color: {COMMONBORDER}; }
+	.ie6 .xldform .tedt { width: 99%; }
+	.xldform .tedt .pt { height: 36px; }
+
+/* 大分页按钮 by Pony 1203121325 */
+.pgbtn { margin: 5px 0 10px; }
+	.pgbtn a { display: block; height: 40px; line-height: 40px; letter-spacing: 5px; text-align: center; border: 1px solid #DCDCDC; background: #F5F5F5 url({IMGDIR}/bg_pgbtn.png) repeat-x 0 0; font-size: 14px; outline: none; border-radius: 5px; box-shadow: 0 1px 0 #F5F5F5; }
+		.pgbtn a:hover { border-color: #BABABA; text-decoration: none; }
+		.pgbtn a:active { background: #EEE; border-color: #D0D0D0; box-shadow: none; }
+
+
+
+/* 瀑布流布局 by Pony 1204121803 */
+.waterfall { position: relative; margin-top: 15px; }
+	.waterfall li { margin: 0 10px 10px 0; padding: 0 0 3px; text-align: left; border-width: 1px 0 0; border-top: 1px solid #EAEAEA; background: url({STYLEIMGDIR}/bg_waterfall.png) no-repeat 100% 100%; }
+	.waterfall .c, .waterfall h3 { padding: 10px; border: solid #EAEAEA; border-width: 0 1px; background-color: #F8F8F8; }
+		.waterfall .c { overflow: hidden; padding-bottom: 0; max-height: 800px; }
+		.waterfall .c .nopic { display: block; background:{WRAPBG} url({IMGDIR}/nophototiny.png) no-repeat 50% 50%; cursor: pointer; }
+	.waterfall .auth { padding: 0 10px 10px; border-width: 0 1px 1px; border-style: solid; border-color: transparent #EAEAEA #B9B9B9; background: #F8F8F8; }
+		.waterfall .auth img { display: inline-block; margin: 0 1px; }
+		
+		
+.titletext {  }
+.ki_courselist { border-bottom:1px double #666; margin-bottom:20px;}
+
+/* 默认头部无底边框阴影时的 wp 属性 */
+ #wp .wp { width: auto;} 
+.pd_top_15 { padding-top:15px; }

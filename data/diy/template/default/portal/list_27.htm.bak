@@ -1,0 +1,8 @@
+<!--{subtemplate common/header}-->
+
+<style id="diy_style" type="text/css">#portal_block_606 .dxb_bc {  margin-left:15px !important;}#portal_block_607 .dxb_bc {  margin:10px !important;}#portal_block_607 {  margin-top:20px !important;margin-bottom:20px !important;}#portal_block_608 {  border:#14aadd 1px solid !important;margin:20px !important;}#portal_block_608 .dxb_bc {  margin:20px !important;font-size:14px !important;}#portal_block_609 .dxb_bc {  margin:20px !important;font-size:14px !important;}</style>
+<div id="ct" class="ct2 wp cl">
+<!--[diy=diy1]--><div id="diy1" class="area"><div id="frame1b5gfc" class=" frame move-span cl frame-2-1"><div class="title frame-title"><span class="titletext">联系我们</span></div><div id="frame1b5gfc_left" class="column frame-2-1-l"><div id="frame1b5gfc_left_temp" class="move-span temp"></div><!--{block/609}--></div><div id="frame1b5gfc_center" class="column frame-2-1-r"><div id="frame1b5gfc_center_temp" class="move-span temp"></div><!--{block/608}--><!--{block/607}--><!--{block/606}--></div></div></div><!--[/diy]-->
+</div>
+
+<!--{subtemplate common/footer}-->

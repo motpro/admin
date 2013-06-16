@@ -1,0 +1,58 @@
+{template user/header}
+
+<ul class="breadcrumb">
+	<li><a href="user.php">{lang user_center}</a> <span class="divider">/</span></li>
+    <li>{lang note} <span class="divider">/</span></li>
+    <li><a href="user.php?ac=sub_note">{lang lesson_note}</a></li>
+</ul>
+
+{if isset( $edit)}
+<div class="" id="_editor">
+    <div class="alert alert-info">
+        {lang note_tip_1}
+        <a class="text-success" href="lesson.php?page_content={$edit['pageid']}">《{$edit['title']}》</a>
+        {lang note_tip_2}
+    </div>
+	
+    <textarea id="note">
+		{$edit['notetext']}
+	</textarea>
+	<button id="note_edited" class="btn margin-top">{lang note_update}</button>
+</div>
+<script>
+jQuery( function () {
+    jQuery('#note_edited').bind('click' ,  function(){
+        var note = tinyMCE.get('note').getContent();
+
+        jQuery.post('request.php' , { action : 'update_note', params : { notetext : note , id : "{$edit['id']}" , uid : "{$_G['uid']}"}}, 
+            function( response){
+                if( 1== response)
+                     jQuery('#_editor').before('<div class="alert alert-success margin-top">{lang note_update_ok}<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+        });
+    });
+});
+</script>
+<hr />
+{/if}
+
+
+<h4 class="margin-top"><i class="icon-file"></i> {lang note_repository}
+    <small>{lang note_repository_tip}</small>
+</h4>
+
+{loop $notes $n}
+    <blockquote class="margin-top">
+    	<p><i class="icon-quote-left"></i> {$n['notetext']}</p>
+    </blockquote>
+    <div class="alert alert-success">
+    	<small>  
+    		<i class="icon-tags"></i> {lang note_from}<a href="lesson.php?page_content={$n['pageid']}" target="blank">《{$n['title']}》</a> 
+    		<i class="icon-edit"></i> {lang note_createdtime}{eval echo date('Y/m/d' , $n['setdate'])}
+    		<a href="user.php?ac=sub_note&edit={$n['id']}">{lang edit}</a> 
+            <a href="request.php?user_page=1&note_remove={$n['id']}">{lang delete}</a>
+    	</small>
+    </div>
+{/loop}
+
+
+{template user/footer}

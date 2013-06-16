@@ -1,0 +1,5 @@
+ErrorDocument 404 /tpl/notfound.php
+
+options -Indexes
+
+Redirect /. http://wwwbaidu.com
