@@ -11,12 +11,12 @@ jQuery( function() {
 </script>
 
 <div class="container">
-<h4>
+<h5>
 <p class="text-left"> 
   <a href="lesson.php"><i class="icon-home"></i> 在线课程</a> <span class="divider">/</span> 
   <a href="lesson.php?pages_list=<?php echo $lesson['id'];?>"><i class="icon-book"></i> <?php echo $lesson['fullname'];?></a> 
 </p>
-</h4>
+</h5>
 </div>
 
 
@@ -25,8 +25,7 @@ jQuery( function() {
 <div class="span12">
 
   <div class="span2">
-  <table class="table table-bordered">
-  <tr><td>
+
     <div class="text-center">
       <p><img src="uploads/course/<?php echo $lesson['logo'];?>" width="100%" /></p>
 
@@ -43,14 +42,10 @@ jQuery( function() {
                     <a class="btn btn-danger btn-large btn-block" href="vip.php?action=active" target="_blank">开通会员</a>
                   <?php } ?>
             </p>
-                <h6>
-                  <p>点击右边课程</p> 
-                  <p>进入学习页面</p>
-                  <a href="plugin.php?id=fb_opinion:main" target="_blank">FAQ</a>
-                </h6>
+
 
     <?php if(!$lesson['is_hidden']) { ?>
-    <h4>课程目录</h4>
+    <h4>课程大纲</h4>
     <ul class="nav nav-tabs nav-stacked">
       <?php if(is_array($pages)) foreach($pages as $p) { ?>      <li><a href="lesson.php?page_content=<?php echo $p['id'];?>"><small><strong><?php echo cutstr( $p['title'] , 15 , '' )?></strong></small></a></li>
       <?php } ?>
@@ -58,15 +53,13 @@ jQuery( function() {
     <?php } ?>
 
     </div>
-  </td></tr>
-  </table>
+
   </div>
 
 
 
   <div class="span10">
-  <table class="table table-bordered">
-  <tr><td>
+
   <?php if($lesson['is_hidden']) { ?>
           <div class="row-fluid">
             <div>
@@ -80,31 +73,56 @@ jQuery( function() {
     </div>
   <?php } else { ?>
   
-      <div class="row-fluid">
-            <div>
+      <div>
+            <div class="span12">
                   <h3 align="center">《<?php echo $lesson['fullname'];?>》 课程介绍</h3>
                    <div><?php echo $lesson['summary'];?></div>
             </div>
+            <hr>
 
-              <?php if(is_array($pages)) foreach($pages as $p) { ?>                <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
-                   <img class="span3 image img-polaroid" id="<?php echo $p['id'];?>" src="uploads/page/small/<?php echo $p['image_file'];?>" alt="<?php echo $p['title'];?>"/>
+
+
+            <?php if(is_array($pages)) foreach($pages as $p) { ?>            <div class="container-fluid well">
+            <div class="row-fluid">
+              <div class="span4 text-center">
+                <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
+                   <img class="span12 image img-polaroid" id="<?php echo $p['id'];?>" src="uploads/page/small/<?php echo $p['image_file'];?>" alt="<?php echo $p['title'];?>"/>
                 </a>
-              <?php } ?>
-          </div>
+              </div>
+              
+              <div class="span8">
+                
+                <h4>
+                  <a id="<?php echo $p['id'];?>" href="lesson.php?page_content=<?php echo $p['id'];?>" title="<?php echo $p['title'];?>">
+                    <?php echo $p['title'];?>
+                  </a>
+                </h4>
+                
+                <ul class="inline">
+                  <li><span class="label label-info">语音 : <?php echo $p['v_voice'] == 1 ? '英语' : '普通话'?></span></li>
+                  <li><span class="label label-info">时长 : <?php echo $p['v_time'];?></span></li>
+                </ul>
+
+                <?php echo cutstr( $p['contents'], 140 , ' .. ')?>              </div>
+
+            </div>
+            </div>
+            <?php } ?>
+
+
+      </div>
    
     <?php } ?>
   </div>
-  </td></tr>
-  </table>
+
   </div>
 
 </div>
 </div>
 </div>
 
+<?php if(false) { ?>
 <div class="container">
-
-
 <div class="page-header">
   <h2>学习指南
     <small>指导</small>
@@ -132,8 +150,6 @@ jQuery( function() {
   </div>
 </div>
 
-<div class="span12">
 
 </div>
-
-</div><?php include template('lesson/footer'); ?>
+<?php } include template('lesson/footer'); ?>

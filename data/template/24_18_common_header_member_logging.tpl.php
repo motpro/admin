@@ -1,6 +1,6 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); 
 0
-|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1371015747, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
+|| checktplrefresh('./template/tpl/common/header.htm', './template/tpl/common/header_common.htm', 1372854797, '18', './data/template/24_18_common_header_member_logging.tpl.php', './template/tpl', 'common/header_member_logging')
 ;?>
 <!DOCTYPE html>
 <html lang="en" xmlns:wb=“http://open.weibo.com/wb”>
@@ -19,11 +19,14 @@
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 <base href="<?php echo $_G['siteurl'];?>" />
 <link href="<?php echo $_G['siteurl'];?>static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
-   	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.min.css" rel="stylesheet" />
+   	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.css" rel="stylesheet" />
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?php echo $_G['siteurl'];?>static/mot/hint.min.css" rel="stylesheet" />
+<link href="<?php echo $_G['siteurl'];?>static/mot/jquery-pin-style.css" rel="stylesheet" />
+    
     <link type="text/css" href="<?php echo $_G['siteurl'];?>static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>-->
+<script src="<?php echo $_G['siteurl'];?>static/bs_jq_ui/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">jQuery(function(){jQuery.noConflict()})</script><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo STYLEID;?>_common.css?<?php echo VERHASH;?>" /><?php if($_G['uid'] && isset($_G['cookie']['extstyle']) && strpos($_G['cookie']['extstyle'], TPLDIR) !== false) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['cookie']['extstyle'];?>/style.css" /><?php } elseif($_G['style']['defaultextstyle']) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['style']['defaultextstyle'];?>/style.css" /><?php } ?><script type="text/javascript">var STYLEID = '<?php echo STYLEID;?>', STATICURL = '<?php echo STATICURL;?>', IMGDIR = '<?php echo IMGDIR;?>', VERHASH = '<?php echo VERHASH;?>', charset = '<?php echo CHARSET;?>', discuz_uid = '<?php echo $_G['uid'];?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>', showusercard = '<?php echo $_G['setting']['showusercard'];?>', attackevasive = '<?php echo $_G['config']['security']['attackevasive'];?>', disallowfloat = '<?php echo $_G['setting']['disallowfloat'];?>', creditnotice = '<?php if($_G['setting']['creditnotice']) { ?><?php echo $_G['setting']['creditnames'];?><?php } ?>', defaultstyle = '<?php echo $_G['style']['defaultextstyle'];?>', REPORTURL = '<?php echo $_G['currenturl_encode'];?>', SITEURL = '<?php echo $_G['siteurl'];?>', JSPATH = '<?php echo $_G['setting']['jspath'];?>';</script>
 <script src="<?php echo $_G['setting']['jspath'];?>common.js?<?php echo VERHASH;?>" type="text/javascript"></script>
 <?php if(empty($_GET['diy'])) { ?><?php $_GET['diy'] = '';?><?php } if(!isset($topic)) { ?><?php $topic = array();?><?php } ?><meta name="application-name" content="<?php echo $_G['setting']['bbname'];?>" />
@@ -57,97 +60,44 @@
   	<!--[if lte IE 7]>
   	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/ie6bootstrap/css/ie.css">
   	<![endif]-->
+
+  	<!--[if IE]>
+<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+<![endif--> 
+  	
   	<style type="text/css">
-body{padding-top:20px;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
+body{padding-top:10px;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
     </style>
 </head>
 
 
 <body>
-
-<?php if(false) { ?>
-<!--
-<div class="navbar-fixed-top">
-<script>
-jQuery( function () {
-
-
-jQuery(window).scroll( function () {
-if( document.body.scrollTop+document.documentElement.scrollTop > 0){
-jQuery('#top_here').addClass('navbar-transparent');
-}else {
-jQuery('#top_here').removeClass('navbar-transparent');
-}
-});
-
-jQuery('#top_here').hover( 
-function(){
-jQuery('#top_here').removeClass('navbar-transparent');
-jQuery('#top_here').addClass('navbar-static');
-},
-function(){
-if( document.body.scrollTop+document.documentElement.scrollTop > 0)
-jQuery('#top_here').removeClass('navbar-transparent');
-}
-);
-
-
-});
-</script>
-<div id="top_here" class="navbar navbar-static">
-    <div class="container-fluid">
-    <?php loadcache('director')?>        <ul class="nav">
-        	<a class="brand" href="#">Lean学院</a>
-        <?php if(is_array($_G['cache']['director'])) foreach($_G['cache']['director'] as $d) { ?>            <li><a href="<?php echo $d['c_value'];?>" title="<?php echo $d['c_key'];?>"><?php echo $d['c_key'];?></a></li>
-            
-            <?php } ?>
-
-            <?php if($_G['uid']) { ?>
-            <li><a href="user.php"><i class="icon-user"></i> 用户中心</a></li>
-
-            <?php } ?>
-            
-            <li style="padding-left:10px;">
-            <form class="navbar-search form-search pull-left" action="msearch.php" method="get">
-    			<div class="input-append">
-    			<input id="tags" type="text" class="search-query span2" name="keywords" placeholder="课程搜索">
-    			<button class="btn" name="findout" value=1>Search</button>
-    			</div>
-    		</form>
-    		<script>
-            jQuery.post('request.php' , { action : 'get_top_search', params: {} } , function ( response) {
-            	response = eval ( '('+response+')');
-            	jQuery("#tags").autocomplete({
-                	source:  response,
-            	});
-            });
-            </script>
-    		</li>
-    		<li><a id="news" href="#"></a></li>
-    		<?php if(!$_G['uid']) { ?>
-
-                	<li><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-                	<li><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-            <?php } ?>
-        </ul>
-    </div>
-</div>
-</div>
--->
-<?php } ?>
-
+<div class="navbar-fixed-top mot-block-gray">
+<div class="masthead">
 <div class="container">
+<ul class="inline">
+<li><a href="javascript:;"  onclick="setHomepage('<?php echo $_G['siteurl'];?>');">设为首页</a></li>
+<li><a href="<?php echo $_G['siteurl'];?>"  onclick="addFavorite(this.href, '<?php echo $navtitle;?>');return false;">收藏本站</a></li>
+<?php if(!$_G['uid']) { ?>
+          	<li class="pull-right"><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
+            <li class="pull-right"><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
+            <?php } else { ?>
+            <li class="pull-right"><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
+         	<li class="pull-right"><a href="user.php"> <?php echo $_G['username'];?>在线</a></li>
+         	<?php } ?>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="container" style="padding:40px">
 <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          	<li <?php if(CURSCRIPT === 'portal') { ?>class="active"<?php } ?>><a href="#"><i class="icon-home"></i> 首页</a></li>
+          	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="#"><i class="icon-home"></i> 首页</a></li>
           	<li <?php if(CURSCRIPT === 'lesson') { ?>class="active"<?php } ?>><a href="lesson.php"><i class="icon-cloud"></i> 在线课程</a></li>
           	<?php if($_G['uid']) { ?><li><a href="user.php"><i class="icon-user"></i> 用户中心</a></li><?php } ?>
           	<li <?php if(CURSCRIPT === 'knowledge') { ?>class="active"<?php } ?>><a href="knowledge.php"><i class="icon-question-sign"></i> 问答</a></li>
-          	<li <?php if(CURSCRIPT === 'aboutus') { ?>class="active"<?php } ?>><a href="./aboutus"><i class="icon-group"></i> 关于我们</a></li>
-          	<?php if(!$_G['uid']) { ?>
-          	<li><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-            <li><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-         	<?php } ?>
+          	<li <?php if(CURMODULE === 'aboutus') { ?>class="active"<?php } ?>><a href="./aboutus"><i class="icon-group"></i> 关于我们</a></li>
         </ul>
         <h3 class="muted"><img class="" src="<?php echo $_G['siteurl'];?>/static/mot/logo.png"></h3>
     </div>

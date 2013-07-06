@@ -1,8 +1,0 @@
-<?php if(!defined('IN_DISCUZ')) exit('Access Denied'); ?>
-<ul class="nav nav-pills nav-stacked">
-<li><a href="examination.php?mod=schoolroll"><i class="icon-font"></i> <i class="pull-right icon-chevron-right"></i>学籍信息</a></li>
-<li><a href="examination.php?mod=mytest"><i class="icon-hand-up"></i> <i class="pull-right icon-chevron-right"></i>我的考试</a></li>
-<li><a href="examination.php?mod=library"><i class="icon-fire"></i> <i class="pull-right icon-chevron-right"></i>资料题库</a></li>
-<li><a href="examination.php?mod=more"><i class="icon-search"></i> <i class="pull-right icon-chevron-right"></i>更多信息</a></li>
-<?php if($_G['adminid'] == 1) { ?><li><a href="examination.php?mod=admin"><i class="icon-cog"></i> <i class="pull-right icon-chevron-right"></i>管理</a></li><?php } ?>
-</ul>

@@ -249,12 +249,15 @@ class register_ctl {
 	function on_register() {
 		global $_G;
 
+		/*
 		$_GET['username'] = $_GET[''.$this->setting['reginput']['username']];
 		$_GET['password'] = $_GET[''.$this->setting['reginput']['password']];
 		$_GET['password2'] = $_GET[''.$this->setting['reginput']['password2']];
 		$_GET['email'] = $_GET[''.$this->setting['reginput']['email']];
+		*/
 
-		if($_G['uid']) {
+
+		if($_G['uid']) {	
 			$ucsynlogin = $this->setting['allowsynlogin'] ? uc_user_synlogin($_G['uid']) : '';
 			$url_forward = dreferer();
 			if(strpos($url_forward, $this->setting['regname']) !== false) {

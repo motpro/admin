@@ -1,7 +1,7 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('construction');
 0
-|| checktplrefresh('./template/tpl/portal/construction.htm', './template/tpl/common/404_header.htm', 1371015673, '18', './data/template/24_18_portal_construction.tpl.php', './template/tpl', 'portal/construction')
-|| checktplrefresh('./template/tpl/portal/construction.htm', './template/tpl/common/header_common.htm', 1371015673, '18', './data/template/24_18_portal_construction.tpl.php', './template/tpl', 'portal/construction')
+|| checktplrefresh('./template/tpl/portal/construction.htm', './template/tpl/common/404_header.htm', 1373036566, '18', './data/template/24_18_portal_construction.tpl.php', './template/tpl', 'portal/construction')
+|| checktplrefresh('./template/tpl/portal/construction.htm', './template/tpl/common/header_common.htm', 1373036566, '18', './data/template/24_18_portal_construction.tpl.php', './template/tpl', 'portal/construction')
 ;?>
 <!DOCTYPE html>
 <html lang="en" xmlns:wb=“http://open.weibo.com/wb”>
@@ -20,11 +20,14 @@
 <meta http-equiv="MSThemeCompatible" content="Yes" />
 <base href="<?php echo $_G['siteurl'];?>" />
 <link href="<?php echo $_G['siteurl'];?>static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
-   	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.min.css" rel="stylesheet" />
+   	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.css" rel="stylesheet" />
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?php echo $_G['siteurl'];?>static/mot/hint.min.css" rel="stylesheet" />
+<link href="<?php echo $_G['siteurl'];?>static/mot/jquery-pin-style.css" rel="stylesheet" />
+    
     <link type="text/css" href="<?php echo $_G['siteurl'];?>static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>-->
+<script src="<?php echo $_G['siteurl'];?>static/bs_jq_ui/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">jQuery(function(){jQuery.noConflict()})</script><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo STYLEID;?>_common.css?<?php echo VERHASH;?>" /><?php if($_G['uid'] && isset($_G['cookie']['extstyle']) && strpos($_G['cookie']['extstyle'], TPLDIR) !== false) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['cookie']['extstyle'];?>/style.css" /><?php } elseif($_G['style']['defaultextstyle']) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['style']['defaultextstyle'];?>/style.css" /><?php } ?><script type="text/javascript">var STYLEID = '<?php echo STYLEID;?>', STATICURL = '<?php echo STATICURL;?>', IMGDIR = '<?php echo IMGDIR;?>', VERHASH = '<?php echo VERHASH;?>', charset = '<?php echo CHARSET;?>', discuz_uid = '<?php echo $_G['uid'];?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>', showusercard = '<?php echo $_G['setting']['showusercard'];?>', attackevasive = '<?php echo $_G['config']['security']['attackevasive'];?>', disallowfloat = '<?php echo $_G['setting']['disallowfloat'];?>', creditnotice = '<?php if($_G['setting']['creditnotice']) { ?><?php echo $_G['setting']['creditnames'];?><?php } ?>', defaultstyle = '<?php echo $_G['style']['defaultextstyle'];?>', REPORTURL = '<?php echo $_G['currenturl_encode'];?>', SITEURL = '<?php echo $_G['siteurl'];?>', JSPATH = '<?php echo $_G['setting']['jspath'];?>';</script>
 <script src="<?php echo $_G['setting']['jspath'];?>common.js?<?php echo VERHASH;?>" type="text/javascript"></script>
 <?php if(empty($_GET['diy'])) { ?><?php $_GET['diy'] = '';?><?php } if(!isset($topic)) { ?><?php $topic = array();?><?php } ?><meta name="application-name" content="<?php echo $_G['setting']['bbname'];?>" />

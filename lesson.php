@@ -13,7 +13,10 @@ $detect = new Mobile_Detect;
 $deviceType = ($detect->isMobile() ? ($detect->isTablet() ? 'tablet' : 'phone') : 'computer');
 $contenttypefilter = $_G['siteurl'] . 'urlfilter.php?url=';
 
-$lang = array('CH/' , 'TW/' , 'EN');
+$lang = array('CH/' , 'TW/' , 'EN/');
+$srclang = array('zh' , 'tw' , 'en');
+$labellang = array('简体中文','繁体中文','其它');
+$voicelang = array('英文' , '中文' , '其它');
 
 //@mot cache here
 if( !isset( $_G['cache']['player'])) {
@@ -35,6 +38,7 @@ if( $_G['uid']) {
 	$mark = C::t('b_mark')->get_mark_by_uid( $_G['uid']);
 }
 
+/*
 //get video json data by page_id
 if( isset( $_GET['dataajax'])){
 
@@ -46,6 +50,23 @@ if( isset( $_GET['dataajax'])){
 		$c = C::t('b_video')->get_video_by_pageid( $id);
 		$c['label_a_file'] = $contenttypefilter . $p['subtitle'] . $c['v_path'] . $lang[$c['label_a']] . $c['label_a_file'];
 		$c['label_b_file'] = $contenttypefilter . $p['subtitle'] . $c['v_path'] . $lang[$c['label_b']] . $c['label_b_file'];
+		echo json_encode( $c);
+		exit;
+	}	
+}
+*/
+//new player
+if( isset( $_GET['dataajax'])){
+
+	$id = intval( $_POST['pageid']);
+
+	$cinfo = C::t('b_course')->get_free_by_pageid( $id);
+
+	if( $vip['uid'] || $cinfo['is_free']){
+
+		$c = C::t('b_video')->get_video_by_pageid( $id);
+		$c['video_pc'] = $p['videourl'] . $c['v_path'] . $c['v_file'];
+		$c['video_mb'] = $p['mobileurl'] . $c['v_path'] . $c['v_file'];
 		echo json_encode( $c);
 		exit;
 	}	
@@ -161,7 +182,7 @@ if( !$_G['uid']&&$_GET['sign']) {
 
 
 if( isset( $_GET['pages_list'])){
-	define('CURSCRIPT', 'pages_list');
+	define('CURMODULE', 'pages_list');
 
 
 
@@ -175,7 +196,7 @@ if( isset( $_GET['pages_list'])){
 	
 
 	loadcache('c'.$id);
-	if( !isset( $_G['cache']['c'.$id])){
+	if( isset( $_G['cache']['c'.$id])){
 		$pages = C::t('b_lesson_pages')->get_pages_info_by_id( $id);
 		savecache('c'.$id , $pages);
 		loadcache('c'.$id);
@@ -206,7 +227,7 @@ if( isset( $_GET['page_content'])){
 		$success = true;
 	}
 
-	$profile = DB::fetch_first('select realname,mobile from '.DB::table('common_member_profile').' where uid = '.$_G['uid']);
+	$profile = DB::fetch_first('select realname, mobile from '.DB::table('common_member_profile').' where uid = '.$_G['uid']);
 
 	$id = intval( $_GET['page_content']);
 
@@ -233,6 +254,12 @@ if( isset( $_GET['page_content'])){
 
 	C::t('b_userlast')->set_last( $_G['uid'], $id);
 
+	$video = C::t('b_video')->get_video_info_by_id( $id);
+
+	//
+	$video['caption_1'] =  $contenttypefilter . $p['subtitle'] . $video['v_path'] . $lang[$video['label_a']] . $video['label_a_file'];
+	$video['caption_2'] =  $contenttypefilter . $p['subtitle'] . $video['v_path'] . $lang[$video['label_b']] . $video['label_b_file'];
+	
 	require template('lesson/new_content');
 	exit;
 }
@@ -254,7 +281,7 @@ if( isset( $_GET['mark'])){
 }
 
 
-
+C::t('')
 
 
 if( isset( $_GET['page']) && $_GET['page'] > 0) { $page = intval( $_GET['page']); }
@@ -267,13 +294,8 @@ if( isset( $_GET['category'])){
 	$c = C::t('b_course')->get_course_by_page( $page , 16);
 }
 
-
-$p = C::t('b_lesson_pages')->get_preview_pages(2);
-
 foreach ($category as $value) {
 	$cat[$value['id']] = $value['category'];
 }
 
 require template('lesson/user_interface');
-
-

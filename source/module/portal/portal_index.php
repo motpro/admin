@@ -25,10 +25,12 @@ if(!$metadescription) {
 	$metadescription = $_G['setting']['navs'][1]['navname'];
 }
 
+
 if( 1 !== intval($_G['uid'])){
 	require template('portal/construction');
 	exit;
 }
+
 
 //==============================mot added==============================
 

@@ -76,7 +76,7 @@ $lang = array(
 	
 	'account' => '账户',
 	'vip_info' => 'VIP信息',
-	'vip_greeting' => '会员您好',
+	'vip_greeting' => '尊敬的会员您好',
 	'vip_active' => '开通会员',
 	'vip_start' => '开通日期',
 	'vip_continue' => '续费会员',

@@ -1,0 +1,86 @@
+{template user/header}
+<script>
+jQuery(function() {
+	jQuery( "#menu" ).menu();
+});
+</script>
+
+<ul id="menu">
+<li class="ui-state-disabled"><a href="#">Aberdeen</a></li>
+<li><a href="#">Ada</a></li>
+<li><a href="#">Adamsville</a></li>
+<li><a href="#">Addyston</a></li>
+<li>
+<a href="#">Delphi</a>
+<ul>
+<li class="ui-state-disabled"><a href="#">Ada</a></li>
+<li><a href="#">Saarland</a></li>
+<li><a href="#">Salzburg</a></li>
+</ul>
+</li>
+<li><a href="#">Saarland</a></li>
+<li>
+<a href="#">Salzburg</a>
+<ul>
+<li>
+<a href="#">Delphi</a>
+<ul>
+<li><a href="#">Ada</a></li>
+<li><a href="#">Saarland</a></li>
+<li><a href="#">Salzburg</a></li>
+</ul>
+</li>
+<li>
+<a href="#">Delphi</a>
+<ul>
+<li><a href="#">Ada</a></li>
+<li><a href="#">Saarland</a></li>
+<li><a href="#">Salzburg</a></li>
+</ul>
+</li>
+<li><a href="#">Perch</a></li>
+</ul>
+</li>
+<li class="ui-state-disabled"><a href="#">Amesville</a></li>
+</ul>
+
+ <script>
+jQuery(function() {
+var spinner = jQuery( "#spinner" ).spinner();
+jQuery( "#disable" ).click(function() {
+if ( spinner.spinner( "option", "disabled" ) ) {
+spinner.spinner( "enable" );
+} else {
+spinner.spinner( "disable" );
+}
+});
+jQuery( "#destroy" ).click(function() {
+if ( spinner.data( "ui-spinner" ) ) {
+spinner.spinner( "destroy" );
+} else {
+spinner.spinner();
+}
+});
+jQuery( "#getvalue" ).click(function() {
+alert( spinner.spinner( "value" ) );
+});
+jQuery( "#setvalue" ).click(function() {
+spinner.spinner( "value", 5 );
+});
+jQuery( "button" ).button();
+});
+</script>
+<p>
+<label for="spinner">Select a value:</label>
+<input id="spinner" name="value" />
+</p>
+<p>
+<button id="disable">Toggle disable/enable</button>
+<button id="destroy">Toggle widget</button>
+</p>
+<p>
+<button id="getvalue">Get value</button>
+<button id="setvalue">Set value to 5</button>
+</p>
+
+{template user/footer}

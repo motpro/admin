@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+	<html lang="en">
+	
+	
+    <head>
+    <meta charset="utf-8">	
+    <title><!--{if !empty($navtitle)}-->$navtitle - <!--{/if}--><!--{if empty($nobbname)}--> $_G['setting']['bbname'] - <!--{/if}--> 国内首家精益学习平台</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="application-name" content="$_G['setting']['bbname']" />
+	<meta name="msapplication-tooltip" content="$_G['setting']['bbname']" />
+	<!--{if $_G['setting']['portalstatus']}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][1]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['portal']) ? 'http://'.$_G['setting']['domain']['app']['portal'] : $_G[siteurl].'portal.php'};icon-uri={$_G[siteurl]}{IMGDIR}/portal.ico" /><!--{/if}-->
+	<meta name="msapplication-task" content="name=$_G['setting']['navs'][2]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['forum']) ? 'http://'.$_G['setting']['domain']['app']['forum'] : $_G[siteurl].'forum.php'};icon-uri={$_G[siteurl]}{IMGDIR}/bbs.ico" />
+	<!--{if $_G['setting']['groupstatus']}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][3]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['group']) ? 'http://'.$_G['setting']['domain']['app']['group'] : $_G[siteurl].'group.php'};icon-uri={$_G[siteurl]}{IMGDIR}/group.ico" /><!--{/if}-->
+	<!--{if helper_access::check_module('feed')}--><meta name="msapplication-task" content="name=$_G['setting']['navs'][4]['navname'];action-uri={echo !empty($_G['setting']['domain']['app']['home']) ? 'http://'.$_G['setting']['domain']['app']['home'] : $_G[siteurl].'home.php'};icon-uri={$_G[siteurl]}{IMGDIR}/home.ico" />
+	<!--{/if}-->
+	<base href="{$_G['siteurl']}" />
+	<link href="{$_G['siteurl']}static/bs/css/bootstrap.min.css" rel="stylesheet" />
+	<link href="{$_G['siteurl']}static/bs/css/bootstrap-responsive.min.css" rel="stylesheet" />
+   	<link href="{$_G['siteurl']}static/mot/professional.css" rel="stylesheet" />
+   	<link href="{$_G['siteurl']}static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="{$_G['siteurl']}static/mot/hint.min.css" rel="stylesheet" />
+	<link href="{$_G['siteurl']}static/mot/jquery-pin-style.css" rel="stylesheet" />
+    <link type="text/css" href="{$_G['siteurl']}static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+	<script type="text/javascript" src="{$_G['siteurl']}static/bs_jq_ui/js/jquery-1.9.1.min.js"></script>	
+  	<style type="text/css">
+	body{padding-top:20px;}.container-narrow{margin:0 auto;max-width:800px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
+    </style>
+	</head>
+	
+	<body>
+
+	<div class="container">
+	<div class="navbar-fixed-top mot-block-gray">
+	<div class="masthead container-fluid">
+		<ul class="inline">
+			<li><a href="javascript:;"  onclick="setHomepage('{$_G['siteurl']}');">设为首页</a></li>
+			<li><a href="{$_G['siteurl']}"  onclick="addFavorite(this.href, '$navtitle');return false;">收藏本站</a></li>
+			{if !$_G['uid']}
+          	<li><a class="muted" href="member.php?mod=logging&action=login">登陆</a></li>
+            <li><a class="muted" href="member.php?mod={$_G[setting][regname]}">注册</a></li>
+            {else}
+         	<li><a href="user.php"><i class="icon-star"></i> {$_G['username']}在线</a></li>
+         	{/if}
+		</ul>
+	</div>
+	</div>
+
+	<div class="masthead" style="padding:40px">
+        <ul class="nav nav-pills pull-right">
+          	<li {if CURSCRIPT === 'portal' && CURMODULE !== 'aboutus'}class="active"{/if}><a href="#"><i class="icon-home"></i> 首页</a></li>
+          	<li {if CURSCRIPT === 'lesson'}class="active"{/if}><a href="lesson.php"><i class="icon-cloud"></i> 在线课程</a></li>
+          	{if $_G['uid']}<li><a href="user.php"><i class="icon-user"></i> 用户中心</a></li>{/if}
+          	<li {if CURSCRIPT === 'knowledge'}class="active"{/if}><a href="knowledge.php"><i class="icon-question-sign"></i> 问答</a></li>
+          	<li {if CURMODULE === 'aboutus'}class="active"{/if}><a href="./aboutus"><i class="icon-group"></i> 关于我们</a></li>
+        </ul>
+        <h3 class="muted"><img class="" src="{$_G['siteurl']}/static/mot/logo.png"></h3>
+    </div>
+	</div>
+	<div class="container">

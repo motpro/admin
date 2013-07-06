@@ -93,6 +93,6 @@ if( 'home' === $ac){
 	}
 }
 
-
+$message = C::t('b_call')->count_newmessage( $_G['uid']);
 
 require template('user/'.$ac);

@@ -1,0 +1,35 @@
+<script type="text/javascript">
+	var strongpw = new Array();
+	<!--{if $_G['setting']['strongpw']}-->
+		<!--{loop $_G['setting']['strongpw'] $key $val}-->
+		strongpw[$key] = $val;
+		<!--{/loop}-->
+	<!--{/if}-->
+	var pwlength = <!--{if $_G['setting']['pwlength']}-->$_G['setting']['pwlength']<!--{else}-->0<!--{/if}-->;
+</script>
+
+
+<script type="text/javascript">
+<!--{if $bbrules && $bbrulesforce}-->
+	showBBRule();
+<!--{/if}-->
+<!--{if $this->showregisterform}-->
+	<!--{if $sendurl}-->
+	addMailEvent($('{$this->setting['reginput']['email']}'));
+	<!--{else}-->
+	addFormEvent('registerform', <!--{if $_GET[action] != 'activation' && !($bbrules && $bbrulesforce) && !empty($invitecode)}-->1<!--{else}-->0<!--{/if}-->);
+	<!--{/if}-->
+	<!--{if $this->setting['sitemessage'][register]}-->
+		function showRegprompt() {
+			showPrompt('custominfo_register', 'mouseover', '<!--{echo trim($this->setting['sitemessage'][register][array_rand($this->setting['sitemessage'][register])])}-->', $this->setting['sitemessage'][time]);
+		}
+		<!--{if !($bbrules && $bbrulesforce)}-->
+			showRegprompt();
+		<!--{/if}-->
+	<!--{/if}-->
+	function showBBRule() {
+		showDialog($('layer_bbrule').innerHTML, 'info', '<!--{echo addslashes($this->setting['bbname']);}--> {lang rulemessage}');
+		$('fwin_dialog_close').style.display = 'none';
+	}
+<!--{/if}-->
+</script>

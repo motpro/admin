@@ -1,10 +1,4 @@
-<ul class="nav nav-pills nav-stacked">
-	{if $_G['uid']}
-	<li class="nav-header">与我相关</li>
-    <li><a href="knowledge.php?mod=message"><i class="icon-user"></i> 提到我的 ( {$message} )</a></li>
-    <li><a href="knowledge.php?mod=user&ac=question"><i class="icon-question-sign"></i> 我的问题</a></li>
-    <li><a href="knowledge.php?mod=user&ac=answer"><i class="icon-ok-circle"></i> 我的回答</a></li>
-    {/if}
+	<ul class="nav nav-pills nav-stacked">
 		<li class="nav-header">{lang study}</li>
 
 		<li {if $ac === 'sub_newsfeed'}class="active"{/if}>
@@ -37,6 +31,27 @@
 			</a>
 		</li>
 
+		<li class="nav-header">{lang ask}</li>
+		{if $_G['uid']}
+    		<li><a href="knowledge.php?mod=message">
+    			<i class="icon-user"></i>
+    			<i class="pull-right icon-chevron-right"></i> 提到我的 ( {$message} )</a></li>
+    	{/if}
+
+		<li {if $ac === 'question'}class="active"{/if}>
+			<a href="knowledge.php?mod=user&ac=question">
+				<i class="icon-question-sign"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang myquestion}
+			</a>
+		</li>
+
+		<li {if $ac === 'answer'}class="active"{/if}>
+			<a href="knowledge.php?mod=user&ac=answer">
+				<i class="icon-ok-circle"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang myreply}
+			</a>
+		</li>
+
 		<li class="nav-header">工具</li>
 
 		{if false}
@@ -65,7 +80,7 @@
 		{/if}
 
 		<li class="nav-header">账户</li>
-		
+
 		<li {if $ac === 'sub_vip'}class="active"{/if}>
 			<a href="user.php?ac=sub_vip">
 				<i class="icon-credit-card"></i>
@@ -79,4 +94,12 @@
 				<i class="pull-right icon-chevron-right"></i>其它
 			</a>
 		</li>
-</ul>
+
+		<li>
+			<a href="member.php?mod=logging&action=logout&formhash={FORMHASH}">
+				<i class="icon-off"></i>
+				<i class="pull-right icon-chevron-right"></i>{lang logout}
+
+			</a>
+		</li>
+	</ul>

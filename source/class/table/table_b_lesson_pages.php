@@ -25,7 +25,7 @@ class table_b_lesson_pages extends discuz_table {
 	}
 
 	public function get_pages_info_by_id( $id) {
-		return DB::fetch_all('select p.id,p.film_id,p.title,v.image_file from '.DB::table( $this->_table).' as p left join '.DB::table( $this->_jointable ).' as v on p.film_id = v.id  where lessonid = '.$id);
+		return DB::fetch_all('select p.id,p.contents,p.film_id,p.title,v.v_name,v.image_file,v.v_time,v.v_voice from '.DB::table( $this->_table).' as p left join '.DB::table( $this->_jointable ).' as v on p.film_id = v.id  where lessonid = '.$id);
 	}
 
 	public function get_preview_pages( $per) {

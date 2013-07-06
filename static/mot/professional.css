@@ -129,6 +129,23 @@
   background: #272822;
 }
 
+.mot-block-gray {
+  padding-top: 5px;
+  background: #494949;
+}
+
+.mot-block-gray a {
+  color: #ffffff;
+}
+
+.mot-block-gray a:hover {
+  color: #ffffff;
+}
+
+.mot-block-blackboard {
+  background: url( './bg.jpg')
+}
+
 .text-show {
   width: 100%;
   display: block;
@@ -168,9 +185,9 @@ div .hot-course {
   background: #003366;
 }
 
-.navbar-transparent {
-  filter:alpha(opacity=60);  
-  -moz-opacity: 0.6;  
-  -khtml-opacity: 0.6;  
-  opacity: 0.6;
+#footer .navbar-transparent {
+  filter:alpha(opacity=75);  
+  -moz-opacity: 0.75;  
+  -khtml-opacity: 0.75;  
+  opacity: 0.75;
 }

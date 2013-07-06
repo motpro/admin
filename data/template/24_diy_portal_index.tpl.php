@@ -1,9 +1,9 @@
 <?php if(!defined('IN_DISCUZ')) exit('Access Denied'); hookscriptoutput('index');
 0
-|| checktplrefresh('./template/tpl/portal/index.htm', './template/tpl/common/header.htm', 1371369323, 'diy', './data/template/24_diy_portal_index.tpl.php', './template/tpl', 'portal/index')
-|| checktplrefresh('./template/tpl/portal/index.htm', './template/tpl/common/header_common.htm', 1371369323, 'diy', './data/template/24_diy_portal_index.tpl.php', './template/tpl', 'portal/index')
+|| checktplrefresh('./template/tpl/portal/index.htm', './template/tpl/common/header.htm', 1372854793, 'diy', './data/template/24_diy_portal_index.tpl.php', './template/tpl', 'portal/index')
+|| checktplrefresh('./template/tpl/portal/index.htm', './template/tpl/common/header_common.htm', 1372854793, 'diy', './data/template/24_diy_portal_index.tpl.php', './template/tpl', 'portal/index')
 ;?>
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" xmlns:wb=“http://open.weibo.com/wb”>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo CHARSET;?>" />
@@ -23,8 +23,11 @@
    	<link href="<?php echo $_G['siteurl'];?>static/mot/professional.css" rel="stylesheet" />
    	<link href="<?php echo $_G['siteurl'];?>static/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
     <link href="<?php echo $_G['siteurl'];?>static/mot/hint.min.css" rel="stylesheet" />
+<link href="<?php echo $_G['siteurl'];?>static/mot/jquery-pin-style.css" rel="stylesheet" />
+    
     <link type="text/css" href="<?php echo $_G['siteurl'];?>static/bs_jq_ui/css/custom-theme/jquery-ui-1.10.2.custom.css" rel="stylesheet" />
-<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!--<script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>-->
+<script src="<?php echo $_G['siteurl'];?>static/bs_jq_ui/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script type="text/javascript">jQuery(function(){jQuery.noConflict()})</script><link rel="stylesheet" type="text/css" href="data/cache/style_<?php echo STYLEID;?>_common.css?<?php echo VERHASH;?>" /><?php if($_G['uid'] && isset($_G['cookie']['extstyle']) && strpos($_G['cookie']['extstyle'], TPLDIR) !== false) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['cookie']['extstyle'];?>/style.css" /><?php } elseif($_G['style']['defaultextstyle']) { ?><link rel="stylesheet" id="css_extstyle" type="text/css" href="<?php echo $_G['style']['defaultextstyle'];?>/style.css" /><?php } ?><script type="text/javascript">var STYLEID = '<?php echo STYLEID;?>', STATICURL = '<?php echo STATICURL;?>', IMGDIR = '<?php echo IMGDIR;?>', VERHASH = '<?php echo VERHASH;?>', charset = '<?php echo CHARSET;?>', discuz_uid = '<?php echo $_G['uid'];?>', cookiepre = '<?php echo $_G['config']['cookie']['cookiepre'];?>', cookiedomain = '<?php echo $_G['config']['cookie']['cookiedomain'];?>', cookiepath = '<?php echo $_G['config']['cookie']['cookiepath'];?>', showusercard = '<?php echo $_G['setting']['showusercard'];?>', attackevasive = '<?php echo $_G['config']['security']['attackevasive'];?>', disallowfloat = '<?php echo $_G['setting']['disallowfloat'];?>', creditnotice = '<?php if($_G['setting']['creditnotice']) { ?><?php echo $_G['setting']['creditnames'];?><?php } ?>', defaultstyle = '<?php echo $_G['style']['defaultextstyle'];?>', REPORTURL = '<?php echo $_G['currenturl_encode'];?>', SITEURL = '<?php echo $_G['siteurl'];?>', JSPATH = '<?php echo $_G['setting']['jspath'];?>';</script>
 <script src="<?php echo $_G['setting']['jspath'];?>common.js?<?php echo VERHASH;?>" type="text/javascript"></script>
 <?php if(empty($_GET['diy'])) { ?><?php $_GET['diy'] = '';?><?php } if(!isset($topic)) { ?><?php $topic = array();?><?php } ?><meta name="application-name" content="<?php echo $_G['setting']['bbname'];?>" />
@@ -58,97 +61,44 @@
   	<!--[if lte IE 7]>
   	<link rel="stylesheet" type="text/css" href="<?php echo $_G['siteurl'];?>static/ie6bootstrap/css/ie.css">
   	<![endif]-->
+
+  	<!--[if IE]>
+<script src=”http://html5shiv.googlecode.com/svn/trunk/html5.js”></script>
+<![endif--> 
+  	
   	<style type="text/css">
-body{padding-top:20px;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
+body{padding-top:10px;}.container-narrow{margin:0 auto;max-width:700px}.container-narrow>hr{margin:30px 0}.jumbotron{margin:60px 0;text-align:center}.jumbotron h1{font-size:54px;line-height:1}.jumbotron .btn{font-size:21px;padding:14px 24px}.marketing{margin:60px 0}.marketing p+h4{margin-top:28px}
     </style>
 </head>
 
 
 <body>
-
-<?php if(false) { ?>
-<!--
-<div class="navbar-fixed-top">
-<script>
-jQuery( function () {
-
-
-jQuery(window).scroll( function () {
-if( document.body.scrollTop+document.documentElement.scrollTop > 0){
-jQuery('#top_here').addClass('navbar-transparent');
-}else {
-jQuery('#top_here').removeClass('navbar-transparent');
-}
-});
-
-jQuery('#top_here').hover( 
-function(){
-jQuery('#top_here').removeClass('navbar-transparent');
-jQuery('#top_here').addClass('navbar-static');
-},
-function(){
-if( document.body.scrollTop+document.documentElement.scrollTop > 0)
-jQuery('#top_here').removeClass('navbar-transparent');
-}
-);
-
-
-});
-</script>
-<div id="top_here" class="navbar navbar-static">
-    <div class="container-fluid">
-    <?php loadcache('director')?>        <ul class="nav">
-        	<a class="brand" href="#">Lean学院</a>
-        <?php if(is_array($_G['cache']['director'])) foreach($_G['cache']['director'] as $d) { ?>            <li><a href="<?php echo $d['c_value'];?>" title="<?php echo $d['c_key'];?>"><?php echo $d['c_key'];?></a></li>
-            
-            <?php } ?>
-
-            <?php if($_G['uid']) { ?>
-            <li><a href="user.php"><i class="icon-user"></i> 用户中心</a></li>
-
-            <?php } ?>
-            
-            <li style="padding-left:10px;">
-            <form class="navbar-search form-search pull-left" action="msearch.php" method="get">
-    			<div class="input-append">
-    			<input id="tags" type="text" class="search-query span2" name="keywords" placeholder="课程搜索">
-    			<button class="btn" name="findout" value=1>Search</button>
-    			</div>
-    		</form>
-    		<script>
-            jQuery.post('request.php' , { action : 'get_top_search', params: {} } , function ( response) {
-            	response = eval ( '('+response+')');
-            	jQuery("#tags").autocomplete({
-                	source:  response,
-            	});
-            });
-            </script>
-    		</li>
-    		<li><a id="news" href="#"></a></li>
-    		<?php if(!$_G['uid']) { ?>
-
-                	<li><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-                	<li><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-            <?php } ?>
-        </ul>
-    </div>
-</div>
-</div>
--->
-<?php } ?>
-
+<div class="navbar-fixed-top mot-block-gray">
+<div class="masthead">
 <div class="container">
+<ul class="inline">
+<li><a href="javascript:;"  onclick="setHomepage('<?php echo $_G['siteurl'];?>');">设为首页</a></li>
+<li><a href="<?php echo $_G['siteurl'];?>"  onclick="addFavorite(this.href, '<?php echo $navtitle;?>');return false;">收藏本站</a></li>
+<?php if(!$_G['uid']) { ?>
+          	<li class="pull-right"><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
+            <li class="pull-right"><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
+            <?php } else { ?>
+            <li class="pull-right"><a href="member.php?mod=logging&amp;action=logout&amp;formhash=<?php echo FORMHASH;?>"> 注销</a></li>
+         	<li class="pull-right"><a href="user.php"> <?php echo $_G['username'];?>在线</a></li>
+         	<?php } ?>
+</ul>
+</div>
+</div>
+</div>
+
+<div class="container" style="padding:40px">
 <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          	<li <?php if(CURSCRIPT === 'portal') { ?>class="active"<?php } ?>><a href="#"><i class="icon-home"></i> 首页</a></li>
+          	<li <?php if(CURSCRIPT === 'portal' && CURMODULE !== 'aboutus') { ?>class="active"<?php } ?>><a href="#"><i class="icon-home"></i> 首页</a></li>
           	<li <?php if(CURSCRIPT === 'lesson') { ?>class="active"<?php } ?>><a href="lesson.php"><i class="icon-cloud"></i> 在线课程</a></li>
           	<?php if($_G['uid']) { ?><li><a href="user.php"><i class="icon-user"></i> 用户中心</a></li><?php } ?>
           	<li <?php if(CURSCRIPT === 'knowledge') { ?>class="active"<?php } ?>><a href="knowledge.php"><i class="icon-question-sign"></i> 问答</a></li>
-          	<li <?php if(CURSCRIPT === 'aboutus') { ?>class="active"<?php } ?>><a href="./aboutus"><i class="icon-group"></i> 关于我们</a></li>
-          	<?php if(!$_G['uid']) { ?>
-          	<li><a href="member.php?mod=logging&amp;action=login">登陆</a></li>
-            <li><a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a></li>
-         	<?php } ?>
+          	<li <?php if(CURMODULE === 'aboutus') { ?>class="active"<?php } ?>><a href="./aboutus"><i class="icon-group"></i> 关于我们</a></li>
         </ul>
         <h3 class="muted"><img class="" src="<?php echo $_G['siteurl'];?>/static/mot/logo.png"></h3>
     </div>
@@ -301,22 +251,26 @@ EOF;
 <div id="wp" class="container">  <div class="container-narrow">
 
       <div class="jumbotron">
-        
-        <h1>全球首家中文精益在线学院</h1>
-        <img src="<?php echo $_G['siteurl'];?>/static/mot/ads.jpg" class="img-circle" width="280px">
-        <p class="lead"><i class="icon-flag"></i>  Lean学院是一个全新的在线精益学习平台，我们采用了全新的在线教育模式，使用视频+问答社区这样一个全新的在线学习模式，脱离传统的文档类为主学习资源，使用直观、深入浅出的视频为主要教学资源，让原本晦涩难懂的精益技术以一个全新的方式展现在您的面前。</p>
+
+        <a href="member.php?mod=<?php echo $_G['setting']['regname'];?>"><img src="<?php echo $_G['siteurl'];?>/static/mot/banner.jpg"></a>
+
+        <h4>
         <?php if($_G['uid']) { ?>
         <a class="btn btn-success btn-large" href="user.php?ac=sub_plan"><i class="icon-hand-right"></i> 继续学习 </a>
         <?php } else { ?>
         <a class="btn btn-success btn-large" href="member.php?mod=<?php echo $_G['setting']['regname'];?>"><i class="icon-hand-up"></i> 现在就注册 !</a>
         <?php } ?>
+        </h4>
       </div>
 
       <hr>
-      <table>
-        <tr>
+      <table width="100%">
+        <tr valign="top">
           <td class="page-header span5">
-            <h3><i class="icon-tasks"></i> 经营的课程 <small><a href="lesson.php">更多</a></small></h3>
+            <h3>
+              <i class="icon-tasks"></i> 经营的课程 <small>
+              <a href="lesson.php">更多 <i class="icon-double-angle-right"></i></a></small>
+            </h3>
           </td>
           <td class="span2"></td>
           <td class="page-header span5">
@@ -324,18 +278,21 @@ EOF;
           </td>
         </tr>
 
-        <tr>
+        <tr valign="top">
           <td>
-              <ul class="masthead-links">
-              <?php if(is_array($allcourse)) foreach($allcourse as $key=>$course) { ?>              <li><small><a href="lesson.php?pages_list=<?php echo $course['id'];?>" title="<?php echo $course['fullname'];?>"><?php echo $course['fullname'];?></a></small></li>
-              <?php if($key%2 == 0 && $key > 0) { ?><li><br /></li><?php } ?>
+              <?php if(is_array($allcourse)) foreach($allcourse as $key=>$course) { ?>              
+                [ <a href="lesson.php?pages_list=<?php echo $course['id'];?>" title="<?php echo $course['fullname'];?>">
+                  <?php echo $course['fullname'];?> 
+                </a> ]
+              
               <?php } ?>
-              </ul>
           </td>
+
           <td></td>
           <td>
-            <p>知识的掌握和提炼重在反复复习。 视频教学已经可以给您一个对知识的直观的展示，但是要记忆、掌握并融汇贯通，还需要不断的服务和测试。每一个视频课程我们都配以数个针对本课重点知识的测评考试，只有达到80%的准确率才能够完成本课程的学习。
-            </p>
+            <dl><dt>
+            <i class="icon-retweet"></i> 知识的掌握和提炼重在反复复习。 视频教学已经可以给您一个对知识的直观的展示，但是要记忆、掌握并融汇贯通，还需要不断的服务和测试。每一个视频课程我们都配以数个针对本课重点知识的测评考试，只有达到80%的准确率才能够完成本课程的学习。
+            </dt></dl>
           </td>
         </tr>
         
@@ -346,20 +303,22 @@ EOF;
           </td>
           <td></td>
           <td class="page-header">
-            <h3><i class="icon-heart"></i> 加入我们</h3>
+            <h3><i class="icon-heart"></i> 加入我们吧</h3>
           </td>
         </tr>
 
-        <tr>
+        <tr valign="top">
           <td>
-            <p>
-            我们的下一步工作是打造移动学习的平台，移动在线学院课程同样为高清课程，
+            <dl><dt>
+            <i class="icon-plane"></i> 我们的下一步工作是打造移动学习的平台，移动在线学院课程同样为高清课程，
             同时课程还将可以在电脑，手机，平板电脑等移动设备上观看。同时可以用投影仪放大在培训室进行观看。
-            </p>
+            </dt></dl>
           </td>
           <td></td>
           <td>
-            <p>只要进行免费的简单的<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a>，就可以加入到我们的学院，海量的课程和资料以及特有的工具，帮助你更好的工作。</p>
+            <dl><dt>
+              <i class="icon-pencil"></i> 只要进行免费的简单的<a href="member.php?mod=<?php echo $_G['setting']['regname'];?>">注册</a>，就可以加入到我们的学院，海量的课程和资料以及特有的工具，帮助你更好的工作。
+            </dt></dl>
           </td>
         </tr>
 
@@ -369,19 +328,22 @@ EOF;
           <td class="page-header"><h3><i class="icon-lightbulb"></i> 专业的讲师</h3></td>
         </tr>
 
-        <tr>
+        <tr valign="top">
           <td>
-          <ul class="unstyle">
-            <li>以互联网的模式改变传统的行业</li>
-            <li>让用户以更快、更简单、更方便、更廉价的形式学习更多的知识</li>
-            <li>精益求精的技术，深入浅出的讲解</li>
-            <li>更切合实际、不拘泥于书本</li>
-          </ul>
+          <dl>
+            <dt><i class="icon-check"></i> 以互联网的模式改变传统的行业</dt>
+            <dt><i class="icon-check"></i> 让用户以更快、更简单、更方便、更廉价的形式学习更多的知识</dt>
+            <dt><i class="icon-check"></i> 精益求精的技术，深入浅出的讲解</dt>
+            <dt><i class="icon-check"></i> 更切合实际、不拘泥于书本</dt>
+          </dl>
           </td>
           <td></td>
           <td>
-            <p>授人以鱼，不如授人以渔。 我们的课程均为拥有权威技术及大量实际生产环境经验的权威讲师并且并不是单纯的讲授技术，而是传播学习方法、实际经验。让您更的学习更接近实际操作。</p>
+            <dl><dt>
+              <i class="icon-key"></i> 授人以鱼，不如授人以渔。 我们的课程均为拥有权威技术及大量实际生产环境经验的权威讲师并且并不是单纯的讲授技术，而是传播学习方法、实际经验。让您更的学习更接近实际操作。
+            </dt></dl>
           </td>
         </tr>
       </table>
-    </div><?php include template('common/footer'); ?>
+    </div>
+<div><?php include template('common/footer'); ?>
